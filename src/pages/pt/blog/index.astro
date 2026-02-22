@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BlogPostCard from "@/components/BlogPostCard.astro";
+import { useTranslations } from "@/i18n/utils";
+
+const t = useTranslations("pt");
+
+const posts = (await getCollection("blog"))
+  .filter((post) => post.data.lang === "pt" && !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title={t("blog.title")} description={t("blog.description")} lang="pt">
+  <h1 class="mb-2">{t("blog.heading")}</h1>
+  <p class="text-secondary mb-10">{t("blog.description")}</p>
+
+  {
+    posts.length > 0 ? (
+      <div class="divide-y divide-[var(--color-rule)] dark:divide-[var(--color-rule-dark)]">
+        {posts.map((post) => {
+          const slug = post.id.split("/")[1];
+          return (
+            <BlogPostCard
+              title={post.data.title}
+              description={post.data.description}
+              pubDate={post.data.pubDate}
+              tags={post.data.tags}
+              slug={slug}
+              lang="pt"
+            />
+          );
+        })}
+      </div>
+    ) : (
+      <p class="text-muted">{t("blog.empty")}</p>
+    )
+  }
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations, getLocalizedPath } from "@/i18n/utils";
+
+const t = useTranslations("pt");
+---
+
+<BaseLayout title={t("nav.home")} description={t("site.description")} lang="pt">
+  <section class="py-12">
+    <h1 class="text-4xl mb-6">{t("home.greeting")}</h1>
+    <p class="text-lg text-secondary leading-relaxed max-w-xl">
+      {t("home.intro")}
+    </p>
+    <div class="mt-8 flex gap-6">
+      <a
+        href={getLocalizedPath("pt", "blog")}
+        class="text-[var(--color-accent)] dark:text-[var(--color-accent-dark)] font-medium"
+      >
+        {t("home.cta.blog")} &rarr;
+      </a>
+      <a
+        href={getLocalizedPath("pt", "about")}
+        class="text-secondary hover:text-[var(--color-ink)] dark:hover:text-[var(--color-ink-dark)]"
+      >
+        {t("home.cta.about")}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

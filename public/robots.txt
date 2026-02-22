@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://marcomachado.dev/sitemap-index.xml

@@ -1,0 +1,27 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations, formatDate } from "@/i18n/utils";
+
+const t = useTranslations("en");
+const lastUpdated = new Date("2025-02-21");
+---
+
+<BaseLayout title={t("now.title")} lang="en">
+  <h1 class="mb-2">{t("now.heading")}</h1>
+  <p class="text-sm text-muted font-[var(--font-mono)] mb-8">
+    {t("now.updated")}: {formatDate(lastUpdated, "en")}
+  </p>
+
+  <div class="article-content">
+    <p>{t("now.intro")}</p>
+
+    <h2>Work</h2>
+    <p>Building software, shipping features, learning new patterns.</p>
+
+    <h2>Side Projects</h2>
+    <p>This very site — designed and built with Astro, Tailwind, and TypeScript.</p>
+
+    <h2>Learning</h2>
+    <p>Diving deeper into systems design and distributed architectures.</p>
+  </div>
+</BaseLayout>

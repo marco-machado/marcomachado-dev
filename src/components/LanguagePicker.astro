@@ -1,0 +1,22 @@
+---
+import { getLangFromUrl, getOtherLang, useTranslations } from "@/i18n/utils";
+import { languages } from "@/i18n/ui";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const otherLang = getOtherLang(lang);
+const t = useTranslations(lang);
+
+const pathSegments = Astro.url.pathname.split("/").filter(Boolean);
+const pathWithoutLang =
+  lang === "en" ? pathSegments.join("/") : pathSegments.slice(1).join("/");
+const switchUrl = getRelativeLocaleUrl(otherLang, pathWithoutLang);
+---
+
+<a
+  href={switchUrl}
+  class="text-sm text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] dark:text-[var(--color-ink-muted-dark)] dark:hover:text-[var(--color-ink-dark)] no-underline transition-colors"
+  aria-label={t("lang.switch")}
+>
+  {languages[otherLang]}
+</a>

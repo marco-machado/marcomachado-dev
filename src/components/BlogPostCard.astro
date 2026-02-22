@@ -1,0 +1,45 @@
+---
+import { formatDate, getLocalizedPath, type Lang } from "@/i18n/utils";
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags: string[];
+  slug: string;
+  lang: Lang;
+}
+
+const { title, description, pubDate, tags, slug, lang } = Astro.props;
+const href = getLocalizedPath(lang, `blog/${slug}`);
+---
+
+<article class="group py-6">
+  <a href={href} class="no-underline block">
+    <time
+      datetime={pubDate.toISOString()}
+      class="text-sm text-muted font-[var(--font-mono)]"
+    >
+      {formatDate(pubDate, lang)}
+    </time>
+    <h3
+      class="mt-1 text-xl font-[var(--font-heading)] font-medium tracking-tight text-[var(--color-ink)] dark:text-[var(--color-ink-dark)] group-hover:text-[var(--color-accent)] dark:group-hover:text-[var(--color-accent-dark)] transition-colors"
+    >
+      {title}
+    </h3>
+    <p class="mt-2 text-secondary leading-relaxed">
+      {description}
+    </p>
+    {
+      tags.length > 0 && (
+        <div class="mt-3 flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span class="text-xs font-[var(--font-mono)] text-muted px-2 py-0.5 bg-[var(--color-paper-raised)] dark:bg-[var(--color-paper-raised-dark)] rounded">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )
+    }
+  </a>
+</article>

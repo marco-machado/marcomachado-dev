@@ -1,0 +1,44 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations } from "@/i18n/utils";
+
+const t = useTranslations("en");
+---
+
+<BaseLayout title={t("uses.title")} lang="en">
+  <h1 class="mb-4">{t("uses.heading")}</h1>
+  <p class="text-secondary mb-10">{t("uses.intro")}</p>
+
+  <div class="article-content">
+    <h2>{t("uses.hardware")}</h2>
+    <ul>
+      <li>MacBook Pro 14"</li>
+      <li>Apple Studio Display</li>
+      <li>Keychron K2 keyboard</li>
+      <li>Logitech MX Master 3S</li>
+    </ul>
+
+    <h2>{t("uses.dev")}</h2>
+    <ul>
+      <li>Neovim + tmux</li>
+      <li>VS Code (for large projects)</li>
+      <li>Warp terminal</li>
+      <li>GitHub Copilot</li>
+    </ul>
+
+    <h2>{t("uses.software")}</h2>
+    <ul>
+      <li>Arc Browser</li>
+      <li>Raycast</li>
+      <li>Notion</li>
+      <li>Figma</li>
+    </ul>
+
+    <h2>{t("uses.terminal")}</h2>
+    <ul>
+      <li>zsh + oh-my-zsh</li>
+      <li>Starship prompt</li>
+      <li>fzf, ripgrep, bat, eza</li>
+    </ul>
+  </div>
+</BaseLayout>

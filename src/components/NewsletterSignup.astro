@@ -1,0 +1,35 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section
+  class="mt-12 p-6 bg-[var(--color-paper-raised)] dark:bg-[var(--color-paper-raised-dark)] rounded-lg"
+>
+  <h3 class="text-lg mb-2">{t("newsletter.heading")}</h3>
+  <p class="text-secondary text-sm mb-4">{t("newsletter.description")}</p>
+
+  {/* TODO: Replace BUTTONDOWN_USERNAME with your Buttondown username */}
+  <form
+    action="https://buttondown.com/api/emails/embed-subscribe/BUTTONDOWN_USERNAME"
+    method="post"
+    target="popupwindow"
+    class="flex gap-3"
+  >
+    <input
+      type="email"
+      name="email"
+      required
+      placeholder={t("newsletter.placeholder")}
+      class="flex-1 px-4 py-2 text-sm bg-[var(--color-paper)] dark:bg-[var(--color-paper-dark)] border border-[var(--color-rule)] dark:border-[var(--color-rule-dark)] rounded-md text-[var(--color-ink)] dark:text-[var(--color-ink-dark)] placeholder:text-[var(--color-ink-muted)] dark:placeholder:text-[var(--color-ink-muted-dark)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)] dark:focus:ring-[var(--color-accent-dark)]"
+    />
+    <button
+      type="submit"
+      class="px-5 py-2 text-sm font-medium bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)] text-white dark:text-[var(--color-paper-dark)] rounded-md hover:opacity-90 transition-opacity cursor-pointer"
+    >
+      {t("newsletter.button")}
+    </button>
+  </form>
+</section>

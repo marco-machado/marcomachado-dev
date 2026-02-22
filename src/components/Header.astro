@@ -1,0 +1,42 @@
+---
+import { getLangFromUrl, useTranslations, getLocalizedPath } from "@/i18n/utils";
+import ThemeToggle from "./ThemeToggle.astro";
+import LanguagePicker from "./LanguagePicker.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navLinks = [
+  { label: t("nav.blog"), path: "blog" },
+  { label: t("nav.about"), path: "about" },
+  { label: t("nav.uses"), path: "uses" },
+  { label: t("nav.now"), path: "now" },
+];
+---
+
+<header class="w-full max-w-2xl mx-auto px-6 pt-8 pb-4">
+  <nav class="flex items-center justify-between" aria-label="Main navigation">
+    <a
+      href={getLocalizedPath(lang)}
+      class="font-[var(--font-mono)] text-sm font-medium tracking-tight text-[var(--color-ink)] dark:text-[var(--color-ink-dark)] no-underline hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)]"
+    >
+      mm.dev
+    </a>
+
+    <div class="flex items-center gap-5">
+      {
+        navLinks.map((link) => (
+          <a
+            href={getLocalizedPath(lang, link.path)}
+            class="text-sm text-[var(--color-ink-secondary)] hover:text-[var(--color-ink)] dark:text-[var(--color-ink-secondary-dark)] dark:hover:text-[var(--color-ink-dark)] no-underline transition-colors"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <span class="text-[var(--color-rule)] dark:text-[var(--color-rule-dark)]">|</span>
+      <LanguagePicker />
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>
