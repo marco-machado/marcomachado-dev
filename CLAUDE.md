@@ -17,6 +17,8 @@ Personal blog and portfolio built with Astro 5, Tailwind CSS v4, and MDX.
 - **Layouts** — `BaseLayout` wraps all pages; `BlogPostLayout` extends it for posts
 - **Components** — All `.astro` (no client-side framework), PascalCase naming
 - **i18n** — English default (no prefix), Portuguese under `/pt/`. Translations in `src/i18n/ui.ts`, helpers in `src/i18n/utils.ts`
+- **Bilingual pages** — Static pages (about, uses, now) have EN + PT versions; update both together. New i18n keys must be added to both `en` and `pt` objects in `ui.ts`
+- **List ordering** — Sort items by relevance/importance, not alphabetically
 
 ## Conventions
 
