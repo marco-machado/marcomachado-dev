@@ -45,6 +45,8 @@ export const ui = {
     "uses.dev": "Development",
     "uses.software": "Software",
     "uses.terminal": "Terminal",
+    "uses.services": "Services",
+    "uses.audio": "Audio",
 
     "now.title": "Now",
     "now.heading": "What I'm doing now",
@@ -111,6 +113,8 @@ export const ui = {
     "uses.dev": "Desenvolvimento",
     "uses.software": "Software",
     "uses.terminal": "Terminal",
+    "uses.services": "Serviços",
+    "uses.audio": "Áudio",
 
     "now.title": "Agora",
     "now.heading": "O que estou fazendo agora",
