@@ -31,11 +31,12 @@ export const ui = {
 
     "about.title": "About",
     "about.heading": "About me",
-    "about.content":
-      "I'm a software engineer who cares about well-crafted software. I work across the stack, with a focus on building reliable, maintainable systems. I believe in writing clearly — in code and in prose.",
-    "about.stack.heading": "Tech I work with",
-    "about.stack.content":
-      "TypeScript, React, Node.js, Go, PostgreSQL, Redis, AWS, Docker. I pick the right tool for the job and learn what I need along the way.",
+    "about.content.p1":
+      "Software Engineer with deep full-stack expertise in PHP, Laravel, JavaScript, and Vue.js—and a growing focus on how intelligent, system-driven workflows are reshaping the way software gets built. I've spent years architecting and shipping scalable web applications with US-based teams of all sizes, from early-stage startups to mature enterprise platforms.",
+    "about.content.p2":
+      "I care about clean code, pragmatic technical decisions, resilient data architecture, and seamless user experiences. But I'm equally drawn to what's next: leveraging intelligent automation and modern tooling to reduce friction, eliminate repetitive work, and let engineers focus on the problems that actually matter.",
+    "about.content.p3":
+      "Adaptable and quick to master new technologies, I bring strong engineering fundamentals and a collaborative mindset to every project.",
 
     "uses.title": "Uses",
     "uses.heading": "What I use",
@@ -99,11 +100,12 @@ export const ui = {
 
     "about.title": "Sobre",
     "about.heading": "Sobre mim",
-    "about.content":
-      "Sou engenheiro de software que se preocupa com software bem construído. Trabalho em toda a stack, com foco em construir sistemas confiáveis e sustentáveis. Acredito em escrever com clareza — em código e em prosa.",
-    "about.stack.heading": "Tecnologias que uso",
-    "about.stack.content":
-      "TypeScript, React, Node.js, Go, PostgreSQL, Redis, AWS, Docker. Escolho a ferramenta certa para o trabalho e aprendo o que preciso pelo caminho.",
+    "about.content.p1":
+      "Engenheiro de Software com sólida experiência full-stack em PHP, Laravel, JavaScript e Vue.js — e um foco crescente em como fluxos de trabalho inteligentes e orientados a sistemas estão transformando a forma como o software é desenvolvido. Passei anos arquitetando e entregando aplicações web escaláveis com times norte-americanos de todos os tamanhos, desde startups em estágio inicial até plataformas corporativas consolidadas.",
+    "about.content.p2":
+      "Valorizo código limpo, decisões técnicas pragmáticas, arquitetura de dados resiliente e experiências de usuário fluidas. Mas sou igualmente atraído pelo que está por vir: utilizar automação inteligente e ferramentas modernas para reduzir atritos, eliminar tarefas repetitivas e permitir que os engenheiros foquem nos problemas que realmente importam.",
+    "about.content.p3":
+      "Adaptável e rápido no domínio de novas tecnologias, levo sólidos fundamentos de engenharia e uma mentalidade colaborativa para cada projeto.",
 
     "uses.title": "Usos",
     "uses.heading": "O que eu uso",
