@@ -18,7 +18,6 @@ export const ui = {
     "nav.blog": "Blog",
     "nav.about": "About",
     "nav.uses": "Uses",
-    "nav.now": "Now",
 
     "theme.toggle": "Toggle dark mode",
     "lang.switch": "Ler em Português",
@@ -49,11 +48,6 @@ export const ui = {
     "uses.services": "Services",
     "uses.audio": "Audio",
 
-    "now.title": "Now",
-    "now.heading": "What I'm doing now",
-    "now.intro":
-      "This is a now page. It's a snapshot of what I'm focused on at this point in my life.",
-    "now.updated": "Last updated",
 
     "blog.title": "Blog",
     "blog.heading": "Writing",
@@ -87,7 +81,6 @@ export const ui = {
     "nav.blog": "Blog",
     "nav.about": "Sobre",
     "nav.uses": "Usos",
-    "nav.now": "Agora",
 
     "theme.toggle": "Alternar modo escuro",
     "lang.switch": "Read in English",
@@ -118,11 +111,6 @@ export const ui = {
     "uses.services": "Serviços",
     "uses.audio": "Áudio",
 
-    "now.title": "Agora",
-    "now.heading": "O que estou fazendo agora",
-    "now.intro":
-      "Esta é uma página now. É um retrato do que estou focado neste momento da minha vida.",
-    "now.updated": "Última atualização",
 
     "blog.title": "Blog",
     "blog.heading": "Escrita",
