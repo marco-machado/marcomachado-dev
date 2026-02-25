@@ -80,7 +80,7 @@ export const ui = {
     "nav.home": "Início",
     "nav.blog": "Blog",
     "nav.about": "Sobre",
-    "nav.uses": "Usos",
+    "nav.uses": "Uso",
 
     "theme.toggle": "Alternar modo escuro",
     "lang.switch": "Read in English",
@@ -100,7 +100,7 @@ export const ui = {
     "about.content.p3":
       "Adaptável e rápido no domínio de novas tecnologias, levo sólidos fundamentos de engenharia e uma mentalidade colaborativa para cada projeto.",
 
-    "uses.title": "Usos",
+    "uses.title": "Uso",
     "uses.heading": "O que eu uso",
     "uses.intro":
       "Ferramentas, hardware e software que uso diariamente. Inspirado por uses.tech.",
