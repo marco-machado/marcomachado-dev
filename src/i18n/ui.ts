@@ -50,7 +50,7 @@ export const ui = {
 
 
     "blog.title": "Blog",
-    "blog.heading": "Writing",
+    "blog.heading": "Blog",
     "blog.description": "Thoughts on engineering, tools, and building software.",
     "blog.empty": "No posts yet. Check back soon.",
     "blog.read_more": "Read more",
@@ -113,7 +113,7 @@ export const ui = {
 
 
     "blog.title": "Blog",
-    "blog.heading": "Escrita",
+    "blog.heading": "Blog",
     "blog.description":
       "Pensamentos sobre engenharia, ferramentas e construção de software.",
     "blog.empty": "Nenhum post ainda. Volte em breve.",
