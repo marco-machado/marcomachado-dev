@@ -13,7 +13,7 @@ Personal blog and portfolio built with Astro 5, Tailwind CSS v4, and MDX.
 
 - **Static output** — No SSR, all pages pre-rendered to HTML
 - **File-based routing** — Pages in `src/pages/`, Portuguese variants under `src/pages/pt/`
-- **Content collections** — Blog posts in `src/content/blog/{en,pt}/` with Zod schema validation
+- **Content collections** — Blog posts in `src/content/blog/{en,pt}/` with Zod schema validation. PT filenames must match EN (no `.pt` suffix — it leaks into the slug)
 - **Layouts** — `BaseLayout` wraps all pages; `BlogPostLayout` extends it for posts
 - **Components** — All `.astro` (no client-side framework), PascalCase naming
 - **i18n** — English default (no prefix), Portuguese under `/pt/`. Translations in `src/i18n/ui.ts`, helpers in `src/i18n/utils.ts`
@@ -28,8 +28,9 @@ Personal blog and portfolio built with Astro 5, Tailwind CSS v4, and MDX.
 - **Fonts** — Newsreader (headings), IBM Plex Sans (body), IBM Plex Mono (code)
 - **Props** — TypeScript interfaces for component props
 - **Blog slugs** — Extracted from collection ID: `post.id.split("/")[1]`
-- **Date formatting** — Use `formatDate()` from `@/i18n/utils`
+- **Blog post fetching** — `(await getCollection("blog")).filter(p => p.data.lang === lang && !p.data.draft).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())`
+- **Date formatting** — Use `formatDate()` from `@/i18n/utils` (uses `timeZone: "UTC"` to avoid off-by-one from UTC midnight coercion)
 
 ## Content Schema
 
-Blog post frontmatter: `title`, `description`, `pubDate`, `updatedDate?`, `tags[]`, `lang` (en|pt), `draft` (default false)
+Blog post frontmatter (strict — extra fields fail validation): `title`, `description`, `pubDate`, `updatedDate?`, `tags[]`, `lang` (en|pt), `draft` (default false)
