@@ -1,8 +1,15 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import BlogPostCard from "@/components/BlogPostCard.astro";
 import { useTranslations, getLocalizedPath } from "@/i18n/utils";
 
 const t = useTranslations("pt");
+
+const posts = (await getCollection("blog"))
+  .filter((post) => post.data.lang === "pt" && !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
 ---
 
 <BaseLayout title={t("nav.home")} description={t("site.description")} lang="pt">
@@ -26,4 +33,27 @@ const t = useTranslations("pt");
       </a>
     </div>
   </section>
+
+  {
+    posts.length > 0 && (
+      <section class="py-12">
+        <h2 class="mb-2">{t("home.latestPosts")}</h2>
+        <div class="divide-y divide-[var(--color-rule)] dark:divide-[var(--color-rule-dark)]">
+          {posts.map((post) => {
+            const slug = post.id.split("/")[1];
+            return (
+              <BlogPostCard
+                title={post.data.title}
+                description={post.data.description}
+                pubDate={post.data.pubDate}
+                tags={post.data.tags}
+                slug={slug}
+                lang="pt"
+              />
+            );
+          })}
+        </div>
+      </section>
+    )
+  }
 </BaseLayout>
