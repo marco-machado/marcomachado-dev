@@ -27,6 +27,7 @@ export const ui = {
       "Software engineer building things for the web. I write about engineering, tools, and the craft of building software.",
     "home.cta.blog": "Read the blog",
     "home.cta.about": "More about me",
+    "home.latestPosts": "Latest Posts",
 
     "about.title": "About",
     "about.heading": "About me",
@@ -90,6 +91,7 @@ export const ui = {
       "Engenheiro de software construindo para a web. Escrevo sobre engenharia, ferramentas e a arte de construir software.",
     "home.cta.blog": "Ler o blog",
     "home.cta.about": "Mais sobre mim",
+    "home.latestPosts": "Últimos Posts",
 
     "about.title": "Sobre",
     "about.heading": "Sobre mim",
