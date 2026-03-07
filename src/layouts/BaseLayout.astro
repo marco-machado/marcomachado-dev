@@ -7,12 +7,14 @@ interface Props {
   title: string;
   description?: string;
   lang?: "en" | "pt";
+  ogImage?: string;
 }
 
 const {
   title,
   description = "Software engineer, writer, and builder.",
   lang = "en",
+  ogImage,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -35,6 +37,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={`${title} — Marco Machado`} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content={lang === "pt" ? "pt_BR" : "en_US"} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

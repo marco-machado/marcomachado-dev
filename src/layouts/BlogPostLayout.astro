@@ -16,13 +16,16 @@ interface Props {
   updatedDate?: Date;
   tags: string[];
   lang: "en" | "pt";
+  coverImage?: string;
+  coverImageAlt?: string;
+  ogImage?: string;
 }
 
-const { title, description, pubDate, updatedDate, tags, lang } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, lang, coverImage, ogImage } = Astro.props;
 const t = useTranslations(lang as Lang);
 ---
 
-<BaseLayout title={title} description={description} lang={lang}>
+<BaseLayout title={title} description={description} lang={lang} ogImage={ogImage || coverImage}>
   <article>
     <a
       href={getLocalizedPath(lang as Lang, "blog")}
