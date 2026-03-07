@@ -33,4 +33,12 @@ Personal blog and portfolio built with Astro 5, Tailwind CSS v4, and MDX.
 
 ## Content Schema
 
-Blog post frontmatter (strict — extra fields fail validation): `title`, `description`, `pubDate`, `updatedDate?`, `tags[]`, `lang` (en|pt), `draft` (default false)
+Blog post frontmatter (strict — extra fields fail validation): `title`, `description`, `pubDate`, `updatedDate?`, `tags[]`, `lang` (en|pt), `draft` (default false), `coverImage?`, `coverImageAlt?`, `ogImage?`
+
+## Blog Skill
+
+Local skill at `.claude/skills/blog/`. Commands:
+- `/blog write <topic>` — Full workflow: branch → outline → draft → fact-check → review → publish
+- `/blog analyze <file>` — Review existing post (readability, SEO, anti-AI)
+- `/blog translate <file>` — Translate EN↔PT for paired file
+- `/blog publish` — Pre-merge checklist on blog branch
