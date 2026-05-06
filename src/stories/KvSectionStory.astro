@@ -1,0 +1,17 @@
+---
+import StoryCanvas from "./StoryCanvas.astro";
+import KvSection from "@/components/KvSection.astro";
+import type { KvRow } from "@/data/site";
+
+interface Props {
+  num: string;
+  title: string;
+  rows: KvRow[];
+}
+
+const { num, title, rows } = Astro.props;
+---
+
+<StoryCanvas>
+  <KvSection num={num} title={title} rows={rows} />
+</StoryCanvas>

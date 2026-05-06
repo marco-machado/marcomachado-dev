@@ -1,5 +1,4 @@
 import { ui, defaultLang, type Lang } from "./ui";
-import { getRelativeLocaleUrl } from "astro:i18n";
 
 export function getLangFromUrl(url: URL): Lang {
   const [, lang] = url.pathname.split("/");
@@ -14,7 +13,12 @@ export function useTranslations(lang: Lang) {
 }
 
 export function getLocalizedPath(lang: Lang, path: string = ""): string {
-  return getRelativeLocaleUrl(lang, path);
+  const normalizedPath = path.replace(/^\/+|\/+$/g, "");
+  const localizedPath = lang === defaultLang
+    ? normalizedPath
+    : [lang, normalizedPath].filter(Boolean).join("/");
+
+  return `/${localizedPath}${localizedPath ? "/" : ""}`;
 }
 
 export function getOtherLang(lang: Lang): Lang {

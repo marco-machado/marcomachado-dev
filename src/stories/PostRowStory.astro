@@ -1,0 +1,29 @@
+---
+import StoryCanvas from "./StoryCanvas.astro";
+import PostRow from "@/components/PostRow.astro";
+import type { Lang } from "@/i18n/ui";
+
+interface Props {
+  idx: number;
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+  lang: Lang;
+}
+
+const { idx, slug, title, description, date, tags, lang } = Astro.props;
+---
+
+<StoryCanvas>
+  <PostRow
+    idx={idx}
+    slug={slug}
+    title={title}
+    description={description}
+    date={new Date(date)}
+    tags={tags}
+    lang={lang}
+  />
+</StoryCanvas>

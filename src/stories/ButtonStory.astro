@@ -1,0 +1,18 @@
+---
+import StoryCanvas from "./StoryCanvas.astro";
+import OutlinedButton from "@/components/OutlinedButton.astro";
+
+interface Props {
+  label: string;
+  sub?: string;
+  href: string;
+}
+
+const { label, sub, href } = Astro.props;
+---
+
+<StoryCanvas width="narrow">
+  <div style="display:flex;gap:14px;flex-wrap:wrap">
+    <OutlinedButton label={label} sub={sub} href={href} />
+  </div>
+</StoryCanvas>

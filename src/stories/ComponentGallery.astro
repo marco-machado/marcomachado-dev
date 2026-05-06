@@ -1,0 +1,50 @@
+---
+import PageHeader from "@/components/PageHeader.astro";
+import OutlinedButton from "@/components/OutlinedButton.astro";
+import PageSection from "@/components/PageSection.astro";
+import KvSection from "@/components/KvSection.astro";
+import Newsletter from "@/components/Newsletter.astro";
+import PostRow from "@/components/PostRow.astro";
+---
+
+<div class="page page-shell">
+  <PageHeader
+    eyebrow="/ component system"
+    title="Visual docs"
+    description="A single-page overview of the core website components in their native styling."
+  />
+
+  <PageSection title="Buttons" num="01">
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <OutlinedButton label="Read" sub="Latest posts" href="#" />
+      <OutlinedButton label="About" sub="More about me" href="#" />
+      <OutlinedButton label="Stack" sub="Tools and software" href="#" />
+    </div>
+  </PageSection>
+
+  <PageSection title="Post rows" num="02">
+    <PostRow
+      idx={0}
+      slug="the-prompt-isnt-the-bottleneck"
+      title="The Prompt Isn't the Bottleneck"
+      description="Most teams optimizing their AI prompts are solving the wrong problem."
+      date={new Date("2026-03-04T00:00:00Z")}
+      tags={["AI", "Agents"]}
+      lang="en"
+    />
+  </PageSection>
+
+  <KvSection
+    num="03"
+    title="Key/value section"
+    rows={[
+      { key: "Editor", val: "PhpStorm" },
+      { key: "Terminal", val: "Warp" },
+      { key: "Prompt", val: "Starship" },
+    ]}
+  />
+
+  <PageSection spacing="large">
+    <Newsletter lang="en" />
+  </PageSection>
+</div>

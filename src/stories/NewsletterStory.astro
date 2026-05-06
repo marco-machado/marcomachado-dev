@@ -1,0 +1,12 @@
+---
+import StoryCanvas from "./StoryCanvas.astro";
+import Newsletter from "@/components/Newsletter.astro";
+import type { Lang } from "@/i18n/ui";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+---
+
+<StoryCanvas>
+  <Newsletter lang={lang} />
+</StoryCanvas>

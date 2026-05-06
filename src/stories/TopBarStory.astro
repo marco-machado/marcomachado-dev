@@ -1,0 +1,17 @@
+---
+import StoryCanvas from "./StoryCanvas.astro";
+import TopBar from "@/components/TopBar.astro";
+import type { Lang } from "@/i18n/ui";
+
+interface Props {
+  lang: Lang;
+  current: "home" | "blog" | "about" | "uses" | "ai";
+  currentPath?: string;
+}
+
+const { lang, current, currentPath = "" } = Astro.props;
+---
+
+<StoryCanvas padded={false} width="full">
+  <TopBar lang={lang} current={current} currentPath={currentPath} />
+</StoryCanvas>
