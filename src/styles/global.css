@@ -35,6 +35,17 @@
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
     hanging-punctuation: first last;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   body {

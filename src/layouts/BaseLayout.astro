@@ -18,6 +18,7 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const skipLinkText = lang === "pt" ? "Pular para o conteúdo" : "Skip to content";
 ---
 
 <!doctype html>
@@ -25,6 +26,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
@@ -57,8 +60,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </script>
   </head>
   <body class="min-h-screen flex flex-col">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-[var(--color-paper-raised)] focus:px-4 focus:py-2 focus:text-[var(--color-ink)] focus:no-underline dark:focus:bg-[var(--color-paper-raised-dark)] dark:focus:text-[var(--color-ink-dark)]"
+    >
+      {skipLinkText}
+    </a>
     <Header />
-    <main class="flex-1 w-full max-w-3xl mx-auto px-6 py-12">
+    <main id="main-content" class="flex-1 w-full max-w-3xl mx-auto px-6 py-12">
       <slot />
     </main>
     <Footer />
