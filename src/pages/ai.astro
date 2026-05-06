@@ -1,0 +1,28 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations } from "@/i18n/utils";
+
+const t = useTranslations("en");
+---
+
+<BaseLayout title={t("ai.title")} lang="en">
+  <h1 class="mb-4">{t("ai.heading")}</h1>
+  <p class="text-secondary mb-10">{t("ai.intro")}</p>
+
+  <div class="article-content">
+    <h2>{t("ai.codingAgents")}</h2>
+    <ul>
+      <li><a href="https://github.com/mariozechner/pi">Pi</a></li>
+      <li><a href="https://www.anthropic.com/claude-code">Claude Code</a></li>
+      <li><a href="https://openai.com/codex/">Codex</a></li>
+      <li><a href="https://gemini.google.com/">Gemini</a></li>
+      <li><a href="https://opencode.ai/">OpenCode</a></li>
+    </ul>
+
+    <h2>{t("ai.skillsPlugins")}</h2>
+    <ul>
+      <li><a href="https://github.com/upstash/context7">Context7</a></li>
+      <li><a href="https://github.com/rtk-ai/rtk">RTK</a></li>
+    </ul>
+  </div>
+</BaseLayout>

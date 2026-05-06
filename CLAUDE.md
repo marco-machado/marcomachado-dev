@@ -14,7 +14,9 @@ Personal blog and portfolio built with Astro 5, Tailwind CSS v4, and MDX.
 - Production domain: `https://marcomachado.dev`
 - Cloudflare config: `wrangler.toml`
 - Static build output served from `./dist`
-- Use Cloudflare's Wrangler CLI for deploys:
+- Auto-deploy is configured in the Cloudflare dashboard via Git integration
+- Pushing to `main` deploys to production
+- Use Cloudflare's Wrangler CLI for manual deploys:
   - `npx wrangler login` — Log in to Cloudflare
   - `npm run build && npx wrangler deploy` — Build and deploy
 

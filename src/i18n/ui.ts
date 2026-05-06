@@ -17,6 +17,7 @@ export const ui = {
     "nav.home": "Home",
     "nav.blog": "Blog",
     "nav.about": "About",
+    "nav.ai": "AI",
     "nav.uses": "Uses",
 
     "theme.toggle": "Toggle dark mode",
@@ -43,13 +44,17 @@ export const ui = {
     "uses.intro":
       "Tools, hardware, and software that I use daily. Inspired by uses.tech.",
     "uses.hardware": "Hardware",
-    "uses.ai": "AI",
     "uses.dev": "Development",
     "uses.software": "Software",
     "uses.terminal": "Terminal",
     "uses.services": "Services",
     "uses.audio": "Audio",
 
+    "ai.title": "AI",
+    "ai.heading": "AI",
+    "ai.intro": "AI tools and coding agents I use regularly.",
+    "ai.codingAgents": "Coding Agents",
+    "ai.skillsPlugins": "Skills and Plugins",
 
     "blog.title": "Blog",
     "blog.heading": "Blog",
@@ -82,6 +87,7 @@ export const ui = {
     "nav.home": "Início",
     "nav.blog": "Blog",
     "nav.about": "Sobre",
+    "nav.ai": "IA",
     "nav.uses": "Uso",
 
     "theme.toggle": "Alternar modo escuro",
@@ -108,13 +114,17 @@ export const ui = {
     "uses.intro":
       "Ferramentas, hardware e software que uso diariamente. Inspirado por uses.tech.",
     "uses.hardware": "Hardware",
-    "uses.ai": "IA",
     "uses.dev": "Desenvolvimento",
     "uses.software": "Software",
     "uses.terminal": "Terminal",
     "uses.services": "Serviços",
     "uses.audio": "Áudio",
 
+    "ai.title": "IA",
+    "ai.heading": "IA",
+    "ai.intro": "Ferramentas de IA e agentes de programação que uso regularmente.",
+    "ai.codingAgents": "Agentes de Programação",
+    "ai.skillsPlugins": "Skills e Plugins",
 
     "blog.title": "Blog",
     "blog.heading": "Blog",
