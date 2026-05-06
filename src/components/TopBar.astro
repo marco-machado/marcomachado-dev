@@ -11,7 +11,7 @@ interface Props {
 const { lang, location, currentPath = "" } = Astro.props;
 const t = useTranslations(lang);
 const today = new Date()
-  .toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })
+  .toLocaleDateString(lang === "pt" ? "pt-BR" : "en-GB", { day: "2-digit", month: "short", year: "numeric" })
   .toUpperCase();
 const otherLang = getOtherLang(lang);
 const langHref = getLocalizedPath(otherLang, currentPath);
@@ -24,16 +24,16 @@ const langHref = getLocalizedPath(otherLang, currentPath);
   </div>
 
   <div class="center">
-    <span class="crumb">[ Index ]</span>
+    <span class="crumb">{t("topbar.index")}</span>
     <span class="crumb active">/ {location} _</span>
   </div>
 
   <div class="meta">
     <span class="hide-on-narrow">{today}</span>
     <span class="hide-on-narrow">v26.04</span>
-    <a class="lang-toggle" href={langHref} title="Switch language">
+    <a class="lang-toggle" href={langHref} title={t("topbar.switchLanguage")}>
       {lang === "en" ? "EN ⇄ PT" : "PT ⇄ EN"}
     </a>
-    <span style="display:flex;align-items:center;gap:8px"><span class="dot"></span> ONLINE</span>
+    <span style="display:flex;align-items:center;gap:8px"><span class="dot"></span> {t("topbar.online")}</span>
   </div>
 </div>

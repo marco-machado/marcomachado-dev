@@ -21,6 +21,12 @@ export const ui = {
     "nav.uses": "Stack",
 
     "lang.switch": "Ler em Português",
+    "topbar.index": "[ Index ]",
+    "topbar.switchLanguage": "Switch language",
+    "topbar.online": "ONLINE",
+    "location.home": "HOME",
+    "location.about": "ABOUT",
+    "location.ai": "AI",
 
     "home.greeting": "Hey, I'm Marco.",
     "home.greeting.line1": "Engineer.",
@@ -44,6 +50,11 @@ export const ui = {
     "about.heading": "About me",
     "about.intro":
       "I'm a software engineer who builds web applications and writes about how the work is changing.",
+    "about.eyebrow": "/ operator profile",
+    "about.meta.name": "NAME · MARCO MACHADO",
+    "about.meta.role": "ROLE · SOFTWARE ENGINEER",
+    "about.meta.base": "BASE · BRAZIL → REMOTE",
+    "about.meta.since": "SINCE · 2014",
     "about.content.p1":
       "Software Engineer with deep full-stack expertise in PHP, Laravel, JavaScript, and Vue.js—and a growing focus on how intelligent, system-driven workflows are reshaping the way software gets built. I've spent years architecting and shipping scalable web applications with US-based teams of all sizes, from early-stage startups to mature enterprise platforms.",
     "about.content.p2":
@@ -67,6 +78,7 @@ export const ui = {
     "uses.section.software": "Software",
     "uses.section.services": "Services",
     "uses.section.audio": "Audio",
+    "uses.eyebrow": "/ daily kit",
 
     "ai.title": "AI",
     "ai.heading": "AI",
@@ -76,6 +88,7 @@ export const ui = {
     "ai.section.agents": "Coding agents",
     "ai.section.skills": "Skills & plugins",
     "ai.section.context": "Context discipline",
+    "ai.eyebrow": "/ machine layer",
 
     "blog.title": "Blog",
     "blog.heading": "Posts",
@@ -84,12 +97,16 @@ export const ui = {
     "blog.empty": "No posts yet. Check back soon.",
     "blog.read_more": "Read more",
     "blog.also_in": "Also available in",
+    "blog.eyebrow": "/ posts log",
+    "blog.archive": "archive",
+    "blog.entries": "entries",
 
     "post.published": "Published",
     "post.updated": "Updated",
     "post.tags": "Tags",
     "post.back": "Back to all posts",
 
+    "newsletter.eyebrow": "/ subscribe",
     "newsletter.heading": "Stay in the loop",
     "newsletter.description":
       "Get notified when I publish new posts. No spam, unsubscribe anytime.",
@@ -115,6 +132,12 @@ export const ui = {
     "nav.uses": "Stack",
 
     "lang.switch": "Read in English",
+    "topbar.index": "[ Índice ]",
+    "topbar.switchLanguage": "Trocar idioma",
+    "topbar.online": "ONLINE",
+    "location.home": "INÍCIO",
+    "location.about": "SOBRE",
+    "location.ai": "IA",
 
     "home.greeting": "Olá, eu sou o Marco.",
     "home.greeting.line1": "Engenheiro.",
@@ -138,6 +161,11 @@ export const ui = {
     "about.heading": "Sobre mim",
     "about.intro":
       "Sou engenheiro de software, construo aplicações web e escrevo sobre como o trabalho está mudando.",
+    "about.eyebrow": "/ perfil do operador",
+    "about.meta.name": "NOME · MARCO MACHADO",
+    "about.meta.role": "FUNÇÃO · ENGENHEIRO DE SOFTWARE",
+    "about.meta.base": "BASE · BRASIL → REMOTO",
+    "about.meta.since": "DESDE · 2014",
     "about.content.p1":
       "Engenheiro de Software com sólida experiência full-stack em PHP, Laravel, JavaScript e Vue.js — e um foco crescente em como fluxos de trabalho inteligentes e orientados a sistemas estão transformando a forma como o software é desenvolvido. Passei anos arquitetando e entregando aplicações web escaláveis com times norte-americanos de todos os tamanhos, desde startups em estágio inicial até plataformas corporativas consolidadas.",
     "about.content.p2":
@@ -161,6 +189,7 @@ export const ui = {
     "uses.section.software": "Software",
     "uses.section.services": "Serviços",
     "uses.section.audio": "Áudio",
+    "uses.eyebrow": "/ kit diário",
 
     "ai.title": "IA",
     "ai.heading": "IA",
@@ -168,8 +197,9 @@ export const ui = {
     "ai.codingAgents": "Agentes de Programação",
     "ai.skillsPlugins": "Skills e Plugins",
     "ai.section.agents": "Agentes de programação",
-    "ai.section.skills": "Skills & plugins",
+    "ai.section.skills": "Skills e plugins",
     "ai.section.context": "Disciplina de contexto",
+    "ai.eyebrow": "/ camada de máquina",
 
     "blog.title": "Blog",
     "blog.heading": "Posts",
@@ -178,12 +208,16 @@ export const ui = {
     "blog.empty": "Nenhum post ainda. Volte em breve.",
     "blog.read_more": "Ler mais",
     "blog.also_in": "Disponível também em",
+    "blog.eyebrow": "/ log de posts",
+    "blog.archive": "arquivo",
+    "blog.entries": "entradas",
 
     "post.published": "Publicado",
     "post.updated": "Atualizado",
     "post.tags": "Tags",
     "post.back": "Voltar para todos os posts",
 
+    "newsletter.eyebrow": "/ assinar",
     "newsletter.heading": "Fique por dentro",
     "newsletter.description":
       "Receba notificações quando eu publicar novos posts. Sem spam, cancele quando quiser.",

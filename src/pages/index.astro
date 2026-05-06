@@ -16,7 +16,7 @@ const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout lang={lang} current="home" location="HOME" currentPath="">
+<BaseLayout lang={lang} current="home" location={t("location.home")} currentPath="">
   <div class="page" style="padding-top:40px">
     <div style="max-width:980px;margin:0 auto;padding:60px 0 40px">
       <div class="eyebrow">{t("home.eyebrow")}</div>
@@ -41,7 +41,7 @@ const posts = (await getCollection("blog"))
         <OutlinedButton
           label={t("home.cta.work.label")}
           sub={t("home.cta.work.sub")}
-          href={getLocalizedPath(lang, "uses")}
+          href={getLocalizedPath(lang, "stack")}
         />
       </div>
     </div>

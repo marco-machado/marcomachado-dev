@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/PageHeader.astro";
 import SectionLabel from "@/components/SectionLabel.astro";
 import PostRow from "@/components/PostRow.astro";
 import Newsletter from "@/components/Newsletter.astro";
@@ -25,19 +26,17 @@ const posts = (await getCollection("blog"))
   currentPath="blog"
 >
   <div class="page" style="padding-top:40px">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;padding-bottom:56px">
-      <div>
-        <div class="eyebrow">/ posts log</div>
-        <h1 class="display" style="font-size:clamp(56px,8vw,110px)">{t("blog.heading")}</h1>
-      </div>
-      <p class="subhead" style="padding-bottom:12px">{t("blog.description")}</p>
-    </div>
+    <PageHeader
+      eyebrow={t("blog.eyebrow")}
+      title={t("blog.heading")}
+      description={t("blog.description")}
+    />
 
     {posts.length === 0 ? (
       <p class="subhead">{t("blog.empty")}</p>
     ) : (
       <>
-        <SectionLabel num={`/ ${posts.length} entries`}>archive</SectionLabel>
+        <SectionLabel num={`/ ${posts.length} ${t("blog.entries")}`}>{t("blog.archive")}</SectionLabel>
         <div style="margin-top:24px">
           {posts.map((p, i) => {
             const slug = p.id.split("/")[1];
