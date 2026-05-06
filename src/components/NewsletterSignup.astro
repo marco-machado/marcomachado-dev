@@ -18,12 +18,18 @@ const t = useTranslations(lang);
     target="popupwindow"
     class="flex gap-3"
   >
+    <label for="newsletter-email" class="sr-only">
+      {t("newsletter.emailLabel")}
+    </label>
     <input
+      id="newsletter-email"
       type="email"
       name="email"
+      autocomplete="email"
+      spellcheck="false"
       required
       placeholder={t("newsletter.placeholder")}
-      class="flex-1 px-4 py-2 text-sm bg-[var(--color-paper)] dark:bg-[var(--color-paper-dark)] border border-[var(--color-rule)] dark:border-[var(--color-rule-dark)] rounded-md text-[var(--color-ink)] dark:text-[var(--color-ink-dark)] placeholder:text-[var(--color-ink-muted)] dark:placeholder:text-[var(--color-ink-muted-dark)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)] dark:focus:ring-[var(--color-accent-dark)]"
+      class="flex-1 px-4 py-2 text-sm bg-[var(--color-paper)] dark:bg-[var(--color-paper-dark)] border border-[var(--color-rule)] dark:border-[var(--color-rule-dark)] rounded-md text-[var(--color-ink)] dark:text-[var(--color-ink-dark)] placeholder:text-[var(--color-ink-muted)] dark:placeholder:text-[var(--color-ink-muted-dark)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-accent)] dark:focus-visible:ring-[var(--color-accent-dark)]"
     />
     <button
       type="submit"

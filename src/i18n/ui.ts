@@ -72,6 +72,7 @@ export const ui = {
     "newsletter.description":
       "Get notified when I publish new posts. No spam, unsubscribe anytime.",
     "newsletter.placeholder": "your@email.com",
+    "newsletter.emailLabel": "Email address",
     "newsletter.button": "Subscribe",
 
     "comments.heading": "Comments",
@@ -143,6 +144,7 @@ export const ui = {
     "newsletter.description":
       "Receba notificações quando eu publicar novos posts. Sem spam, cancele quando quiser.",
     "newsletter.placeholder": "seu@email.com",
+    "newsletter.emailLabel": "Endereço de email",
     "newsletter.button": "Inscrever-se",
 
     "comments.heading": "Comentários",
