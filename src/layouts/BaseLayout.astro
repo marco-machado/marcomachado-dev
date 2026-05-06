@@ -1,75 +1,45 @@
 ---
 import "@/styles/global.css";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
+import TopBar from "@/components/TopBar.astro";
+import Nav from "@/components/Nav.astro";
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
 
 interface Props {
-  title: string;
+  lang: Lang;
+  title?: string;
   description?: string;
-  lang?: "en" | "pt";
-  ogImage?: string;
+  current: "home" | "blog" | "about" | "uses" | "ai";
+  location: string;        // top-bar label, e.g. "HOME"
+  currentPath?: string;    // for lang-switch link target (relative path without lang prefix)
 }
 
-const {
-  title,
-  description = "Software engineer, writer, and builder.",
-  lang = "en",
-  ogImage,
-} = Astro.props;
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const skipLinkText = lang === "pt" ? "Pular para o conteúdo" : "Skip to content";
+const { lang, title, description, current, location, currentPath = "" } = Astro.props;
+const t = useTranslations(lang);
+const pageTitle = title ?? t("site.title");
+const pageDesc = description ?? t("site.description" as any) ?? "";
 ---
 
 <!doctype html>
-<html lang={lang} class="">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={canonicalURL} />
-    <meta name="generator" content={Astro.generator} />
-
-    <title>{title} — Marco Machado</title>
-    <meta name="description" content={description} />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={`${title} — Marco Machado`} />
-    <meta property="og:description" content={description} />
-    <meta property="og:locale" content={lang === "pt" ? "pt_BR" : "en_US"} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Staatliches&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-
-    <script is:inline>
-      const theme = localStorage.getItem("theme");
-      if (
-        theme === "dark" ||
-        (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      }
-    </script>
   </head>
-  <body class="min-h-screen flex flex-col">
-    <a
-      href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-[var(--color-paper-raised)] focus:px-4 focus:py-2 focus:text-[var(--color-ink)] focus:no-underline dark:focus:bg-[var(--color-paper-raised-dark)] dark:focus:text-[var(--color-ink-dark)]"
-    >
-      {skipLinkText}
-    </a>
-    <Header />
-    <main id="main-content" class="flex-1 w-full max-w-3xl mx-auto px-6 py-12">
+  <body>
+    <TopBar lang={lang} location={location} currentPath={currentPath} />
+    <Nav lang={lang} current={current} />
+    <main style="padding-bottom:64px">
       <slot />
     </main>
-    <Footer />
   </body>
 </html>

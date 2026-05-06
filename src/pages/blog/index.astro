@@ -1,39 +1,64 @@
 ---
-import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import BlogPostCard from "@/components/BlogPostCard.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+import PostRow from "@/components/PostRow.astro";
+import Newsletter from "@/components/Newsletter.astro";
+import { getCollection } from "astro:content";
 import { useTranslations } from "@/i18n/utils";
+import type { Lang } from "@/i18n/ui";
 
-const t = useTranslations("en");
+interface Props { lang?: Lang; }
+const { lang = "en" }: Props = Astro.props;
+const t = useTranslations(lang);
 
 const posts = (await getCollection("blog"))
-  .filter((post) => post.data.lang === "en" && !post.data.draft)
+  .filter((p) => p.data.lang === lang && !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title={t("blog.title")} description={t("blog.description")} lang="en">
-  <h1 class="mb-2">{t("blog.heading")}</h1>
-  <p class="text-secondary mb-10">{t("blog.description")}</p>
-
-  {
-    posts.length > 0 ? (
-      <div class="divide-y divide-[var(--color-rule)] dark:divide-[var(--color-rule-dark)]">
-        {posts.map((post) => {
-          const slug = post.id.split("/")[1];
-          return (
-            <BlogPostCard
-              title={post.data.title}
-              description={post.data.description}
-              pubDate={post.data.pubDate}
-              tags={post.data.tags}
-              slug={slug}
-              lang="en"
-            />
-          );
-        })}
+<BaseLayout
+  lang={lang}
+  current="blog"
+  location="WRITING"
+  title={`${t("blog.heading")} — ${t("site.title")}`}
+  description={t("blog.description")}
+  currentPath="blog"
+>
+  <div class="page" style="padding-top:40px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;padding-bottom:56px">
+      <div>
+        <div class="eyebrow">/ writing log</div>
+        <h1 class="display" style="font-size:clamp(56px,8vw,110px)">{t("blog.heading")}</h1>
       </div>
+      <p class="subhead" style="padding-bottom:12px">{t("blog.description")}</p>
+    </div>
+
+    {posts.length === 0 ? (
+      <p class="subhead">{t("blog.empty")}</p>
     ) : (
-      <p class="text-muted">{t("blog.empty")}</p>
-    )
-  }
+      <>
+        <SectionLabel num={`/ ${posts.length} entries`}>archive</SectionLabel>
+        <div style="margin-top:24px">
+          {posts.map((p, i) => {
+            const slug = p.id.split("/")[1];
+            return (
+              <PostRow
+                idx={i}
+                slug={slug}
+                title={p.data.title}
+                description={p.data.description}
+                date={p.data.pubDate}
+                tags={p.data.tags}
+                lang={lang}
+              />
+            );
+          })}
+        </div>
+      </>
+    )}
+
+    <div style="margin-top:100px">
+      <Newsletter lang={lang} />
+    </div>
+  </div>
 </BaseLayout>

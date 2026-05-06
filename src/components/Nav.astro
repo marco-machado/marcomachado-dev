@@ -1,0 +1,32 @@
+---
+import type { Lang } from "@/i18n/ui";
+import { useTranslations, getLocalizedPath } from "@/i18n/utils";
+
+interface Props {
+  lang: Lang;
+  current: "home" | "blog" | "about" | "uses" | "ai";
+}
+
+const { lang, current } = Astro.props;
+const t = useTranslations(lang);
+
+const items = [
+  { id: "home",  label: t("nav.home"),  href: getLocalizedPath(lang, "") },
+  { id: "blog",  label: t("nav.blog"),  href: getLocalizedPath(lang, "blog") },
+  { id: "about", label: t("nav.about"), href: getLocalizedPath(lang, "about") },
+  { id: "uses",  label: t("nav.uses"),  href: getLocalizedPath(lang, "uses") },
+  { id: "ai",    label: t("nav.ai"),    href: getLocalizedPath(lang, "ai") },
+] as const;
+---
+
+<nav class="nav">
+  {items.map((it, i) => (
+    <a
+      class:list={["nav-item", { active: current === it.id }]}
+      href={it.href}
+    >
+      <span class="nav-num">0{i + 1}</span>
+      {it.label}
+    </a>
+  ))}
+</nav>

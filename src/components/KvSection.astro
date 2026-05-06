@@ -1,0 +1,22 @@
+---
+import SectionLabel from "@/components/SectionLabel.astro";
+import type { KvRow } from "@/data/site";
+
+interface Props { num: string; title: string; rows: KvRow[]; }
+const { num, title, rows } = Astro.props;
+---
+
+<div style="margin-top:72px">
+  <SectionLabel num={num}>{title}</SectionLabel>
+  <div class="kv-grid" style="margin-top:20px">
+    {rows.map((r) => (
+      <div class="kv-row">
+        <div class="key">{r.key}</div>
+        <div class="val">
+          {r.val}
+          {r.note && <span class="note">{r.note}</span>}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

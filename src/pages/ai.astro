@@ -1,29 +1,39 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import KvSection from "@/components/KvSection.astro";
 import { useTranslations } from "@/i18n/utils";
+import { ai } from "@/data/site";
+import type { Lang } from "@/i18n/ui";
 
-const t = useTranslations("en");
+interface Props { lang?: Lang; }
+const { lang = "en" }: Props = Astro.props;
+const t = useTranslations(lang);
+const sections = ai[lang];
 ---
 
-<BaseLayout title={t("ai.title")} lang="en">
-  <h1 class="mb-4">{t("ai.heading")}</h1>
-  <p class="text-secondary mb-10">{t("ai.intro")}</p>
+<BaseLayout
+  lang={lang}
+  current="ai"
+  location="AI"
+  title={`${t("ai.heading")} — ${t("site.title")}`}
+  description={t("ai.intro")}
+  currentPath="ai"
+>
+  <div class="page" style="padding-top:40px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;padding-bottom:24px">
+      <div>
+        <div class="eyebrow">/ machine layer</div>
+        <h1 class="display" style="font-size:clamp(56px,8vw,110px)">{t("ai.heading")}</h1>
+      </div>
+      <p class="subhead" style="padding-bottom:12px">{t("ai.intro")}</p>
+    </div>
 
-  <div class="article-content">
-    <h2>{t("ai.codingAgents")}</h2>
-    <ul>
-      <li><a href="https://github.com/mariozechner/pi">Pi</a></li>
-      <li><a href="https://www.anthropic.com/claude-code">Claude Code</a></li>
-      <li><a href="https://openai.com/codex/">Codex</a></li>
-      <li><a href="https://gemini.google.com/">Gemini</a></li>
-      <li><a href="https://opencode.ai/">OpenCode</a></li>
-    </ul>
-
-    <h2>{t("ai.skillsPlugins")}</h2>
-    <ul>
-      <li><a href="https://github.com/upstash/context7">Context7</a></li>
-      <li><a href="https://github.com/mattpocock/skills">Skills</a></li>
-      <li><a href="https://github.com/rtk-ai/rtk">RTK</a></li>
-    </ul>
+    {sections.map((s, i) => (
+      <KvSection
+        num={String(i + 1).padStart(2, "0")}
+        title={t(s.titleKey as any)}
+        rows={s.rows}
+      />
+    ))}
   </div>
 </BaseLayout>

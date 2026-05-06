@@ -1,16 +1,57 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { useTranslations } from "@/i18n/utils";
+import type { Lang } from "@/i18n/ui";
 
-const t = useTranslations("en");
+interface Props { lang?: Lang; }
+const { lang = "en" }: Props = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<BaseLayout title={t("about.title")} lang="en">
-  <h1 class="mb-8">{t("about.heading")}</h1>
+<BaseLayout
+  lang={lang}
+  current="about"
+  location="ABOUT"
+  title={`${t("about.heading")} — ${t("site.title")}`}
+  description={t("about.intro")}
+  currentPath="about"
+>
+  <div class="page" style="padding-top:40px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;padding-bottom:56px">
+      <div>
+        <div class="eyebrow">/ operator profile</div>
+        <h1 class="display" style="font-size:clamp(56px,8vw,110px)">{t("about.heading")}</h1>
+      </div>
+      <p class="subhead" style="padding-bottom:12px">{t("about.intro")}</p>
+    </div>
 
-  <div class="article-content">
-    <p>{t("about.content.p1")}</p>
-    <p>{t("about.content.p2")}</p>
-    <p>{t("about.content.p3")}</p>
+    <div style="display:grid;grid-template-columns:240px 1fr;gap:60px;margin-top:24px" class="about-grid">
+      <div>
+        <img
+          src="/images/portrait.webp"
+          alt="Marco Machado"
+          width="720"
+          height="960"
+          style="aspect-ratio:3 / 4;width:100%;height:auto;object-fit:cover;border:1px solid var(--color-border);filter:grayscale(100%) contrast(1.05)"
+        />
+        <div style="margin-top:18px;font-family:var(--font-mono);font-size:11px;color:var(--color-muted-ash);letter-spacing:0.08em;text-transform:uppercase">
+          <div>NAME · MARCO MACHADO</div>
+          <div>ROLE · SOFTWARE ENGINEER</div>
+          <div>BASE · BRAZIL → REMOTE</div>
+          <div>SINCE · 2014</div>
+        </div>
+      </div>
+      <div style="font-size:17px;line-height:1.7;color:#d6d6d6">
+        <p style="margin:0 0 22px">{t("about.content.p1")}</p>
+        <p style="margin:0 0 22px">{t("about.content.p2")}</p>
+        <p style="margin:0 0 22px">{t("about.content.p3")}</p>
+      </div>
+    </div>
   </div>
 </BaseLayout>
+
+<style>
+  @media (max-width: 800px) {
+    .about-grid { grid-template-columns: 1fr !important; }
+  }
+</style>

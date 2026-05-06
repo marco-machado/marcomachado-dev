@@ -1,59 +1,77 @@
 ---
-import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import BlogPostCard from "@/components/BlogPostCard.astro";
+import OutlinedButton from "@/components/OutlinedButton.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+import PostRow from "@/components/PostRow.astro";
+import { getCollection } from "astro:content";
 import { useTranslations, getLocalizedPath } from "@/i18n/utils";
+import type { Lang } from "@/i18n/ui";
 
-const t = useTranslations("en");
+interface Props { lang?: Lang; }
+const { lang = "en" }: Props = Astro.props;
+const t = useTranslations(lang);
 
 const posts = (await getCollection("blog"))
-  .filter((post) => post.data.lang === "en" && !post.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 5);
+  .filter((p) => p.data.lang === lang && !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title={t("nav.home")} description={t("site.description")} lang="en">
-  <section class="py-12">
-    <h1 class="text-4xl mb-6">{t("home.greeting")}</h1>
-    <p class="text-lg text-secondary leading-relaxed max-w-xl">
-      {t("home.intro")}
-    </p>
-    <div class="mt-6 flex flex-wrap items-center gap-4 sm:gap-6">
-      <a
-        href={getLocalizedPath("en", "blog")}
-        class="inline-flex min-h-11 items-center px-5 py-2.5 bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)] text-white dark:text-[var(--color-paper-dark)] text-sm font-medium rounded-full no-underline hover:bg-[var(--color-accent-hover)] dark:hover:bg-[var(--color-accent-hover-dark)] transition-colors"
-      >
-        {t("home.cta.blog")} &rarr;
-      </a>
-      <a
-        href={getLocalizedPath("en", "about")}
-        class="inline-flex min-h-11 items-center rounded-md text-sm text-secondary no-underline hover:underline"
-      >
-        {t("home.cta.about")}
-      </a>
-    </div>
-  </section>
+<BaseLayout lang={lang} current="home" location="HOME" currentPath="">
+  <div class="page" style="padding-top:40px">
+    <div style="max-width:980px;margin:0 auto;padding:60px 0 40px">
+      <div class="eyebrow">{t("home.eyebrow")}</div>
+      <h1 class="display">
+        {t("home.greeting.line1")}<br />
+        {t("home.greeting.line2")}<br />
+        {t("home.greeting.line3")}<span class="cursor"></span>
+      </h1>
+      <p class="subhead" style="margin-top:36px;max-width:60ch">{t("home.intro")}</p>
 
-  {
-    posts.length > 0 && (
-      <section class="py-12">
-        <h2 class="mb-2">{t("home.latestPosts")}</h2>
-        <div class="divide-y divide-[var(--color-rule)] dark:divide-[var(--color-rule-dark)]">
-          {posts.map((post) => {
-            const slug = post.id.split("/")[1];
-            return (
-              <BlogPostCard
-                title={post.data.title}
-                description={post.data.description}
-                pubDate={post.data.pubDate}
-                tags={post.data.tags}
-                slug={slug}
-                lang="en"
-              />
-            );
-          })}
-        </div>
-      </section>
-    )
-  }
+      <div style="display:flex;gap:14px;margin-top:56px;flex-wrap:wrap">
+        <OutlinedButton
+          label={t("home.cta.blog.label")}
+          sub={t("home.cta.blog.sub")}
+          href={getLocalizedPath(lang, "blog")}
+        />
+        <OutlinedButton
+          label={t("home.cta.about.label")}
+          sub={t("home.cta.about.sub")}
+          href={getLocalizedPath(lang, "about")}
+        />
+        <OutlinedButton
+          label={t("home.cta.work.label")}
+          sub={t("home.cta.work.sub")}
+          href={getLocalizedPath(lang, "uses")}
+        />
+      </div>
+    </div>
+
+    <div style="margin-top:120px">
+      <SectionLabel num="01">{t("home.latestPosts")}</SectionLabel>
+      <div style="margin-top:24px">
+        {posts.slice(0, 3).map((p, i) => {
+          const slug = p.id.split("/")[1];
+          return (
+            <PostRow
+              idx={i}
+              slug={slug}
+              title={p.data.title}
+              description={p.data.description}
+              date={p.data.pubDate}
+              tags={p.data.tags}
+              lang={lang}
+            />
+          );
+        })}
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:32px">
+        <a
+          href={getLocalizedPath(lang, "blog")}
+          style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent)"
+        >
+          → {t("home.viewAll")}
+        </a>
+      </div>
+    </div>
+  </div>
 </BaseLayout>

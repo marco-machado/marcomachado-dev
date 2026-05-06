@@ -15,23 +15,35 @@ export const ui = {
       "Software engineer, writer, and builder. Personal site and blog.",
 
     "nav.home": "Home",
-    "nav.blog": "Blog",
+    "nav.blog": "Writing",
     "nav.about": "About",
     "nav.ai": "AI",
-    "nav.uses": "Uses",
+    "nav.uses": "Stack",
 
-    "theme.toggle": "Toggle dark mode",
     "lang.switch": "Ler em Português",
 
     "home.greeting": "Hey, I'm Marco.",
+    "home.greeting.line1": "Engineer.",
+    "home.greeting.line2": "Operator.",
+    "home.greeting.line3": "Builder.",
     "home.intro":
       "Software engineer building things for the web. I write about engineering, tools, and the craft of building software.",
+    "home.eyebrow": "Select your control mode",
     "home.cta.blog": "Read the blog",
+    "home.cta.blog.label": "Read",
+    "home.cta.blog.sub": "Latest writing",
     "home.cta.about": "More about me",
+    "home.cta.about.label": "About",
+    "home.cta.about.sub": "More about me",
+    "home.cta.work.label": "Work",
+    "home.cta.work.sub": "Selected projects",
     "home.latestPosts": "Latest Posts",
+    "home.viewAll": "View all writing",
 
     "about.title": "About",
     "about.heading": "About me",
+    "about.intro":
+      "I'm a software engineer who builds web applications and writes about how the work is changing.",
     "about.content.p1":
       "Software Engineer with deep full-stack expertise in PHP, Laravel, JavaScript, and Vue.js—and a growing focus on how intelligent, system-driven workflows are reshaping the way software gets built. I've spent years architecting and shipping scalable web applications with US-based teams of all sizes, from early-stage startups to mature enterprise platforms.",
     "about.content.p2":
@@ -40,7 +52,7 @@ export const ui = {
       "Adaptable and quick to master new technologies, I bring strong engineering fundamentals and a collaborative mindset to every project.",
 
     "uses.title": "Uses",
-    "uses.heading": "What I use",
+    "uses.heading": "Stack",
     "uses.intro":
       "Tools, hardware, and software that I use daily. Inspired by uses.tech.",
     "uses.hardware": "Hardware",
@@ -49,16 +61,26 @@ export const ui = {
     "uses.terminal": "Terminal",
     "uses.services": "Services",
     "uses.audio": "Audio",
+    "uses.section.hardware": "Hardware",
+    "uses.section.dev": "Development",
+    "uses.section.terminal": "Terminal",
+    "uses.section.software": "Software",
+    "uses.section.services": "Services",
+    "uses.section.audio": "Audio",
 
     "ai.title": "AI",
     "ai.heading": "AI",
     "ai.intro": "AI tools and coding agents I use regularly.",
     "ai.codingAgents": "Coding Agents",
     "ai.skillsPlugins": "Skills and Plugins",
+    "ai.section.agents": "Coding agents",
+    "ai.section.skills": "Skills & plugins",
+    "ai.section.context": "Context discipline",
 
     "blog.title": "Blog",
-    "blog.heading": "Blog",
-    "blog.description": "Thoughts on engineering, tools, and building software.",
+    "blog.heading": "Writing",
+    "blog.description":
+      "Notes on engineering, tools, and the craft of building software with intelligent systems in the loop.",
     "blog.empty": "No posts yet. Check back soon.",
     "blog.read_more": "Read more",
     "blog.also_in": "Also available in",
@@ -78,6 +100,7 @@ export const ui = {
     "comments.heading": "Comments",
 
     "footer.rights": "All rights reserved.",
+    "footer.system": "System operational",
   },
 
   pt: {
@@ -86,23 +109,35 @@ export const ui = {
       "Engenheiro de software, escritor e construtor. Site pessoal e blog.",
 
     "nav.home": "Início",
-    "nav.blog": "Blog",
+    "nav.blog": "Escritos",
     "nav.about": "Sobre",
     "nav.ai": "IA",
-    "nav.uses": "Uso",
+    "nav.uses": "Stack",
 
-    "theme.toggle": "Alternar modo escuro",
     "lang.switch": "Read in English",
 
     "home.greeting": "Olá, eu sou o Marco.",
+    "home.greeting.line1": "Engenheiro.",
+    "home.greeting.line2": "Operador.",
+    "home.greeting.line3": "Construtor.",
     "home.intro":
       "Engenheiro de software construindo para a web. Escrevo sobre engenharia, ferramentas e a arte de construir software.",
+    "home.eyebrow": "Escolha seu modo de controle",
     "home.cta.blog": "Ler o blog",
+    "home.cta.blog.label": "Ler",
+    "home.cta.blog.sub": "Últimos textos",
     "home.cta.about": "Mais sobre mim",
+    "home.cta.about.label": "Sobre",
+    "home.cta.about.sub": "Mais sobre mim",
+    "home.cta.work.label": "Trabalho",
+    "home.cta.work.sub": "Projetos selecionados",
     "home.latestPosts": "Últimos Posts",
+    "home.viewAll": "Ver todos os textos",
 
     "about.title": "Sobre",
     "about.heading": "Sobre mim",
+    "about.intro":
+      "Sou engenheiro de software, construo aplicações web e escrevo sobre como o trabalho está mudando.",
     "about.content.p1":
       "Engenheiro de Software com sólida experiência full-stack em PHP, Laravel, JavaScript e Vue.js — e um foco crescente em como fluxos de trabalho inteligentes e orientados a sistemas estão transformando a forma como o software é desenvolvido. Passei anos arquitetando e entregando aplicações web escaláveis com times norte-americanos de todos os tamanhos, desde startups em estágio inicial até plataformas corporativas consolidadas.",
     "about.content.p2":
@@ -111,7 +146,7 @@ export const ui = {
       "Adaptável e rápido no domínio de novas tecnologias, levo sólidos fundamentos de engenharia e uma mentalidade colaborativa para cada projeto.",
 
     "uses.title": "Uso",
-    "uses.heading": "O que eu uso",
+    "uses.heading": "Stack",
     "uses.intro":
       "Ferramentas, hardware e software que uso diariamente. Inspirado por uses.tech.",
     "uses.hardware": "Hardware",
@@ -120,17 +155,26 @@ export const ui = {
     "uses.terminal": "Terminal",
     "uses.services": "Serviços",
     "uses.audio": "Áudio",
+    "uses.section.hardware": "Hardware",
+    "uses.section.dev": "Desenvolvimento",
+    "uses.section.terminal": "Terminal",
+    "uses.section.software": "Software",
+    "uses.section.services": "Serviços",
+    "uses.section.audio": "Áudio",
 
     "ai.title": "IA",
     "ai.heading": "IA",
     "ai.intro": "Ferramentas de IA e agentes de programação que uso regularmente.",
     "ai.codingAgents": "Agentes de Programação",
     "ai.skillsPlugins": "Skills e Plugins",
+    "ai.section.agents": "Agentes de programação",
+    "ai.section.skills": "Skills & plugins",
+    "ai.section.context": "Disciplina de contexto",
 
     "blog.title": "Blog",
-    "blog.heading": "Blog",
+    "blog.heading": "Escritos",
     "blog.description":
-      "Pensamentos sobre engenharia, ferramentas e construção de software.",
+      "Anotações sobre engenharia, ferramentas e o ofício de construir software com sistemas inteligentes no loop.",
     "blog.empty": "Nenhum post ainda. Volte em breve.",
     "blog.read_more": "Ler mais",
     "blog.also_in": "Disponível também em",
@@ -150,5 +194,6 @@ export const ui = {
     "comments.heading": "Comentários",
 
     "footer.rights": "Todos os direitos reservados.",
+    "footer.system": "Sistema operacional",
   },
 } as const;

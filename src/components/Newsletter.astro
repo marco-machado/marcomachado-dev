@@ -1,0 +1,20 @@
+---
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="newsletter">
+  <div>
+    <div class="eyebrow" style="margin-bottom:14px">/ subscribe</div>
+    <h3 class="nl-title">{t("newsletter.heading")}</h3>
+    <p class="nl-desc">{t("newsletter.description")}</p>
+  </div>
+  <form class="nl-form" action="#" method="post">
+    <input type="email" required placeholder={t("newsletter.placeholder")} aria-label={t("newsletter.emailLabel" as any) ?? "Email"} />
+    <button type="submit">{t("newsletter.button")}</button>
+  </form>
+</div>

@@ -1,16 +1,4 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import { useTranslations } from "@/i18n/utils";
-
-const t = useTranslations("pt");
+import About from "../about.astro";
 ---
-
-<BaseLayout title={t("about.title")} lang="pt">
-  <h1 class="mb-8">{t("about.heading")}</h1>
-
-  <div class="article-content">
-    <p>{t("about.content.p1")}</p>
-    <p>{t("about.content.p2")}</p>
-    <p>{t("about.content.p3")}</p>
-  </div>
-</BaseLayout>
+<About lang="pt" />
