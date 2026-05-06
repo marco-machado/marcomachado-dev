@@ -4,28 +4,36 @@ import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const giscusLang = lang === "pt" ? "pt" : "en";
+const giscusRepo = import.meta.env.PUBLIC_GISCUS_REPO;
+const giscusRepoId = import.meta.env.PUBLIC_GISCUS_REPO_ID;
+const giscusCategory = import.meta.env.PUBLIC_GISCUS_CATEGORY ?? "Announcements";
+const giscusCategoryId = import.meta.env.PUBLIC_GISCUS_CATEGORY_ID;
+const isGiscusConfigured = giscusRepo && giscusRepoId && giscusCategoryId;
 ---
 
-<section class="mt-16 pt-8 border-t border-[var(--color-rule)] dark:border-[var(--color-rule-dark)]">
-  <h2 class="text-lg mb-6">{t("comments.heading")}</h2>
+{
+  isGiscusConfigured && (
+    <section class="mt-16 pt-8 border-t border-[var(--color-rule)] dark:border-[var(--color-rule-dark)]">
+      <h2 class="text-lg mb-6">{t("comments.heading")}</h2>
 
-  {/* TODO: Replace data-repo, data-repo-id, data-category, and data-category-id with your values from https://giscus.app */}
-  <script
-    is:inline
-    src="https://giscus.app/client.js"
-    data-repo="OWNER/REPO"
-    data-repo-id="REPO_ID"
-    data-category="Announcements"
-    data-category-id="CATEGORY_ID"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="preferred_color_scheme"
-    data-lang={giscusLang}
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async
-  ></script>
-</section>
+      <script
+        is:inline
+        src="https://giscus.app/client.js"
+        data-repo={giscusRepo}
+        data-repo-id={giscusRepoId}
+        data-category={giscusCategory}
+        data-category-id={giscusCategoryId}
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang={giscusLang}
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async
+      ></script>
+    </section>
+  )
+}

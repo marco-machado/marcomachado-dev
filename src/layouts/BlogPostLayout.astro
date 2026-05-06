@@ -21,7 +21,17 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, pubDate, updatedDate, tags, lang, coverImage, ogImage } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  tags,
+  lang,
+  coverImage,
+  coverImageAlt,
+  ogImage,
+} = Astro.props;
 const t = useTranslations(lang as Lang);
 ---
 
@@ -29,7 +39,7 @@ const t = useTranslations(lang as Lang);
   <article>
     <a
       href={getLocalizedPath(lang as Lang, "blog")}
-      class="text-sm text-muted no-underline hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)] transition-colors inline-flex items-center gap-1 mb-8"
+      class="text-sm text-muted no-underline hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)] transition-colors inline-flex min-h-11 items-center gap-1 rounded-md mb-8"
     >
       <span aria-hidden="true">&larr;</span>
       {t("post.back")}
@@ -63,6 +73,18 @@ const t = useTranslations(lang as Lang);
         )
       }
     </header>
+
+    {
+      coverImage && (
+        <img
+          src={coverImage}
+          alt={coverImageAlt ?? ""}
+          class="mb-10 aspect-[16/9] w-full rounded-lg object-cover"
+          loading="eager"
+          decoding="async"
+        />
+      )
+    }
 
     <div class="article-content">
       <slot />
