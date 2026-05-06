@@ -43,6 +43,7 @@ export const ui = {
     "uses.intro":
       "Tools, hardware, and software that I use daily. Inspired by uses.tech.",
     "uses.hardware": "Hardware",
+    "uses.ai": "AI",
     "uses.dev": "Development",
     "uses.software": "Software",
     "uses.terminal": "Terminal",
@@ -107,6 +108,7 @@ export const ui = {
     "uses.intro":
       "Ferramentas, hardware e software que uso diariamente. Inspirado por uses.tech.",
     "uses.hardware": "Hardware",
+    "uses.ai": "IA",
     "uses.dev": "Desenvolvimento",
     "uses.software": "Software",
     "uses.terminal": "Terminal",
