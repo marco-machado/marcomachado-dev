@@ -11,12 +11,12 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/mdx": "5.0.4",
     "@astrojs/prism": "^4.0.1",
-    "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/rss": "4.0.18",
+    "@astrojs/sitemap": "3.7.2",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "^5.17.1",
+    "astro": "6.2.2",
     "tailwindcss": "^4.2.0",
     "typescript": "^5.9.3"
   },
