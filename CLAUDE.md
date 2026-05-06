@@ -5,9 +5,18 @@ Personal blog and portfolio built with Astro 5, Tailwind CSS v4, and MDX.
 ## Commands
 
 - `npm run dev` — Start dev server
-- `npm run build` — Build static site
-- `npm run preview` — Preview production build
+- `npm run build` — Build production site to `./dist`
 - `npx vitest run` — Run tests (single-run, never use watch mode)
+
+## Hosting / Deployment
+
+- Hosted on Cloudflare Workers / Cloudflare assets
+- Production domain: `https://marcomachado.dev`
+- Cloudflare config: `wrangler.toml`
+- Static build output served from `./dist`
+- Use Cloudflare's Wrangler CLI for deploys:
+  - `npx wrangler login` — Log in to Cloudflare
+  - `npm run build && npx wrangler deploy` — Build and deploy
 
 ## Architecture
 
@@ -19,6 +28,14 @@ Personal blog and portfolio built with Astro 5, Tailwind CSS v4, and MDX.
 - **i18n** — English default (no prefix), Portuguese under `/pt/`. Translations in `src/i18n/ui.ts`, helpers in `src/i18n/utils.ts`
 - **Bilingual pages** — Static pages (about, uses, now) have EN + PT versions; update both together. New i18n keys must be added to both `en` and `pt` objects in `ui.ts`
 - **List ordering** — Sort items by relevance/importance, not alphabetically
+
+## Commit Strategy
+
+- Use small, atomic commits with one focused change per commit
+- Write imperative, human-readable commit messages (`Add ...`, `Fix ...`, `Remove ...`, `Update ...`, `Refine ...`)
+- Do not use Conventional Commits prefixes (`feat:`, `fix:`, etc.)
+- Commit planning/design docs before implementation for larger work
+- Keep bilingual changes together when tightly coupled; split EN/PT only when it improves review clarity
 
 ## Conventions
 
