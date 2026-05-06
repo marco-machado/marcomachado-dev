@@ -19,7 +19,7 @@ const posts = (await getCollection("blog"))
 <BaseLayout
   lang={lang}
   current="blog"
-  location="WRITING"
+  location="POSTS"
   title={`${t("blog.heading")} — ${t("site.title")}`}
   description={t("blog.description")}
   currentPath="blog"
@@ -27,7 +27,7 @@ const posts = (await getCollection("blog"))
   <div class="page" style="padding-top:40px">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;padding-bottom:56px">
       <div>
-        <div class="eyebrow">/ writing log</div>
+        <div class="eyebrow">/ posts log</div>
         <h1 class="display" style="font-size:clamp(56px,8vw,110px)">{t("blog.heading")}</h1>
       </div>
       <p class="subhead" style="padding-bottom:12px">{t("blog.description")}</p>

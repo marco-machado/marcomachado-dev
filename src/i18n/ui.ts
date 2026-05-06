@@ -15,7 +15,7 @@ export const ui = {
       "Software engineer, writer, and builder. Personal site and blog.",
 
     "nav.home": "Home",
-    "nav.blog": "Writing",
+    "nav.blog": "Posts",
     "nav.about": "About",
     "nav.ai": "AI",
     "nav.uses": "Stack",
@@ -31,14 +31,14 @@ export const ui = {
     "home.eyebrow": "Select your control mode",
     "home.cta.blog": "Read the blog",
     "home.cta.blog.label": "Read",
-    "home.cta.blog.sub": "Latest writing",
+    "home.cta.blog.sub": "Latest posts",
     "home.cta.about": "More about me",
     "home.cta.about.label": "About",
     "home.cta.about.sub": "More about me",
     "home.cta.work.label": "Work",
     "home.cta.work.sub": "Selected projects",
     "home.latestPosts": "Latest Posts",
-    "home.viewAll": "View all writing",
+    "home.viewAll": "View all posts",
 
     "about.title": "About",
     "about.heading": "About me",
@@ -78,7 +78,7 @@ export const ui = {
     "ai.section.context": "Context discipline",
 
     "blog.title": "Blog",
-    "blog.heading": "Writing",
+    "blog.heading": "Posts",
     "blog.description":
       "Notes on engineering, tools, and the craft of building software with intelligent systems in the loop.",
     "blog.empty": "No posts yet. Check back soon.",
@@ -109,7 +109,7 @@ export const ui = {
       "Engenheiro de software, escritor e construtor. Site pessoal e blog.",
 
     "nav.home": "Início",
-    "nav.blog": "Escritos",
+    "nav.blog": "Posts",
     "nav.about": "Sobre",
     "nav.ai": "IA",
     "nav.uses": "Stack",
@@ -125,14 +125,14 @@ export const ui = {
     "home.eyebrow": "Escolha seu modo de controle",
     "home.cta.blog": "Ler o blog",
     "home.cta.blog.label": "Ler",
-    "home.cta.blog.sub": "Últimos textos",
+    "home.cta.blog.sub": "Últimos posts",
     "home.cta.about": "Mais sobre mim",
     "home.cta.about.label": "Sobre",
     "home.cta.about.sub": "Mais sobre mim",
     "home.cta.work.label": "Trabalho",
     "home.cta.work.sub": "Projetos selecionados",
-    "home.latestPosts": "Últimos Posts",
-    "home.viewAll": "Ver todos os textos",
+    "home.latestPosts": "Últimos posts",
+    "home.viewAll": "Ver todos os posts",
 
     "about.title": "Sobre",
     "about.heading": "Sobre mim",
@@ -172,7 +172,7 @@ export const ui = {
     "ai.section.context": "Disciplina de contexto",
 
     "blog.title": "Blog",
-    "blog.heading": "Escritos",
+    "blog.heading": "Posts",
     "blog.description":
       "Anotações sobre engenharia, ferramentas e o ofício de construir software com sistemas inteligentes no loop.",
     "blog.empty": "Nenhum post ainda. Volte em breve.",
