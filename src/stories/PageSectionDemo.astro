@@ -5,13 +5,12 @@ import PostRow from "@/components/PostRow.astro";
 interface Props {
   title: string;
   num: string;
-  spacing?: "default" | "large";
 }
 
-const { title, num, spacing = "default" } = Astro.props;
+const { title, num } = Astro.props;
 ---
 
-<PageSection title={title} num={num} spacing={spacing}>
+<PageSection title={title} num={num}>
   <PostRow
     idx={0}
     slug="the-prompt-isnt-the-bottleneck"

@@ -5,12 +5,11 @@ import PageSectionDemo from "./PageSectionDemo.astro";
 interface Props {
   title: string;
   num: string;
-  spacing?: "default" | "large";
 }
 
-const { title, num, spacing = "default" } = Astro.props;
+const { title, num } = Astro.props;
 ---
 
 <StoryCanvas>
-  <PageSectionDemo title={title} num={num} spacing={spacing} />
+  <PageSectionDemo title={title} num={num} />
 </StoryCanvas>

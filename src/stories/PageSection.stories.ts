@@ -11,18 +11,10 @@ export default {
       },
     },
   },
-  argTypes: {
-    spacing: {
-      control: "select",
-      options: ["default", "large"],
-    },
-  },
   args: {
     title: "Latest Posts",
     num: "01",
-    spacing: "default",
   },
 };
 
 export const Default = {};
-export const LargeSpacing = { args: { spacing: "large" } };

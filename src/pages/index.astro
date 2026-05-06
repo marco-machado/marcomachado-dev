@@ -45,7 +45,7 @@ const posts = (await getCollection("blog"))
       </div>
     </div>
 
-    <PageSection title={t("home.latestPosts")} num="01" spacing="large">
+    <PageSection title={t("home.latestPosts")} num="01">
         {posts.slice(0, 3).map((p, i) => {
           const slug = p.id.split("/")[1];
           return (
