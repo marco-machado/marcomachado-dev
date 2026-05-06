@@ -34,6 +34,7 @@ Personal blog and portfolio built with Astro 5, Tailwind CSS v4, and MDX.
 ## Commit Strategy
 
 - Use small, atomic commits with one focused change per commit
+- Group commits into logical blocks when a task touches multiple concerns; avoid bundling unrelated changes in one commit
 - Write imperative, human-readable commit messages (`Add ...`, `Fix ...`, `Remove ...`, `Update ...`, `Refine ...`)
 - Do not use Conventional Commits prefixes (`feat:`, `fix:`, etc.)
 - Commit planning/design docs before implementation for larger work

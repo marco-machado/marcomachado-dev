@@ -3,7 +3,7 @@ name: blog
 description: >
   Write, analyze, translate, and publish blog posts for marcomachado.dev.
   Bilingual (EN/PT) Astro blog with SEO guidance, anti-AI pattern detection,
-  and git branch workflow. Use when user says "blog", "write a post",
+  and structured writing workflow. Use when user says "blog", "write a post",
   "blog post", "analyze post", "translate post", "publish post", "new article",
   "blog write", "blog analyze", "blog translate", "blog publish".
 user-invocable: true
@@ -28,10 +28,10 @@ Blog content engine for marcomachado.dev. Bilingual Astro blog (EN default, PT t
 
 | Command | Description |
 |---------|-------------|
-| `/blog write <topic>` | Full workflow: branch → outline → draft → fact-check → review → publish |
+| `/blog write <topic>` | Full workflow: outline → draft → fact-check → review → publish |
 | `/blog analyze <file>` | Review an existing post (readability, SEO, anti-AI) |
 | `/blog translate <file>` | Translate EN→PT or PT→EN for the paired file |
-| `/blog publish` | Pre-merge checklist on current blog branch |
+| `/blog publish` | Pre-publish checklist for blog posts |
 
 ## Command Routing
 
@@ -39,17 +39,15 @@ Parse the user's input to determine the sub-command:
 - `write` / `new` / `draft` / no sub-command with a topic → Write workflow
 - `analyze` / `review` / `check` → Analyze workflow
 - `translate` → Translate workflow
-- `publish` / `ready` / `merge` → Publish workflow
+- `publish` / `ready` → Publish workflow
 
 ---
 
 ## `/blog write <topic>` — Full Workflow
 
-### Phase 1: Branch
+### Phase 1: Setup
 
 1. Derive slug from topic: lowercase, hyphens, no special chars, max 50 chars
-2. Run: `git checkout main && git checkout -b blog/<slug>`
-3. Confirm branch created
 
 ### Phase 2: Template Selection
 
@@ -100,13 +98,13 @@ description: "<150-160 char description>"
 pubDate: <YYYY-MM-DD>
 tags: [<relevant tags>]
 lang: "en"
-draft: false
+draft: true
 ---
 ```
 
 Use `timeZone: "UTC"` awareness — pubDate should be today's date in YYYY-MM-DD format.
 
-**Voice calibration:** Before writing, read at least one existing post from `src/content/blog/en/` to match the author's tone. Key traits from existing content:
+**Voice calibration:** Before writing, read up to 3 of the most recent posts from `src/content/blog/en/` to match the author's tone (if fewer exist, read all available). Key traits from existing content:
 - First-person, conversational but substantive
 - Concrete examples over abstract claims
 - Acknowledges tradeoffs and limitations
@@ -155,15 +153,11 @@ Once approved:
 
 1. Write the EN file: `src/content/blog/en/<slug>.md`
 2. Write the PT file: `src/content/blog/pt/<slug>.md` — identical content but with `lang: "pt"` in frontmatter
-3. Commit both files:
-   ```bash
-   git add src/content/blog/en/<slug>.md src/content/blog/pt/<slug>.md
-   git commit -m "Add blog post: <title>"
-   ```
-4. Remind the user:
-   - "PT file has EN content — translate it before merging"
+3. Remind the user:
+   - "Created EN and PT files (PT has EN content — translate with `/blog translate`)"
+   - "Posts are in `draft: true` mode — set `draft: false` when ready to publish"
    - "Add cover image and update `coverImage`/`ogImage` in frontmatter"
-   - "Run `/blog publish` when ready to merge"
+   - "Run `/blog publish` for pre-publish checklist"
 
 ---
 
@@ -200,30 +194,27 @@ Once approved:
 2. Determine direction from `lang` field:
    - `lang: "en"` → translate to PT, target is `src/content/blog/pt/<same-filename>`
    - `lang: "pt"` → translate to EN, target is `src/content/blog/en/<same-filename>`
-3. Translate:
+3. **Overwrite protection:** Before writing, check if the target file already exists. If it does, compare its body content (excluding frontmatter) against the source file's body. If the bodies differ (meaning it's already been translated or manually edited), warn the user and ask for confirmation before overwriting.
+4. Translate:
    - Frontmatter: translate `title` and `description`, change `lang`, keep all other fields identical
    - Body: translate preserving markdown structure, heading levels, code blocks (don't translate code), link URLs, and emphasis
    - Tone: match the conversational, first-person style in the target language
-4. Write the translated file
-5. Commit:
-   ```bash
-   git add <target-file>
-   git commit -m "Translate blog post: <title> (<direction>)"
-   ```
+5. Write the translated file and confirm what was created
 
 ---
 
-## `/blog publish` — Pre-Merge Checklist
+## `/blog publish` — Pre-Publish Checklist
 
-1. Verify current branch starts with `blog/`
-2. Find the slug from branch name
-3. Check both files exist:
+1. Ask the user which post to check (slug or file path)
+2. Check both files exist:
    - `src/content/blog/en/<slug>.md`
    - `src/content/blog/pt/<slug>.md`
-4. Run checks:
+3. Run checks:
 
 | Check | Status |
 |-------|--------|
+| EN `draft` is `false` | [pass/fail — offer to flip if `true`] |
+| PT `draft` is `false` | [pass/fail — offer to flip if `true`] |
 | PT file translated (content differs from EN body) | [pass/fail] |
 | `coverImage` set in EN frontmatter | [pass/warn] |
 | `coverImage` set in PT frontmatter | [pass/warn] |
@@ -232,8 +223,8 @@ Once approved:
 | EN anti-AI scan | [pass/issues] |
 | PT anti-AI scan | [pass/issues] |
 
-5. If all pass: "Ready to merge. Run `git checkout main && git merge blog/<slug>` or create a PR."
-6. If any fail: list what needs fixing before merge.
+4. If all pass: "Ready to publish — all checks passed."
+5. If any fail: list what needs fixing before publishing.
 
 ---
 
