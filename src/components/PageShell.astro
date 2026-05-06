@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { Lang } from "@/i18n/ui";
+
+type CurrentPage = "home" | "blog" | "about" | "uses" | "ai";
+
+interface Props {
+  lang: Lang;
+  current: CurrentPage;
+  location: string;
+  title?: string;
+  description?: string;
+  currentPath?: string;
+}
+
+const { lang, current, location, title, description, currentPath = "" } = Astro.props;
+---
+
+<BaseLayout
+  lang={lang}
+  current={current}
+  location={location}
+  title={title}
+  description={description}
+  currentPath={currentPath}
+>
+  <div class="page page-shell">
+    <slot />
+  </div>
+</BaseLayout>

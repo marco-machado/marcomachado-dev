@@ -1,7 +1,7 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageShell from "@/components/PageShell.astro";
+import PageSection from "@/components/PageSection.astro";
 import OutlinedButton from "@/components/OutlinedButton.astro";
-import SectionLabel from "@/components/SectionLabel.astro";
 import PostRow from "@/components/PostRow.astro";
 import { getCollection } from "astro:content";
 import { useTranslations, getLocalizedPath } from "@/i18n/utils";
@@ -16,9 +16,8 @@ const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout lang={lang} current="home" location={t("location.home")} currentPath="">
-  <div class="page" style="padding-top:40px">
-    <div style="max-width:980px;margin:0 auto;padding:60px 0 40px">
+<PageShell lang={lang} current="home" location={t("location.home")} currentPath="">
+    <div style="padding:60px 0 40px">
       <div class="eyebrow">{t("home.eyebrow")}</div>
       <h1 class="display">
         {t("home.greeting.line1")}<br />
@@ -46,9 +45,7 @@ const posts = (await getCollection("blog"))
       </div>
     </div>
 
-    <div style="margin-top:120px">
-      <SectionLabel num="01">{t("home.latestPosts")}</SectionLabel>
-      <div style="margin-top:24px">
+    <PageSection title={t("home.latestPosts")} num="01" spacing="large">
         {posts.slice(0, 3).map((p, i) => {
           const slug = p.id.split("/")[1];
           return (
@@ -63,7 +60,6 @@ const posts = (await getCollection("blog"))
             />
           );
         })}
-      </div>
       <div style="display:flex;justify-content:flex-end;margin-top:32px">
         <a
           href={getLocalizedPath(lang, "blog")}
@@ -72,6 +68,5 @@ const posts = (await getCollection("blog"))
           → {t("home.viewAll")}
         </a>
       </div>
-    </div>
-  </div>
-</BaseLayout>
+    </PageSection>
+</PageShell>

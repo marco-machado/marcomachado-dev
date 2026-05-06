@@ -280,6 +280,10 @@
 /* ─── Page intros ──────────────────────────────────────── */
 
 .page { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.page-shell { padding-top: 40px; }
+.page-section { margin-top: 72px; }
+.page-section--large { margin-top: 100px; }
+.page-section__body { margin-top: 24px; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
   color: var(--color-accent);

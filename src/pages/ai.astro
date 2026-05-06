@@ -1,7 +1,7 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageShell from "@/components/PageShell.astro";
 import PageHeader from "@/components/PageHeader.astro";
-import SectionLabel from "@/components/SectionLabel.astro";
+import PageSection from "@/components/PageSection.astro";
 import { useTranslations } from "@/i18n/utils";
 import { ai } from "@/data/site";
 import type { Lang } from "@/i18n/ui";
@@ -14,7 +14,7 @@ const featured = sections[0]?.tools ?? [];
 const supporting = sections[1]?.tools ?? [];
 ---
 
-<BaseLayout
+<PageShell
   lang={lang}
   current="ai"
   location={t("location.ai")}
@@ -22,15 +22,13 @@ const supporting = sections[1]?.tools ?? [];
   description={t("ai.intro")}
   currentPath="ai"
 >
-  <div class="page" style="padding-top:40px">
     <PageHeader
       eyebrow={t("ai.eyebrow")}
       title={t("ai.heading")}
       description={t("ai.intro")}
     />
 
-    <section class="ai-panel">
-      <SectionLabel num="">{t(sections[0].titleKey as any)}</SectionLabel>
+    <PageSection title={t(sections[0].titleKey as any)}>
       <div class="agent-orbit">
         {featured.map((tool) => (
           <a class="agent-card" href={tool.href} target="_blank" rel="noreferrer">
@@ -40,10 +38,9 @@ const supporting = sections[1]?.tools ?? [];
           </a>
         ))}
       </div>
-    </section>
+    </PageSection>
 
-    <section class="ai-panel compact">
-      <SectionLabel num="">{t(sections[1].titleKey as any)}</SectionLabel>
+    <PageSection title={t(sections[1].titleKey as any)} spacing="large">
       <div class="plugin-strip">
         {supporting.map((tool) => (
           <a class="plugin-card" href={tool.href} target="_blank" rel="noreferrer">
@@ -52,16 +49,11 @@ const supporting = sections[1]?.tools ?? [];
           </a>
         ))}
       </div>
-    </section>
-  </div>
-</BaseLayout>
+    </PageSection>
+</PageShell>
 
 <style>
-  .ai-panel { margin-top: 40px; }
-  .ai-panel.compact { margin-top: 86px; }
-
   .agent-orbit {
-    margin-top: 24px;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
@@ -124,7 +116,6 @@ const supporting = sections[1]?.tools ?? [];
   }
 
   .plugin-strip {
-    margin-top: 24px;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;

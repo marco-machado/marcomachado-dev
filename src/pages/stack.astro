@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageShell from "@/components/PageShell.astro";
 import PageHeader from "@/components/PageHeader.astro";
 import KvSection from "@/components/KvSection.astro";
 import { useTranslations } from "@/i18n/utils";
@@ -12,7 +12,7 @@ const t = useTranslations(lang);
 const sections = uses[lang];
 ---
 
-<BaseLayout
+<PageShell
   lang={lang}
   current="uses"
   location="STACK"
@@ -20,7 +20,6 @@ const sections = uses[lang];
   description={t("uses.intro")}
   currentPath="stack"
 >
-  <div class="page" style="padding-top:40px">
     <PageHeader
       eyebrow={t("uses.eyebrow")}
       title={t("uses.heading")}
@@ -34,5 +33,4 @@ const sections = uses[lang];
         rows={s.rows}
       />
     ))}
-  </div>
-</BaseLayout>
+</PageShell>

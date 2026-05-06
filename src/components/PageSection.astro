@@ -1,0 +1,18 @@
+---
+import SectionLabel from "@/components/SectionLabel.astro";
+
+interface Props {
+  title?: string;
+  num?: string;
+  spacing?: "default" | "large";
+}
+
+const { title, num = "", spacing = "default" } = Astro.props;
+---
+
+<section class:list={["page-section", `page-section--${spacing}`]}>
+  {title && <SectionLabel num={num}>{title}</SectionLabel>}
+  <div class:list={[{ "page-section__body": title }]}>
+    <slot />
+  </div>
+</section>

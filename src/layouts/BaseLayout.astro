@@ -2,6 +2,7 @@
 import "@/styles/global.css";
 import TopBar from "@/components/TopBar.astro";
 import Nav from "@/components/Nav.astro";
+import SeoHead from "@/components/SeoHead.astro";
 import type { Lang } from "@/i18n/ui";
 import { useTranslations } from "@/i18n/utils";
 
@@ -25,8 +26,7 @@ const pageDesc = description ?? t("site.description" as any) ?? "";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{pageTitle}</title>
-    <meta name="description" content={pageDesc} />
+    <SeoHead title={pageTitle} description={pageDesc} lang={lang} currentPath={currentPath} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -1,0 +1,30 @@
+---
+import type { Lang } from "@/i18n/ui";
+import { getLocalizedPath } from "@/i18n/utils";
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Lang;
+  currentPath?: string;
+}
+
+const { title, description, lang, currentPath = "" } = Astro.props;
+const canonicalPath = getLocalizedPath(lang, currentPath);
+const canonicalUrl = Astro.site ? new URL(canonicalPath, Astro.site).toString() : canonicalPath;
+const locale = lang === "pt" ? "pt_BR" : "en_US";
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:locale" content={locale} />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
