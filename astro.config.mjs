@@ -13,6 +13,9 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  markdown: {
+    syntaxHighlight: "prism",
+  },
   integrations: [mdx()],
   vite: {
     plugins: [tailwindcss()],
