@@ -1,7 +1,6 @@
 ---
 import "@/styles/global.css";
 import TopBar from "@/components/TopBar.astro";
-import Nav from "@/components/Nav.astro";
 import SeoHead from "@/components/SeoHead.astro";
 import type { Lang } from "@/i18n/ui";
 import { useTranslations } from "@/i18n/utils";
@@ -11,11 +10,11 @@ interface Props {
   title?: string;
   description?: string;
   current: "home" | "blog" | "about" | "uses" | "ai";
-  location: string;        // top-bar label, e.g. "HOME"
+  location: string;        // deprecated: retained for page API compatibility
   currentPath?: string;    // for lang-switch link target (relative path without lang prefix)
 }
 
-const { lang, title, description, current, location, currentPath = "" } = Astro.props;
+const { lang, title, description, current, currentPath = "" } = Astro.props;
 const t = useTranslations(lang);
 const pageTitle = title ?? t("site.title");
 const pageDesc = description ?? t("site.description" as any) ?? "";
@@ -36,8 +35,7 @@ const pageDesc = description ?? t("site.description" as any) ?? "";
     />
   </head>
   <body>
-    <TopBar lang={lang} location={location} currentPath={currentPath} />
-    <Nav lang={lang} current={current} />
+    <TopBar lang={lang} current={current} currentPath={currentPath} />
     <main style="padding-bottom:64px">
       <slot />
     </main>
