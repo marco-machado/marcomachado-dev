@@ -1,0 +1,16 @@
+/stack /uses/ 301
+/stack/ /uses/ 301
+/ai /ai-tools/ 301
+/ai/ /ai-tools/ 301
+/pt / 301
+/pt/ / 301
+/pt/rss.xml /rss.xml 301
+/pt/about /about/ 301
+/pt/about/ /about/ 301
+/pt/stack /uses/ 301
+/pt/stack/ /uses/ 301
+/pt/ai /ai-tools/ 301
+/pt/ai/ /ai-tools/ 301
+/pt/blog /blog/ 301
+/pt/blog/ /blog/ 301
+/pt/blog/* /blog/:splat 301
