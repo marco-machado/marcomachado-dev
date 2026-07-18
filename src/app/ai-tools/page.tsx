@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { aiTools } from "@/lib/data";
+import { pageAlternates } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
 
 const description = "AI tools and coding agents I use regularly.";
@@ -7,7 +8,7 @@ const description = "AI tools and coding agents I use regularly.";
 export const metadata: Metadata = {
   title: "AI Tools",
   description,
-  alternates: { canonical: "/ai-tools/" },
+  alternates: pageAlternates("/ai-tools/"),
 };
 
 export default function AiToolsPage() {

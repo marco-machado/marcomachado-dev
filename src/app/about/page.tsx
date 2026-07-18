@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { pageAlternates } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
 
 const description =
@@ -8,7 +9,7 @@ const description =
 export const metadata: Metadata = {
   title: "About",
   description,
-  alternates: { canonical: "/about/" },
+  alternates: pageAlternates("/about/"),
 };
 
 const facts = [

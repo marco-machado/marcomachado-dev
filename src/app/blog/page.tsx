@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getPublishedArticles } from "@/lib/posts";
+import { pageAlternates } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
 import { ArticleRow } from "@/components/article-row";
 
@@ -9,7 +10,7 @@ const description =
 export const metadata: Metadata = {
   title: "Blog",
   description,
-  alternates: { canonical: "/blog/" },
+  alternates: pageAlternates("/blog/"),
 };
 
 export default function BlogPage() {

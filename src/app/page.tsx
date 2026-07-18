@@ -1,10 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getPublishedArticles } from "@/lib/posts";
+import { pageAlternates } from "@/lib/site";
 import { ArticleRow } from "@/components/article-row";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/" },
+  alternates: pageAlternates("/"),
 };
 
 export default function HomePage() {

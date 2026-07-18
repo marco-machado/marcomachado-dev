@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { uses } from "@/lib/data";
+import { pageAlternates } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
 import { KvSection } from "@/components/kv-section";
 
@@ -9,7 +10,7 @@ const description =
 export const metadata: Metadata = {
   title: "Uses",
   description,
-  alternates: { canonical: "/uses/" },
+  alternates: pageAlternates("/uses/"),
 };
 
 export default function UsesPage() {
