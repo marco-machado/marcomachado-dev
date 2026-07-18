@@ -28,7 +28,8 @@ export function GET() {
       id: `${site.url}/blog/${article.slug}/`,
       link: `${site.url}/blog/${article.slug}/`,
       description: article.description,
-      date: article.pubDate,
+      date: article.updatedDate ?? article.pubDate,
+      published: article.pubDate,
     });
   }
 
