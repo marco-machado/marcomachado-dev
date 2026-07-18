@@ -46,7 +46,11 @@ export default function HomePage() {
         </h2>
         <div className="divide-y">
           {articles.map((article) => (
-            <ArticleRow key={article.slug} article={article} />
+            <ArticleRow
+              key={article.slug}
+              article={article}
+              headingLevel="h3"
+            />
           ))}
         </div>
         <p className="mt-6">
