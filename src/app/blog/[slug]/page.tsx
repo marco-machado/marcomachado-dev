@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublishedArticle, getPublishedArticles } from "@/lib/posts";
 import { renderMarkdown } from "@/lib/markdown";
-import { formatDate, pageAlternates } from "@/lib/site";
+import { formatDate, pageAlternates, site } from "@/lib/site";
 
 type Params = { slug: string };
 
@@ -29,6 +29,9 @@ export async function generateMetadata({
     alternates: pageAlternates(`/blog/${article.slug}/`),
     openGraph: {
       type: "article",
+      siteName: site.title,
+      locale: "en_US",
+      url: `/blog/${article.slug}/`,
       title: article.title,
       description: article.description,
       publishedTime: article.pubDate.toISOString(),
