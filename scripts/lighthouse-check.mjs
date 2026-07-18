@@ -1,7 +1,7 @@
 import lighthouse from "lighthouse";
 import puppeteer from "puppeteer-core";
 
-const BASE_URL = process.env.LH_BASE_URL ?? "http://localhost:4173";
+const BASE_URL = process.env.LH_BASE_URL ?? "http://localhost:3000";
 const THRESHOLD = 95;
 
 const pages = [

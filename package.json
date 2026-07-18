@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lighthouse": "node scripts/lighthouse-check.mjs"
   },
   "dependencies": {
     "@shikijs/rehype": "^4.3.1",
@@ -39,6 +40,8 @@
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.2.10",
+    "lighthouse": "^13.4.0",
+    "puppeteer-core": "^25.3.0",
     "shadcn": "^4.13.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3"
