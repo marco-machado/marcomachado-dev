@@ -31,7 +31,7 @@ For **thought-leadership** and **news-analysis**, do NOT research-enrich. The au
 - [ ] `description` present and non-empty
 - [ ] `pubDate` is today's date
 - [ ] `tags` array is non-empty
-- [ ] `lang` matches file location (en/ or pt/)
+- [ ] No fields outside the schema (strict validation fails the build)
 - [ ] `draft` is false (or intentionally true)
 
 ### Content Quality
@@ -48,7 +48,6 @@ For **thought-leadership** and **news-analysis**, do NOT research-enrich. The au
 - [ ] Question-format headings where natural (suggestion)
 
 ### Files
-- [ ] EN file exists at `src/content/blog/en/<slug>.md`
-- [ ] PT file exists at `src/content/blog/pt/<slug>.md` (same filename)
-- [ ] PT file has `lang: "pt"` in frontmatter
+- [ ] File exists at `content/blog/<slug>.md`
+- [ ] `coverImageAlt` present when `coverImage` is set
 - [ ] Cover image suggestion provided
