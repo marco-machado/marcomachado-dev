@@ -61,10 +61,6 @@ export function getPublishedArticles(): Article[] {
     .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
 }
 
-export function getPublishedArticle(slug: string): Article {
-  const article = getPublishedArticles().find((a) => a.slug === slug);
-  if (!article) {
-    throw new Error(`No published Article with slug "${slug}"`);
-  }
-  return article;
+export function getPublishedArticle(slug: string): Article | undefined {
+  return getPublishedArticles().find((a) => a.slug === slug);
 }

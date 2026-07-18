@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { getPublishedArticle, getPublishedArticles } from "@/lib/posts";
 import { renderMarkdown } from "@/lib/markdown";
 import { formatDate } from "@/lib/site";
 
 type Params = { slug: string };
+
+export const dynamicParams = false;
 
 export function generateStaticParams(): Params[] {
   return getPublishedArticles().map((article) => ({ slug: article.slug }));
@@ -18,6 +21,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const article = getPublishedArticle(slug);
+  if (!article) notFound();
 
   return {
     title: article.title,
@@ -41,6 +45,7 @@ export default async function ArticlePage({
 }) {
   const { slug } = await params;
   const article = getPublishedArticle(slug);
+  if (!article) notFound();
   const html = await renderMarkdown(article.body);
 
   return (
