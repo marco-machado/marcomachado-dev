@@ -3,7 +3,6 @@ title: "The Prompt Isn't the Bottleneck"
 description: "Most teams optimizing their AI prompts are solving the wrong problem. The bottleneck is persistent context — and no one's treating it as infrastructure."
 pubDate: 2026-03-04
 tags: ["ai-and-engineering", "tools"]
-lang: "en"
 draft: false
 ---
 
