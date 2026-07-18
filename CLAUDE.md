@@ -62,3 +62,17 @@ Local skill at `.claude/skills/blog/`. Commands:
 - `/blog analyze <file>` — Review existing post (readability, SEO, anti-AI)
 - `/blog translate <file>` — Translate EN↔PT for paired file
 - `/blog publish` — Pre-merge checklist on blog branch
+
+## Agent skills
+
+### Issue tracker
+
+Issues and PRDs are tracked in this repository's GitHub Issues. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Triage uses the default five-label vocabulary. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Domain documentation uses a single-context layout. See `docs/agents/domain.md`.
