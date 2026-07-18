@@ -3,7 +3,7 @@ import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
 
 const description =
-  "I'm a software engineer who builds web applications and writes about how the work is changing.";
+  "I’m a software engineer who builds web applications and writes about how the work is changing.";
 
 export const metadata: Metadata = {
   title: "About",
@@ -45,14 +45,14 @@ export default function AboutPage() {
             Software Engineer with deep full-stack expertise in PHP, Laravel,
             JavaScript, and Vue.js, and a growing focus on how intelligent,
             system-driven workflows are reshaping the way software gets built.
-            I've spent years architecting and shipping scalable web
+            I’ve spent years architecting and shipping scalable web
             applications with US-based teams of all sizes, from early-stage
             startups to mature enterprise platforms.
           </p>
           <p>
             I care about clean code, pragmatic technical decisions, resilient
-            data architecture, and seamless user experiences. But I'm equally
-            drawn to what's next: leveraging intelligent automation and modern
+            data architecture, and seamless user experiences. But I’m equally
+            drawn to what’s next: leveraging intelligent automation and modern
             tooling to reduce friction, eliminate repetitive work, and let
             engineers focus on the problems that actually matter.
           </p>
