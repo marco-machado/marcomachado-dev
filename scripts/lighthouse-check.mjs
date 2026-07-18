@@ -16,6 +16,10 @@ const pages = [
 const categories = ["performance", "accessibility", "seo"];
 
 const browser = await puppeteer.launch({ channel: "chrome", headless: true });
+const warmup = await browser.newPage();
+await warmup.goto(`${BASE_URL}/`, { waitUntil: "networkidle0" });
+await warmup.close();
+
 let failed = false;
 
 for (const theme of ["dark", "light"]) {
