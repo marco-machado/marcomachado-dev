@@ -6,9 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "5.0.4",
