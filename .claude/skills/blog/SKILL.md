@@ -1,13 +1,13 @@
 ---
 name: blog
 description: >
-  Write, analyze, translate, and publish blog posts for marcomachado.dev.
-  Bilingual (EN/PT) Astro blog with SEO guidance, anti-AI pattern detection,
+  Write, analyze, and publish blog posts for marcomachado.dev.
+  English-only Next.js blog with SEO guidance, anti-AI pattern detection,
   and structured writing workflow. Use when user says "blog", "write a post",
-  "blog post", "analyze post", "translate post", "publish post", "new article",
-  "blog write", "blog analyze", "blog translate", "blog publish".
+  "blog post", "analyze post", "publish post", "new article",
+  "blog write", "blog analyze", "blog publish".
 user-invocable: true
-argument-hint: "[write|analyze|translate|publish] [topic-or-file]"
+argument-hint: "[write|analyze|publish] [topic-or-file]"
 allowed-tools:
   - Read
   - Write
@@ -20,25 +20,23 @@ allowed-tools:
   - Agent
 ---
 
-# Blog — Write, Analyze, Translate, Publish
+# Blog — Write, Analyze, Publish
 
-Blog content engine for marcomachado.dev. Bilingual Astro blog (EN default, PT translation).
+Blog content engine for marcomachado.dev. English-only Next.js blog with articles in `content/blog/`.
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `/blog write <topic>` | Full workflow: outline → draft → fact-check → review → publish |
+| `/blog write <topic>` | Full workflow: branch → outline → draft → fact-check → review → publish |
 | `/blog analyze <file>` | Review an existing post (readability, SEO, anti-AI) |
-| `/blog translate <file>` | Translate EN→PT or PT→EN for the paired file |
-| `/blog publish` | Pre-publish checklist for blog posts |
+| `/blog publish` | Pre-merge checklist on the blog branch |
 
 ## Command Routing
 
 Parse the user's input to determine the sub-command:
 - `write` / `new` / `draft` / no sub-command with a topic → Write workflow
 - `analyze` / `review` / `check` → Analyze workflow
-- `translate` → Translate workflow
 - `publish` / `ready` → Publish workflow
 
 ---
@@ -48,6 +46,7 @@ Parse the user's input to determine the sub-command:
 ### Phase 1: Setup
 
 1. Derive slug from topic: lowercase, hyphens, no special chars, max 50 chars
+2. Create a branch for the post from `main` (e.g. `blog/<slug>`)
 
 ### Phase 2: Template Selection
 
@@ -88,23 +87,24 @@ Write the full post following:
 1. The approved outline structure
 2. The template's guidance (loaded from `templates/<type>.md`)
 3. Anti-AI patterns (loaded from `references/anti-ai-patterns.md`)
-4. The author's voice — study `src/content/blog/en/` for existing posts' tone, sentence rhythm, and style
+4. The author's voice — study `content/blog/` for existing posts' tone, sentence rhythm, and style
 
-**Frontmatter format:**
+**Frontmatter format** (strict schema — extra fields fail the build):
 ```yaml
 ---
 title: "<title>"
 description: "<150-160 char description>"
 pubDate: <YYYY-MM-DD>
 tags: [<relevant tags>]
-lang: "en"
 draft: true
 ---
 ```
 
+Optional fields: `updatedDate`, `coverImage`, `coverImageAlt` (required when `coverImage` is set), `ogImage`.
+
 Use `timeZone: "UTC"` awareness — pubDate should be today's date in YYYY-MM-DD format.
 
-**Voice calibration:** Before writing, read up to 3 of the most recent posts from `src/content/blog/en/` to match the author's tone (if fewer exist, read all available). Key traits from existing content:
+**Voice calibration:** Before writing, read up to 3 of the most recent posts from `content/blog/` to match the author's tone (if fewer exist, read all available). Key traits from existing content:
 - First-person, conversational but substantive
 - Concrete examples over abstract claims
 - Acknowledges tradeoffs and limitations
@@ -151,13 +151,11 @@ Present the complete draft to the user with:
 
 Once approved:
 
-1. Write the EN file: `src/content/blog/en/<slug>.md`
-2. Write the PT file: `src/content/blog/pt/<slug>.md` — identical content but with `lang: "pt"` in frontmatter
-3. Remind the user:
-   - "Created EN and PT files (PT has EN content — translate with `/blog translate`)"
-   - "Posts are in `draft: true` mode — set `draft: false` when ready to publish"
-   - "Add cover image and update `coverImage`/`ogImage` in frontmatter"
-   - "Run `/blog publish` for pre-publish checklist"
+1. Write the file: `content/blog/<slug>.md`
+2. Remind the user:
+   - "The post is in `draft: true` mode — set `draft: false` when ready to publish"
+   - "Add cover image and update `coverImage`/`coverImageAlt`/`ogImage` in frontmatter"
+   - "Run `/blog publish` for the pre-merge checklist, then merge the branch to `main` to deploy"
 
 ---
 
@@ -188,43 +186,23 @@ Once approved:
 
 ---
 
-## `/blog translate <file>` — Translation
-
-1. Read the source file
-2. Determine direction from `lang` field:
-   - `lang: "en"` → translate to PT, target is `src/content/blog/pt/<same-filename>`
-   - `lang: "pt"` → translate to EN, target is `src/content/blog/en/<same-filename>`
-3. **Overwrite protection:** Before writing, check if the target file already exists. If it does, compare its body content (excluding frontmatter) against the source file's body. If the bodies differ (meaning it's already been translated or manually edited), warn the user and ask for confirmation before overwriting.
-4. Translate:
-   - Frontmatter: translate `title` and `description`, change `lang`, keep all other fields identical
-   - Body: translate preserving markdown structure, heading levels, code blocks (don't translate code), link URLs, and emphasis
-   - Tone: match the conversational, first-person style in the target language
-5. Write the translated file and confirm what was created
-
----
-
-## `/blog publish` — Pre-Publish Checklist
+## `/blog publish` — Pre-Merge Checklist
 
 1. Ask the user which post to check (slug or file path)
-2. Check both files exist:
-   - `src/content/blog/en/<slug>.md`
-   - `src/content/blog/pt/<slug>.md`
+2. Check the file exists: `content/blog/<slug>.md`
 3. Run checks:
 
 | Check | Status |
 |-------|--------|
-| EN `draft` is `false` | [pass/fail — offer to flip if `true`] |
-| PT `draft` is `false` | [pass/fail — offer to flip if `true`] |
-| PT file translated (content differs from EN body) | [pass/fail] |
-| `coverImage` set in EN frontmatter | [pass/warn] |
-| `coverImage` set in PT frontmatter | [pass/warn] |
-| EN SEO hard rules | [pass/fail] |
-| PT SEO hard rules | [pass/fail] |
-| EN anti-AI scan | [pass/issues] |
-| PT anti-AI scan | [pass/issues] |
+| `draft` is `false` | [pass/fail — offer to flip if `true`] |
+| `coverImage` set in frontmatter | [pass/warn] |
+| `coverImageAlt` set when `coverImage` is set | [pass/fail — build fails without it] |
+| SEO hard rules | [pass/fail] |
+| Anti-AI scan | [pass/issues] |
+| `npm run build` succeeds | [pass/fail] |
 
 4. If all pass: "Ready to publish — all checks passed."
-5. If any fail: list what needs fixing before publishing.
+5. If any fail: list what needs fixing before merging.
 
 ---
 
@@ -232,9 +210,9 @@ Once approved:
 
 These are non-negotiable and come from the project's CLAUDE.md:
 
-- **File paths:** EN posts in `src/content/blog/en/`, PT in `src/content/blog/pt/`
-- **Filename match:** PT filename must exactly match EN (no `.pt` suffix)
-- **Slug extraction:** `post.id.split("/")[1]`
+- **File paths:** Posts in `content/blog/<slug>.md` (English only)
+- **Slug:** Filename minus `.md`
+- **Frontmatter:** Strict Zod schema validated during the build — extra fields fail the build
 - **Date formatting:** Use `timeZone: "UTC"` to avoid off-by-one
 - **Imports:** Use `@/*` path alias
 - **No draft suffix in filenames** — use `draft: true` in frontmatter
