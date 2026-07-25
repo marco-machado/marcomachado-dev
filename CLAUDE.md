@@ -17,6 +17,7 @@ Personal blog and portfolio built with Next.js (App Router, static export), Reac
 - Static build output served from `./out`
 - Auto-deploy is configured in the Cloudflare dashboard via Git integration
 - Pushing to `main` deploys to production
+- **Umami analytics** — Self-hosted Umami via `src/components/umami-analytics.tsx`. Set build env vars in Cloudflare (Settings → Environment variables): `NEXT_PUBLIC_UMAMI_URL` (base URL, no trailing slash) and `NEXT_PUBLIC_UMAMI_WEBSITE_ID` (from Umami → Settings → Websites). Copy `.env.example` locally for production builds. Script loads only when `NODE_ENV=production` and both vars are set.
 - Use Cloudflare's Wrangler CLI for manual deploys:
   - `npx wrangler login` — Log in to Cloudflare
   - `npm run build && npx wrangler deploy` — Build and deploy

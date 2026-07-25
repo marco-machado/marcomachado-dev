@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { UmamiAnalytics } from "@/components/umami-analytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
+        <UmamiAnalytics />
         <ThemeProvider>
           <div className="flex min-h-dvh flex-col">
             <SiteHeader />
