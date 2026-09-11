@@ -43,7 +43,7 @@ export const uses: KvSectionData[] = [
       { key: "Code", val: "GitHub" },
       { key: "Planning", val: "Jira" },
       { key: "Docs", val: "Confluence" },
-      { key: "Hosting", val: "Vercel" },
+      { key: "Hosting", val: "Cloudflare Workers" },
       { key: "Backend", val: "Supabase" },
     ],
   },

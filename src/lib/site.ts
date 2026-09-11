@@ -6,6 +6,8 @@ export const site = {
   description:
     "Software engineer, writer, and builder. Personal site and blog.",
   author: "Marco Machado",
+  email: "marco.machado@gmail.com",
+  github: "https://github.com/marco-machado",
 };
 
 export const navItems = [
@@ -14,6 +16,24 @@ export const navItems = [
   { label: "Uses", href: "/uses/" },
   { label: "AI Tools", href: "/ai-tools/" },
 ];
+
+/** Outbound contact paths shown as quiet text links (no icon soup). */
+export const contactLinks = [
+  { label: "Email", href: `mailto:${site.email}` },
+  { label: "GitHub", href: site.github },
+] as const;
+
+/** Turn kebab-case tag slugs into human words for display. */
+export function formatTag(tag: string): string {
+  return tag
+    .split("-")
+    .map((word, index) => {
+      if (word === "ai") return "AI";
+      if (index === 0) return word.charAt(0).toUpperCase() + word.slice(1);
+      return word;
+    })
+    .join(" ");
+}
 
 // Pages must rebuild the full alternates object: Next.js replaces it wholesale
 // on shallow merge, dropping the layout's RSS autodiscovery entry.

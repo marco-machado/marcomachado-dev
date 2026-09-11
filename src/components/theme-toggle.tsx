@@ -16,7 +16,7 @@ export function ThemeToggle() {
   );
 
   if (!mounted) {
-    return <span className="inline-block size-8" aria-hidden="true" />;
+    return <span className="inline-block size-10" aria-hidden="true" />;
   }
 
   const isDark = resolvedTheme === "dark";
@@ -25,6 +25,7 @@ export function ThemeToggle() {
     <Button
       variant="ghost"
       size="icon"
+      className="size-10"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
     >

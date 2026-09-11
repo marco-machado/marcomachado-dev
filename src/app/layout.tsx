@@ -43,8 +43,17 @@ export default function RootLayout({
         <UmamiAnalytics />
         <ThemeProvider>
           <div className="flex min-h-dvh flex-col">
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:border focus:bg-background focus:px-4 focus:py-3 focus:text-sm focus:text-foreground focus:shadow-sm"
+            >
+              Skip to content
+            </a>
             <SiteHeader />
-            <main className="mx-auto w-full max-w-2xl flex-1 px-6 py-12">
+            <main
+              id="main"
+              className="mx-auto w-full max-w-2xl flex-1 px-6 py-12"
+            >
               {children}
             </main>
             <SiteFooter />
