@@ -13,7 +13,7 @@ export function KvSection({ section }: { section: KvSectionData }) {
         {section.rows.map((row) => (
           <div
             key={row.key}
-            className="grid grid-cols-[10rem_1fr] gap-4 text-sm"
+            className="grid grid-cols-1 gap-1 text-sm sm:grid-cols-[10rem_1fr] sm:gap-4"
           >
             <dt className="text-muted-foreground">{row.key}</dt>
             <dd>
