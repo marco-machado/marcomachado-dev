@@ -4,7 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublishedArticle, getPublishedArticles } from "@/lib/posts";
 import { renderMarkdown } from "@/lib/markdown";
-import { formatDate, pageAlternates, site } from "@/lib/site";
+import { formatDate, formatTag, pageAlternates, site } from "@/lib/site";
+import { ContactLinks } from "@/components/contact-links";
 
 type Params = { slug: string };
 
@@ -57,7 +58,7 @@ export default async function ArticlePage({
         <p className="mb-6">
           <Link
             href="/blog/"
-            className="font-mono text-xs tracking-widest text-muted-foreground uppercase transition-colors hover:text-foreground"
+            className="inline-flex min-h-11 items-center font-mono text-xs tracking-widest text-muted-foreground uppercase transition-colors hover:text-foreground"
           >
             All articles
           </Link>
@@ -81,7 +82,9 @@ export default async function ArticlePage({
               </time>
             </>
           ) : null}
-          {article.tags.length > 0 ? <> · {article.tags.join(", ")}</> : null}
+          {article.tags.length > 0 ? (
+            <> · {article.tags.map(formatTag).join(", ")}</>
+          ) : null}
         </p>
         {article.coverImage ? (
           <Image
@@ -98,6 +101,20 @@ export default async function ArticlePage({
         className="article-content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+      <footer className="mt-12 space-y-4 border-t pt-8">
+        <p>
+          <Link
+            href="/blog/"
+            className="inline-flex min-h-11 items-center font-mono text-xs tracking-widest text-muted-foreground uppercase transition-colors hover:text-foreground"
+          >
+            All articles
+          </Link>
+        </p>
+        <p className="text-sm text-muted-foreground">
+          Written by {site.author}.
+        </p>
+        <ContactLinks muted />
+      </footer>
     </article>
   );
 }
