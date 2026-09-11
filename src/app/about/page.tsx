@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { pageAlternates } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
+import { ContactLinks } from "@/components/contact-links";
 
 const description =
   "I’m a software engineer who builds web applications and writes about how the work is changing.";
@@ -23,14 +24,14 @@ export default function AboutPage() {
   return (
     <div>
       <PageHeader title="About me" description={description} />
-      <div className="grid gap-10 sm:grid-cols-[220px_1fr]">
+      <div className="grid gap-8 sm:grid-cols-[180px_1fr] sm:gap-10">
         <div>
           <Image
             src="/images/portrait.webp"
             alt="Marco Machado"
             width={720}
             height={960}
-            className="aspect-3/4 w-full rounded-lg border object-cover"
+            className="mx-auto aspect-3/4 w-32 rounded-lg border object-cover sm:mx-0 sm:w-full"
           />
           <dl className="mt-5 space-y-1 font-mono text-xs text-muted-foreground">
             {facts.map((fact) => (
@@ -40,6 +41,7 @@ export default function AboutPage() {
               </div>
             ))}
           </dl>
+          <ContactLinks muted className="mt-4" />
         </div>
         <div className="space-y-5 leading-relaxed">
           <p>
@@ -58,9 +60,9 @@ export default function AboutPage() {
             engineers focus on the problems that actually matter.
           </p>
           <p>
-            Adaptable and quick to master new technologies, I bring strong
-            engineering fundamentals and a collaborative mindset to every
-            project.
+            Most days I’m remote from Brazil, pairing with product teams and
+            learning the tools that actually stick — then writing down what
+            holds up once the novelty wears off.
           </p>
         </div>
       </div>
