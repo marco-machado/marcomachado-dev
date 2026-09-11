@@ -31,9 +31,11 @@ export default function AiToolsPage() {
                     href={tool.href}
                     target="_blank"
                     rel="noreferrer"
+                    aria-label={`${tool.name} (opens in a new tab)`}
                     className="font-serif text-lg font-semibold tracking-tight transition-colors hover:text-primary"
                   >
                     {tool.name}
+                    <span className="sr-only"> (opens in a new tab)</span>
                   </a>
                   <p className="text-sm text-muted-foreground">{tool.note}</p>
                 </li>
