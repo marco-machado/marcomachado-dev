@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/page-header";
 import { ContactLinks } from "@/components/contact-links";
 
 const description =
-  "I’m a software engineer who builds web applications and writes about how the work is changing.";
+  "Software engineer, remote from Brazil. Shipping web apps since 2014, and writing for AI builders and operators.";
 
 export const metadata: Metadata = {
   title: "About",
@@ -45,24 +45,18 @@ export default function AboutPage() {
         </div>
         <div className="space-y-5 leading-relaxed">
           <p>
-            Software Engineer with deep full-stack expertise in PHP, Laravel,
-            JavaScript, and Vue.js, and a growing focus on how intelligent,
-            system-driven workflows are reshaping the way software gets built.
-            I’ve spent years architecting and shipping scalable web
-            applications with US-based teams of all sizes, from early-stage
-            startups to mature enterprise platforms.
+            I’m a software engineer. I work remote from Brazil and have been
+            shipping web apps since 2014.
           </p>
           <p>
-            I care about clean code, pragmatic technical decisions, resilient
-            data architecture, and seamless user experiences. But I’m equally
-            drawn to what’s next: leveraging intelligent automation and modern
-            tooling to reduce friction, eliminate repetitive work, and let
-            engineers focus on the problems that actually matter.
+            I write about engineering, tools, and craft. More of that now is
+            AI in the workflow: small demos and how they work, Cursor and
+            other agents in real shipping, and takes while something is still
+            in progress.
           </p>
           <p>
-            Most days I’m remote from Brazil, pairing with product teams and
-            learning the tools that actually stick — then writing down what
-            holds up once the novelty wears off.
+            I try a tool, see what still holds up after the novelty fades, and
+            write that down.
           </p>
         </div>
       </div>

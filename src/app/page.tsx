@@ -36,12 +36,19 @@ export default function HomePage() {
           </div>
         </div>
         <p className="mt-6 max-w-prose text-lg leading-relaxed text-muted-foreground">
-          Software engineer building things for the web. I write about
-          engineering, tools, and the craft of building software.
+          I ship web apps and write for AI builders and operators. Small demos
+          and how they work. Agents in real shipping. Builder takes while the
+          work is still in progress.
         </p>
         <p className="mt-4 max-w-prose text-sm leading-relaxed text-muted-foreground">
-          Recently: shipping this site on Cloudflare Workers, and writing about
-          treating AI context as infrastructure — not a longer prompt.
+          Recently: shipping this site on Cloudflare Workers, and{" "}
+          <Link
+            href="/blog/the-prompt-isnt-the-bottleneck/"
+            className="text-primary underline decoration-1 underline-offset-4 hover:decoration-2"
+          >
+            The Prompt Isn&apos;t the Bottleneck
+          </Link>
+          {" — treating AI context as infrastructure, not a longer prompt."}
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-1">
           <Link
