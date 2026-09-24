@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/page-header";
 import { ArticleRow } from "@/components/article-row";
 
 const description =
-  "Notes on engineering, tools, and the craft of building software with intelligent systems in the loop.";
+  "Demos, agent workflows, and builder takes for people who ship with AI.";
 
 export const metadata: Metadata = {
   title: "Blog",

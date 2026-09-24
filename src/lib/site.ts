@@ -4,10 +4,14 @@ export const site = {
   url: "https://marcomachado.dev",
   title: "Marco Machado",
   description:
-    "Software engineer, writer, and builder. Personal site and blog.",
+    "Engineer, operator, builder. Writing for AI builders and operators — demos, workflows, and takes.",
   author: "Marco Machado",
   email: "marco.machado@gmail.com",
   github: "https://github.com/marco-machado",
+  x: "https://x.com/marco_machado",
+  xHandle: "@marco_machado",
+  linkedin: "https://www.linkedin.com/in/marcomachadodev/",
+  instagram: "https://www.instagram.com/marcomachado.dev/",
 };
 
 export const navItems = [
@@ -21,6 +25,9 @@ export const navItems = [
 export const contactLinks = [
   { label: "Email", href: `mailto:${site.email}` },
   { label: "GitHub", href: site.github },
+  { label: "X", href: site.x },
+  { label: "LinkedIn", href: site.linkedin },
+  { label: "Instagram", href: site.instagram },
 ] as const;
 
 /** Turn kebab-case tag slugs into human words for display. */
