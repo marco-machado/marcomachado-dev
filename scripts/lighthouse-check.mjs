@@ -15,7 +15,15 @@ const pages = [
 
 const categories = ["performance", "accessibility", "seo"];
 
-const browser = await puppeteer.launch({ channel: "chrome", headless: true });
+// CHROME_PATH points at any Chrome or Chromium binary; without it, use installed Chrome.
+const browser = await puppeteer.launch({
+  ...(process.env.CHROME_PATH
+    ? { executablePath: process.env.CHROME_PATH }
+    : { channel: "chrome" }),
+  headless: true,
+  // Chromium refuses to start as root (containers, CI) unless sandboxing is off.
+  args: process.getuid?.() === 0 ? ["--no-sandbox"] : [],
+});
 const warmup = await browser.newPage();
 await warmup.goto(`${BASE_URL}/`, { waitUntil: "networkidle0" });
 await warmup.close();
