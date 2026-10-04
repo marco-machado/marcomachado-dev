@@ -1,7 +1,8 @@
 name = "marcomachado-dev"
 compatibility_date = "2026-02-23"
 workers_dev = false
-preview_urls = false
+preview_urls = true
+previews = { }
 
 [assets]
 directory = "./out"
