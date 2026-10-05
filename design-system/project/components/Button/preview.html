@@ -1,0 +1,20 @@
+<!-- @dsCard group="Actions" height=150 subtitle="src/components/ui/button.tsx" -->
+<div id="root" class="bg-background text-foreground font-sans p-6"></div>
+<script>
+const { Button } = window.MarcoMachado;
+const h = React.createElement;
+ReactDOM.createRoot(document.getElementById("root")).render(h("div", { className: "grid gap-4" },
+  h("div", { className: "flex flex-wrap items-center gap-2.5" },
+    h(Button, null, "Subscribe"),
+    h(Button, { variant: "outline" }, "Outline"),
+    h(Button, { variant: "secondary" }, "Secondary"),
+    h(Button, { variant: "ghost" }, "Ghost"),
+    h(Button, { variant: "destructive" }, "Delete"),
+    h(Button, { variant: "link" }, "Link")),
+  h("div", { className: "flex flex-wrap items-center gap-2.5" },
+    h(Button, { size: "xs" }, "Extra small"),
+    h(Button, { size: "sm" }, "Small"),
+    h(Button, null, "Default"),
+    h(Button, { size: "lg" }, "Large"),
+    h(Button, { disabled: true }, "Disabled"))));
+</script>

@@ -1,0 +1,68 @@
+{
+  "v": 3,
+  "assetGroups": {
+    "Images": {
+      "files": {
+        "og-default.png": {
+          "blob": "24e8e8b051f00c0a3de23e2698d036e7",
+          "name": "og-default.png",
+          "size": 27171,
+          "type": "image/png"
+        }
+      },
+      "name": "Images",
+      "order": [
+        "og-default.png"
+      ],
+      "tile": "l"
+    },
+    "Logos": {
+      "files": {
+        "mm-mark.svg": {
+          "blob": "c848568900086b9dd1b09a380aa3c95c",
+          "name": "mm-mark.svg",
+          "size": 265,
+          "type": "image/svg+xml"
+        }
+      },
+      "name": "Logos",
+      "order": [
+        "mm-mark.svg"
+      ],
+      "tile": "s"
+    }
+  },
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-10-05T14:40:00Z",
+    "v": 1
+  },
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "groups": [
+    "Logos",
+    "Images"
+  ],
+  "lastChange": {
+    "by": "Marco Machado",
+    "at": "2026-10-05T18:55:25Z",
+    "via": "GitHub · marco-machado/marcomachado-dev@2006e21",
+    "note": "Built the real components: bundle.js (window.MarcoMachado, 10 components) and Tailwind-compiled bundle.css; live previews."
+  },
+  "layout": "files",
+  "libraries": [
+    {
+      "name": "react",
+      "version": "18"
+    },
+    {
+      "name": "react-dom",
+      "version": "18"
+    }
+  ],
+  "namespace": "MarcoMachado",
+  "sections": {},
+  "title": "marcomachado.dev"
+}
