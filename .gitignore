@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # wrangler local dev cache
 .wrangler/
+
+# design system build output
+design-system/dist/
