@@ -1,0 +1,11 @@
+<!-- @dsCard group="Content" height=230 subtitle="src/components/kv-section.tsx with the Uses > Hardware data" -->
+<div id="root" class="bg-background text-foreground font-sans p-6"></div>
+<script>
+const { KvSection } = window.MarcoMachado;
+const h = React.createElement;
+ReactDOM.createRoot(document.getElementById("root")).render(h(KvSection, { section: { id: "hardware", title: "Hardware", rows: [
+  { key: "Laptop", val: "MacBook Pro 16\u2033" },
+  { key: "Display", val: "LG 27US500-W" },
+  { key: "Keyboard", val: "Logitech MX Mechanical Mini", note: "Tactile" },
+  { key: "Mouse", val: "Logitech MX Master 3S" } ] } }));
+</script>

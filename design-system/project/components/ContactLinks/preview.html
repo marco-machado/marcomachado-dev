@@ -1,0 +1,7 @@
+<!-- @dsCard group="Navigation" height=130 subtitle="src/components/contact-links.tsx: default and muted" -->
+<div id="root" class="bg-background text-foreground font-sans px-6 py-4"></div>
+<script>
+const { ContactLinks } = window.MarcoMachado;
+const h = React.createElement;
+ReactDOM.createRoot(document.getElementById("root")).render(h("div", null, h(ContactLinks), h(ContactLinks, { muted: true })));
+</script>
