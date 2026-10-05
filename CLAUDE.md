@@ -8,6 +8,7 @@ Personal blog and portfolio built with Next.js (App Router, static export), Reac
 - `npm run build` — Build static site to `./out`
 - `npm run lint` — Run ESLint (blocking quality check)
 - `npm run typecheck` — Run TypeScript checks (blocking quality check)
+- `npm run design-system` — Build the design system artifact files to `design-system/dist/project` (see `design-system/README.md`)
 
 ## Hosting / Deployment
 
