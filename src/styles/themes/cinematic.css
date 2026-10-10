@@ -1,0 +1,5 @@
+/* cinematic theme. See docs/themes.md. */
+@layer design {
+  [data-theme="cinematic"] {
+  }
+}

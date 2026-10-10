@@ -1,0 +1,5 @@
+/* editorial theme. See docs/themes.md. */
+@layer design {
+  [data-theme="editorial"] {
+  }
+}

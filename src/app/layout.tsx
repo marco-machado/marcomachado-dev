@@ -37,13 +37,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${serif.variable} ${sans.variable} ${mono.variable}`}
+      data-theme="dark"
+      className={`${serif.variable} ${sans.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <body>
         <UmamiAnalytics />
         <ThemeProvider>
-          <div className="flex min-h-dvh flex-col">
+          <div className="site flex min-h-dvh flex-col">
             <a
               href="#main"
               className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:border focus:bg-background focus:px-4 focus:py-3 focus:text-sm focus:text-foreground focus:shadow-sm"
@@ -53,7 +54,7 @@ export default function RootLayout({
             <SiteHeader />
             <main
               id="main"
-              className="mx-auto w-full max-w-2xl flex-1 px-6 py-12"
+              className="site-main mx-auto w-full flex-1 classic:max-w-2xl classic:px-6 classic:py-12"
             >
               {children}
             </main>
