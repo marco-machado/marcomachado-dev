@@ -22,28 +22,33 @@ const facts = [
 
 export default function AboutPage() {
   return (
-    <div>
-      <PageHeader title="About me" description={description} />
-      <div className="grid gap-8 sm:grid-cols-[180px_1fr] sm:gap-10">
-        <div>
+    <div className="page page--about">
+      <PageHeader
+        title="About me"
+        description={description}
+        eyebrow="About"
+        command="cat about.md"
+      />
+      <div className="about classic:grid classic:gap-8 classic:sm:grid-cols-[180px_1fr] classic:sm:gap-10">
+        <div className="about__aside">
           <Image
             src="/images/portrait.webp"
             alt="Marco Machado"
             width={720}
             height={960}
-            className="mx-auto aspect-3/4 w-32 rounded-lg border object-cover sm:mx-0 sm:w-full"
+            className="about__portrait classic:mx-auto classic:aspect-3/4 classic:w-32 classic:rounded-lg classic:border classic:object-cover classic:sm:mx-0 classic:sm:w-full"
           />
-          <dl className="mt-5 space-y-1 font-mono text-xs text-muted-foreground">
+          <dl className="about__facts classic:mt-5 classic:space-y-1 classic:font-mono classic:text-xs classic:text-muted-foreground">
             {facts.map((fact) => (
-              <div key={fact.label} className="flex gap-2">
-                <dt className="uppercase">{fact.label}</dt>
+              <div key={fact.label} className="about__fact classic:flex classic:gap-2">
+                <dt className="classic:uppercase">{fact.label}</dt>
                 <dd>{fact.value}</dd>
               </div>
             ))}
           </dl>
-          <ContactLinks muted className="mt-4" />
+          <ContactLinks muted className="about__contact classic:mt-4" />
         </div>
-        <div className="space-y-5 leading-relaxed">
+        <div className="about__body prose-body classic:space-y-5 classic:leading-relaxed">
           <p>
             I’m a software engineer. I work remote from Brazil and have been
             shipping web apps since 2014.

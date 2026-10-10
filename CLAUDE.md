@@ -8,6 +8,8 @@ Personal blog and portfolio built with Next.js (App Router, static export), Reac
 - `npm run build` — Build static site to `./out`
 - `npm run lint` — Run ESLint (blocking quality check)
 - `npm run typecheck` — Run TypeScript checks (blocking quality check)
+- `npm run lighthouse` — Lighthouse across pages and themes (`LH_THEMES=dark,terminal` narrows it; `CHROME_PATH` picks the browser)
+- `node scripts/theme-screenshots.mjs <outDir> [themes] [paths] [widths]` — Full-page screenshots per theme against a running server
 - `npm run design-system` — Build the design system artifact files to `design-system/dist/project` (see `design-system/README.md`)
 
 ## Hosting / Deployment
@@ -29,9 +31,9 @@ Personal blog and portfolio built with Next.js (App Router, static export), Reac
 - **Routes** — `/`, `/about`, `/uses`, `/ai-tools`, `/blog`, `/blog/[slug]`, plus generated `/rss.xml`, `/sitemap.xml`, `/robots.txt`. All pages in `src/app/`
 - **Articles** — Markdown files in `content/blog/`, loaded by `src/lib/posts.ts` with a strict Zod schema validated during the build. Slug = filename minus `.md`. Drafts are excluded from pages, lists, RSS, and sitemap
 - **Markdown** — Rendered at build time by `src/lib/markdown.ts` (unified + remark-gfm + Shiki dual themes). No client-side highlighting runtime
-- **Components** — Server Components by default. The only Client Components are `theme-provider.tsx` and `theme-toggle.tsx`. shadcn/ui primitives live in `src/components/ui/` (source-owned; add via `npx shadcn add <name>`)
-- **Theme** — Dark by default with persisted light override via next-themes (`attribute="class"`, `enableSystem={false}`). The pre-hydration inline script prevents theme flash
-- **Design tokens** — CSS variables in `src/app/globals.css` (`:root` light, `.dark` dark, oklch values, teal accent), mapped to Tailwind via `@theme inline`. All token pairs meet WCAG 4.5:1 contrast in both themes
+- **Components** — Server Components by default. The only Client Components are `theme-provider.tsx`, `theme-toggle.tsx`, `theme-picker.tsx`, `main-nav.tsx` and `pager-controls.tsx`. shadcn/ui primitives live in `src/components/ui/` (source-owned; add via `npx shadcn add <name>`)
+- **Theme** — Ten themes via next-themes (`attribute="data-theme"`, `enableSystem={false}`), chosen in the header picker and persisted in `localStorage`. Classic (`dark` default, `light`) plus nine dark design themes. See `docs/themes.md`. The pre-hydration inline script prevents theme flash
+- **Design tokens** — Classic tokens in `src/app/globals.css` (`[data-theme=light]`, `[data-theme=dark]`, oklch values, teal accent), mapped to Tailwind via `@theme inline`. Design themes set their own tokens in `src/styles/themes/<id>.css`. All token pairs meet WCAG 4.5:1 contrast
 - **Fonts** — Self-hosted in `src/fonts/` (SIL OFL) via `next/font/local`: Newsreader (headings), IBM Plex Sans (body), IBM Plex Mono (code/meta)
 - **List ordering** — Sort items by relevance/importance, not alphabetically
 
@@ -46,7 +48,7 @@ Personal blog and portfolio built with Next.js (App Router, static export), Reac
 ## Conventions
 
 - **Imports** — Use `@/*` path alias (maps to `src/*`)
-- **Styling** — Tailwind utility classes + CSS custom properties from `globals.css`. No CSS modules or scoped styles
+- **Styling** — Tailwind utility classes + CSS custom properties from `globals.css`. No CSS modules or scoped styles. Classic-only utilities use the `classic:` variant; the design themes style semantic classes in `src/styles/themes/` (see `docs/themes.md`). Use `<ThemeOnly>` for markup some themes need and others don't
 - **Props** — TypeScript interfaces or inline types for component props
 - **Article fetching** — `getPublishedArticles()` from `@/lib/posts` (draft-filtered, sorted by `pubDate` desc)
 - **Date formatting** — `formatDate()` from `@/lib/site` (uses `timeZone: "UTC"` to avoid off-by-one from UTC midnight coercion)

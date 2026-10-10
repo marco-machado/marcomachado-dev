@@ -1,54 +1,75 @@
+/* Design-theme layers sit above Tailwind's so they override utilities. */
+@layer theme, base, components, utilities, design-base, design;
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@import "../styles/themes/base.css";
+@import "../styles/themes/terminal.css";
+@import "../styles/themes/orbital.css";
+@import "../styles/themes/editorial.css";
+@import "../styles/themes/command.css";
+@import "../styles/themes/eclipse.css";
+@import "../styles/themes/atelier.css";
+@import "../styles/themes/core.css";
+@import "../styles/themes/cinematic.css";
+@import "../styles/themes/abstract.css";
 
-:root {
-  color-scheme: light;
-  --background: oklch(0.985 0.002 95);
-  --foreground: oklch(0.24 0.01 270);
-  --card: oklch(0.97 0.003 95);
-  --card-foreground: oklch(0.24 0.01 270);
-  --popover: oklch(0.985 0.002 95);
-  --popover-foreground: oklch(0.24 0.01 270);
-  --primary: oklch(0.47 0.085 195);
-  --primary-foreground: oklch(0.985 0.002 95);
-  --secondary: oklch(0.94 0.004 95);
-  --secondary-foreground: oklch(0.3 0.01 270);
-  --muted: oklch(0.94 0.004 95);
-  --muted-foreground: oklch(0.45 0.012 270);
-  --accent: oklch(0.93 0.02 195);
-  --accent-foreground: oklch(0.3 0.05 195);
-  --destructive: oklch(0.55 0.19 25);
-  --destructive-foreground: oklch(0.985 0.002 95);
-  --border: oklch(0.88 0.004 95);
-  --input: oklch(0.88 0.004 95);
-  --ring: oklch(0.47 0.085 195);
-  --radius: 0.375rem;
-}
+/* Every theme but Classic light is dark. */
+@custom-variant dark (&:where([data-theme]:not([data-theme="light"]) *));
+/* Classic is the original design, in its dark and light values. */
+@custom-variant classic (&:where([data-theme="dark"] *, [data-theme="light"] *));
 
-.dark {
-  color-scheme: dark;
-  --background: oklch(0.185 0.005 270);
-  --foreground: oklch(0.92 0.006 90);
-  --card: oklch(0.22 0.006 270);
-  --card-foreground: oklch(0.92 0.006 90);
-  --popover: oklch(0.22 0.006 270);
-  --popover-foreground: oklch(0.92 0.006 90);
-  --primary: oklch(0.8 0.09 190);
-  --primary-foreground: oklch(0.185 0.005 270);
-  --secondary: oklch(0.25 0.006 270);
-  --secondary-foreground: oklch(0.92 0.006 90);
-  --muted: oklch(0.25 0.006 270);
-  --muted-foreground: oklch(0.72 0.008 270);
-  --accent: oklch(0.27 0.02 195);
-  --accent-foreground: oklch(0.85 0.06 190);
-  --destructive: oklch(0.65 0.16 25);
-  --destructive-foreground: oklch(0.185 0.005 270);
-  --border: oklch(0.3 0.006 270);
-  --input: oklch(0.3 0.006 270);
-  --ring: oklch(0.8 0.09 190);
+/* Classic tokens. Layered so the design themes (higher layers) can override them. */
+@layer base {
+  :root,
+  [data-theme="light"] {
+    color-scheme: light;
+    --background: oklch(0.985 0.002 95);
+    --foreground: oklch(0.24 0.01 270);
+    --card: oklch(0.97 0.003 95);
+    --card-foreground: oklch(0.24 0.01 270);
+    --popover: oklch(0.985 0.002 95);
+    --popover-foreground: oklch(0.24 0.01 270);
+    --primary: oklch(0.47 0.085 195);
+    --primary-foreground: oklch(0.985 0.002 95);
+    --secondary: oklch(0.94 0.004 95);
+    --secondary-foreground: oklch(0.3 0.01 270);
+    --muted: oklch(0.94 0.004 95);
+    --muted-foreground: oklch(0.45 0.012 270);
+    --accent: oklch(0.93 0.02 195);
+    --accent-foreground: oklch(0.3 0.05 195);
+    --destructive: oklch(0.55 0.19 25);
+    --destructive-foreground: oklch(0.985 0.002 95);
+    --border: oklch(0.88 0.004 95);
+    --input: oklch(0.88 0.004 95);
+    --ring: oklch(0.47 0.085 195);
+    --radius: 0.375rem;
+  }
+
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --background: oklch(0.185 0.005 270);
+    --foreground: oklch(0.92 0.006 90);
+    --card: oklch(0.22 0.006 270);
+    --card-foreground: oklch(0.92 0.006 90);
+    --popover: oklch(0.22 0.006 270);
+    --popover-foreground: oklch(0.92 0.006 90);
+    --primary: oklch(0.8 0.09 190);
+    --primary-foreground: oklch(0.185 0.005 270);
+    --secondary: oklch(0.25 0.006 270);
+    --secondary-foreground: oklch(0.92 0.006 90);
+    --muted: oklch(0.25 0.006 270);
+    --muted-foreground: oklch(0.72 0.008 270);
+    --accent: oklch(0.27 0.02 195);
+    --accent-foreground: oklch(0.85 0.06 190);
+    --destructive: oklch(0.65 0.16 25);
+    --destructive-foreground: oklch(0.185 0.005 270);
+    --border: oklch(0.3 0.006 270);
+    --input: oklch(0.3 0.006 270);
+    --ring: oklch(0.8 0.09 190);
+  }
 }
 
 @theme inline {
@@ -126,8 +147,8 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-serif);
-    font-weight: 600;
+    font-family: var(--prose-heading-font, var(--font-serif));
+    font-weight: var(--prose-heading-weight, 600);
     line-height: 1.25;
     letter-spacing: -0.01em;
     text-wrap: balance;
@@ -191,7 +212,7 @@
     padding-left: 1.25rem;
     border-left: 3px solid var(--color-primary);
     color: var(--color-muted-foreground);
-    font-family: var(--font-serif);
+    font-family: var(--prose-heading-font, var(--font-serif));
     font-style: italic;
     font-size: 1.125rem;
   }
@@ -249,11 +270,30 @@
   }
 }
 
-.dark .shiki,
-.dark .shiki span {
+[data-theme]:not([data-theme="light"]) .shiki,
+[data-theme]:not([data-theme="light"]) .shiki span {
   color: var(--shiki-dark) !important;
   background-color: var(--shiki-dark-bg) !important;
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+/* <ThemeOnly>: markup for some themes only. */
+[data-only] {
+  display: none;
+}
+
+[data-theme="dark"] [data-only~="classic"],
+[data-theme="light"] [data-only~="classic"],
+[data-theme="terminal"] [data-only~="terminal"],
+[data-theme="orbital"] [data-only~="orbital"],
+[data-theme="editorial"] [data-only~="editorial"],
+[data-theme="command"] [data-only~="command"],
+[data-theme="eclipse"] [data-only~="eclipse"],
+[data-theme="atelier"] [data-only~="atelier"],
+[data-theme="core"] [data-only~="core"],
+[data-theme="cinematic"] [data-only~="cinematic"],
+[data-theme="abstract"] [data-only~="abstract"] {
+  display: contents;
 }
