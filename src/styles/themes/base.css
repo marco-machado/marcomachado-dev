@@ -412,6 +412,8 @@
 
     /* Project card */
     .project-card {
+      /* Contains the sr-only link text, which would otherwise widen the page in pagers. */
+      position: relative;
       display: flex;
       flex-direction: column;
       overflow: hidden;
