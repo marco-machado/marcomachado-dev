@@ -11,14 +11,14 @@ function isLand(lat: number, lon: number): boolean {
     Math.sin(lat * 2.1 + 0.6) * Math.cos(lon * 1.7 - 0.4) +
     0.6 * Math.sin(lon * 3.3 + lat * 1.2) +
     0.35 * Math.cos(lat * 4.7 - lon * 2.2);
-  return v > 0.35;
+  return v > 0.05;
 }
 
 function buildDots() {
   const dots: { x: number; y: number; r: number; o: number }[] = [];
-  for (let latDeg = -80; latDeg <= 80; latDeg += 6) {
+  for (let latDeg = -80; latDeg <= 80; latDeg += 5) {
     const lat = (latDeg * Math.PI) / 180;
-    const step = 6 / Math.max(0.25, Math.cos(lat));
+    const step = 5 / Math.max(0.25, Math.cos(lat));
     for (let lonDeg = -180; lonDeg < 180; lonDeg += step) {
       const lon = (lonDeg * Math.PI) / 180;
       if (!isLand(lat, lon)) continue;
