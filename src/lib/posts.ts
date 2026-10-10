@@ -64,3 +64,9 @@ export function getPublishedArticles(): Article[] {
 export function getPublishedArticle(slug: string): Article | undefined {
   return getPublishedArticles().find((a) => a.slug === slug);
 }
+
+/** Estimated reading time in minutes, at 220 words per minute. */
+export function readingMinutes(article: Article): number {
+  const words = article.body.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 220));
+}
