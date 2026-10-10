@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
-import { readingMinutes, type Article } from "@/lib/posts";
-import { formatDate, formatTag } from "@/lib/site";
+import type { Article } from "@/lib/posts";
+import { formatDate, formatTag, readingMinutes } from "@/lib/site";
 import { Art } from "@/components/art";
 import { ThemeOnly } from "@/components/theme-only";
 

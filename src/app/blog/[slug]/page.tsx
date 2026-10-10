@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  getPublishedArticle,
-  getPublishedArticles,
-  readingMinutes,
-} from "@/lib/posts";
+import { getPublishedArticle, getPublishedArticles } from "@/lib/posts";
 import { renderMarkdown } from "@/lib/markdown";
-import { formatDate, formatTag, pageAlternates, site } from "@/lib/site";
+import {
+  formatDate,
+  formatTag,
+  pageAlternates,
+  readingMinutes,
+  site,
+} from "@/lib/site";
 import { Art } from "@/components/art";
 import { ContactLinks } from "@/components/contact-links";
 import { ThemeOnly } from "@/components/theme-only";
