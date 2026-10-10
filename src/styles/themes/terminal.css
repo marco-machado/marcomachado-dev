@@ -288,6 +288,10 @@
       display: none;
     }
 
+    .page-header__title {
+      font-size: var(--display-size);
+    }
+
     .page-header__title::before {
       content: "> ";
       color: var(--muted-foreground);
