@@ -30,14 +30,18 @@ await warmup.close();
 
 let failed = false;
 
-for (const theme of ["dark", "light"]) {
+// Every theme by default; LH_THEMES=dark,terminal narrows the run.
+const themes = (
+  process.env.LH_THEMES ??
+  "dark,light,terminal,orbital,editorial,command,eclipse,atelier,core,cinematic,abstract"
+).split(",");
+
+for (const theme of themes) {
   for (const path of pages) {
     const page = await browser.newPage();
-    if (theme === "light") {
-      await page.evaluateOnNewDocument(() => {
-        localStorage.setItem("theme", "light");
-      });
-    }
+    await page.evaluateOnNewDocument((value) => {
+      localStorage.setItem("theme", value);
+    }, theme);
 
     const result = await lighthouse(
       `${BASE_URL}${path}`,
