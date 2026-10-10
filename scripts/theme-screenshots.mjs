@@ -12,9 +12,9 @@ const widths = (widthsArg ?? "1440,390").split(",").map(Number);
 
 fs.mkdirSync(outDir, { recursive: true });
 const browser = await puppeteer.launch({
-  executablePath: process.env.CHROME_PATH ?? "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
+  ...(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : { channel: "chrome" }),
   headless: true,
-  args: ["--no-sandbox"],
+  args: process.getuid?.() === 0 ? ["--no-sandbox"] : [],
 });
 
 for (const theme of themes) {
