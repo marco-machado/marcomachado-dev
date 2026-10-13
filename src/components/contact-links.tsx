@@ -11,10 +11,10 @@ export function ContactLinks({ className, muted = false }: ContactLinksProps) {
   return (
     <ul
       className={cn(
-        "flex flex-wrap items-center gap-x-5",
+        "contact-links flex flex-wrap items-center classic:gap-x-5",
         muted
-          ? "font-mono text-xs text-muted-foreground"
-          : "text-sm text-muted-foreground",
+          ? "contact-links--muted classic:font-mono classic:text-xs classic:text-muted-foreground"
+          : "classic:text-sm classic:text-muted-foreground",
         className,
       )}
     >
@@ -23,8 +23,10 @@ export function ContactLinks({ className, muted = false }: ContactLinksProps) {
           <a
             href={link.href}
             className={cn(
-              "inline-flex min-h-11 items-center transition-colors hover:text-foreground",
-              muted ? null : "text-primary underline decoration-1 underline-offset-4 hover:decoration-2",
+              "contact-links__link inline-flex min-h-11 items-center classic:transition-colors classic:hover:text-foreground",
+              muted
+                ? null
+                : "classic:text-primary classic:underline classic:decoration-1 classic:underline-offset-4 classic:hover:decoration-2",
             )}
             {...(link.href.startsWith("http")
               ? { rel: "noopener noreferrer", target: "_blank" }

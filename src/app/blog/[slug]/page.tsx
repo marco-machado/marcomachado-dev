@@ -4,8 +4,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublishedArticle, getPublishedArticles } from "@/lib/posts";
 import { renderMarkdown } from "@/lib/markdown";
-import { formatDate, formatTag, pageAlternates, site } from "@/lib/site";
+import {
+  formatDate,
+  formatTag,
+  pageAlternates,
+  readingMinutes,
+  site,
+} from "@/lib/site";
+import { Art } from "@/components/art";
 import { ContactLinks } from "@/components/contact-links";
+import { ThemeOnly } from "@/components/theme-only";
 
 type Params = { slug: string };
 
@@ -53,23 +61,23 @@ export default async function ArticlePage({
   const html = await renderMarkdown(article.body);
 
   return (
-    <article>
-      <header className="mb-10">
-        <p className="mb-6">
+    <article className="article">
+      <header className="article__header classic:mb-10">
+        <p className="article__back classic:mb-6">
           <Link
             href="/blog/"
-            className="inline-flex min-h-11 items-center font-mono text-xs tracking-widest text-muted-foreground uppercase transition-colors hover:text-foreground"
+            className="arrow-link arrow-link--back inline-flex min-h-11 items-center classic:font-mono classic:text-xs classic:tracking-widest classic:text-muted-foreground classic:uppercase classic:transition-colors classic:hover:text-foreground"
           >
             All articles
           </Link>
         </p>
-        <h1 className="font-serif text-4xl font-semibold tracking-tight text-balance">
+        <h1 className="article__title classic:font-serif classic:text-4xl classic:font-semibold classic:tracking-tight classic:text-balance">
           {article.title}
         </h1>
-        <p className="mt-3 text-lg text-muted-foreground">
+        <p className="article__desc classic:mt-3 classic:text-lg classic:text-muted-foreground">
           {article.description}
         </p>
-        <p className="mt-4 font-mono text-xs text-muted-foreground">
+        <p className="article__meta classic:mt-4 classic:font-mono classic:text-xs classic:text-muted-foreground">
           <time dateTime={article.pubDate.toISOString().slice(0, 10)}>
             {formatDate(article.pubDate)}
           </time>
@@ -82,6 +90,10 @@ export default async function ArticlePage({
               </time>
             </>
           ) : null}
+          <ThemeOnly as="span" except={["classic"]}>
+            {" · "}
+            {readingMinutes(article)} min read
+          </ThemeOnly>
           {article.tags.length > 0 ? (
             <> · {article.tags.map(formatTag).join(", ")}</>
           ) : null}
@@ -92,25 +104,29 @@ export default async function ArticlePage({
             alt={article.coverImageAlt ?? ""}
             width={1440}
             height={810}
-            className="mt-8 w-full rounded-lg border"
+            className="article__cover classic:mt-8 classic:w-full classic:rounded-lg classic:border"
             priority
           />
-        ) : null}
+        ) : (
+          <ThemeOnly except={["classic"]}>
+            <Art seed={2} className="article__cover article__cover--art" />
+          </ThemeOnly>
+        )}
       </header>
       <div
         className="article-content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
-      <footer className="mt-12 space-y-4 border-t pt-8">
+      <footer className="article__footer classic:mt-12 classic:space-y-4 classic:border-t classic:pt-8">
         <p>
           <Link
             href="/blog/"
-            className="inline-flex min-h-11 items-center font-mono text-xs tracking-widest text-muted-foreground uppercase transition-colors hover:text-foreground"
+            className="arrow-link arrow-link--back inline-flex min-h-11 items-center classic:font-mono classic:text-xs classic:tracking-widest classic:text-muted-foreground classic:uppercase classic:transition-colors classic:hover:text-foreground"
           >
             All articles
           </Link>
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="article__byline classic:text-sm classic:text-muted-foreground">
           Written by {site.author}.
         </p>
         <ContactLinks muted />

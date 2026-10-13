@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { Article } from "@/lib/posts";
 
 export const site = {
   url: "https://marcomachado.dev",
@@ -60,4 +61,10 @@ export function formatDate(date: Date): string {
     day: "numeric",
     timeZone: "UTC",
   });
+}
+
+/** Estimated reading time in minutes, at 220 words per minute. */
+export function readingMinutes(article: Article): number {
+  const words = article.body.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 220));
 }

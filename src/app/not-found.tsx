@@ -2,20 +2,20 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="py-16 text-center">
-      <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+    <div className="not-found classic:py-16 classic:text-center">
+      <p className="not-found__code classic:font-mono classic:text-xs classic:tracking-widest classic:text-muted-foreground classic:uppercase">
         404
       </p>
-      <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight">
+      <h1 className="not-found__title classic:mt-3 classic:font-serif classic:text-4xl classic:font-semibold classic:tracking-tight">
         Page not found
       </h1>
-      <p className="mt-4 text-muted-foreground">
+      <p className="not-found__text classic:mt-4 classic:text-muted-foreground">
         The page you are looking for does not exist or has moved.
       </p>
-      <p className="mt-8">
+      <p className="not-found__action classic:mt-8">
         <Link
           href="/"
-          className="text-primary underline decoration-1 underline-offset-4 hover:decoration-2"
+          className="arrow-link classic:text-primary classic:underline classic:decoration-1 classic:underline-offset-4 classic:hover:decoration-2"
         >
           Back to the home page
         </Link>

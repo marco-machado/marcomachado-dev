@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { ArrowUpRightIcon } from "lucide-react";
 import { aiTools } from "@/lib/data";
 import { pageAlternates } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
+import { SectionHead } from "@/components/section-head";
 
 const description = "AI tools and coding agents I use regularly.";
 
@@ -13,31 +15,44 @@ export const metadata: Metadata = {
 
 export default function AiToolsPage() {
   return (
-    <div>
-      <PageHeader title="AI Tools" description={description} />
-      <div className="space-y-12">
-        {aiTools.map((section) => (
-          <section key={section.id} aria-labelledby={`ai-${section.id}`}>
-            <h2
+    <div className="page page--ai-tools">
+      <PageHeader
+        title="AI Tools"
+        description={description}
+        eyebrow="Agents & plugins"
+        command="ls ~/ai-tools"
+      />
+      <div className="page-sections classic:space-y-12">
+        {aiTools.map((section, index) => (
+          <section
+            key={section.id}
+            className="tool-section"
+            aria-labelledby={`ai-${section.id}`}
+          >
+            <SectionHead
               id={`ai-${section.id}`}
-              className="mb-4 border-b pb-3 font-mono text-xs tracking-widest text-muted-foreground uppercase"
-            >
-              {section.title}
-            </h2>
-            <ul className="space-y-4">
+              index={String(index + 1).padStart(2, "0")}
+              title={section.title}
+            />
+            <ul className="tool-list classic:space-y-4">
               {section.tools.map((tool) => (
-                <li key={tool.name}>
+                <li key={tool.name} className="tool-item">
                   <a
                     href={tool.href}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={`${tool.name} (opens in a new tab)`}
-                    className="font-serif text-lg font-semibold tracking-tight transition-colors hover:text-primary"
+                    className="tool-item__name classic:font-serif classic:text-lg classic:font-semibold classic:tracking-tight classic:transition-colors classic:hover:text-primary"
                   >
                     {tool.name}
                     <span className="sr-only"> (opens in a new tab)</span>
+                    <ArrowUpRightIcon
+                      className="tool-item__icon classic:hidden"
+                      aria-hidden="true"
+                    />
                   </a>
-                  <p className="text-sm text-muted-foreground">{tool.note}</p>
+                  <p className="tool-item__note classic:text-sm classic:text-muted-foreground">
+                    {tool.note}
+                  </p>
                 </li>
               ))}
             </ul>

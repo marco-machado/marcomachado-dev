@@ -1,25 +1,30 @@
 import type { KvSectionData } from "@/lib/data";
+import { SectionHead } from "@/components/section-head";
 
-export function KvSection({ section }: { section: KvSectionData }) {
+interface KvSectionProps {
+  section: KvSectionData;
+  /** Section number shown by numbered themes ("01"). */
+  index?: string;
+}
+
+export function KvSection({ section, index }: KvSectionProps) {
   return (
-    <section aria-labelledby={`kv-${section.id}`}>
-      <h2
-        id={`kv-${section.id}`}
-        className="mb-4 border-b pb-3 font-mono text-xs tracking-widest text-muted-foreground uppercase"
-      >
-        {section.title}
-      </h2>
-      <dl className="space-y-2.5">
+    <section className="kv-section" aria-labelledby={`kv-${section.id}`}>
+      <SectionHead id={`kv-${section.id}`} index={index} title={section.title} />
+      <dl className="kv-list classic:space-y-2.5">
         {section.rows.map((row) => (
           <div
             key={row.key}
-            className="grid grid-cols-1 gap-1 text-sm sm:grid-cols-[10rem_1fr] sm:gap-4"
+            className="kv-row classic:grid classic:grid-cols-1 classic:gap-1 classic:text-sm classic:sm:grid-cols-[10rem_1fr] classic:sm:gap-4"
           >
-            <dt className="text-muted-foreground">{row.key}</dt>
-            <dd>
+            <dt className="kv-row__key classic:text-muted-foreground">{row.key}</dt>
+            <dd className="kv-row__val">
               {row.val}
               {row.note ? (
-                <span className="text-muted-foreground"> · {row.note}</span>
+                <span className="kv-row__note classic:text-muted-foreground">
+                  {" "}
+                  · {row.note}
+                </span>
               ) : null}
             </dd>
           </div>

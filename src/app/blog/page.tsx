@@ -17,14 +17,21 @@ export default function BlogPage() {
   const articles = getPublishedArticles();
 
   return (
-    <div>
-      <PageHeader title="Articles" description={description} />
+    <div className="page page--blog">
+      <PageHeader
+        title="Articles"
+        description={description}
+        eyebrow="Writing"
+        command="ls ~/writing"
+      />
       {articles.length === 0 ? (
-        <p className="text-muted-foreground">No articles yet. Check back soon.</p>
+        <p className="classic:text-muted-foreground">
+          No articles yet. Check back soon.
+        </p>
       ) : (
-        <div className="divide-y">
-          {articles.map((article) => (
-            <ArticleRow key={article.slug} article={article} />
+        <div className="article-list classic:divide-y">
+          {articles.map((article, index) => (
+            <ArticleRow key={article.slug} article={article} seed={index} />
           ))}
         </div>
       )}
