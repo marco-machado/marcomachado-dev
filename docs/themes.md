@@ -24,6 +24,7 @@ The nine new themes are dark only.
 - **Classic** keeps its look through Tailwind utilities behind the `classic:` variant, so they apply only to `dark` and `light`.
 - **The nine themes** are plain CSS in `src/styles/themes/<id>.css`, each scoped to `[data-theme="<id>"]`. They style the semantic classes and set the theme's tokens.
 - `<ThemeOnly themes={[...]}>` renders markup for some themes only (headline variants, hero art, terminal flourishes). It is hidden with `display: none` elsewhere and uses `display: contents` where active.
+- **Motion** lives in `src/styles/themes/motion.css`: a staggered hero entrance, slide-in scroll reveals (scroll-driven, no fade so text keeps its contrast), and one signature effect per theme. Page-to-page navigation animates through React's `<ViewTransition default="page">` in the root layout (`experimental.viewTransition`). All of it is off under `prefers-reduced-motion`.
 
 ## Shared components
 
