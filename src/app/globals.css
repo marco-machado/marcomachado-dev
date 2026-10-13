@@ -15,6 +15,7 @@
 @import "../styles/themes/core.css";
 @import "../styles/themes/cinematic.css";
 @import "../styles/themes/abstract.css";
+@import "../styles/themes/motion.css";
 
 /* Every theme but Classic light is dark. */
 @custom-variant dark (&:where([data-theme]:not([data-theme="light"]) *));
