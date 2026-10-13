@@ -1,3 +1,5 @@
+/// <reference types="react/canary" />
+import { ViewTransition } from "react";
 import type { Metadata } from "next";
 import { serif, sans, mono } from "@/lib/fonts";
 import { site } from "@/lib/site";
@@ -56,7 +58,7 @@ export default function RootLayout({
               id="main"
               className="site-main mx-auto w-full flex-1 classic:max-w-2xl classic:px-6 classic:py-12"
             >
-              {children}
+              <ViewTransition default="page">{children}</ViewTransition>
             </main>
             <SiteFooter />
           </div>
