@@ -1,8 +1,8 @@
 import { site } from "@/lib/site";
 
 /**
- * Homepage showcase content for the design themes. The site has no project
- * pages yet, so the projects and the quote are sample data; Classic hides them.
+ * Homepage showcase content. The site has no project pages yet, so the
+ * projects and the quote are sample data.
  */
 
 export type Project = {

@@ -1,33 +1,14 @@
 import { contactLinks } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-interface ContactLinksProps {
-  className?: string;
-  /** Quieter mono style for footer / About facts. */
-  muted?: boolean;
-}
-
-export function ContactLinks({ className, muted = false }: ContactLinksProps) {
+export function ContactLinks({ className }: { className?: string }) {
   return (
-    <ul
-      className={cn(
-        "contact-links flex flex-wrap items-center classic:gap-x-5",
-        muted
-          ? "contact-links--muted classic:font-mono classic:text-xs classic:text-muted-foreground"
-          : "classic:text-sm classic:text-muted-foreground",
-        className,
-      )}
-    >
+    <ul className={cn("contact-links flex flex-wrap items-center", className)}>
       {contactLinks.map((link) => (
         <li key={link.href}>
           <a
             href={link.href}
-            className={cn(
-              "contact-links__link inline-flex min-h-11 items-center classic:transition-colors classic:hover:text-foreground",
-              muted
-                ? null
-                : "classic:text-primary classic:underline classic:decoration-1 classic:underline-offset-4 classic:hover:decoration-2",
-            )}
+            className="contact-links__link inline-flex min-h-11 items-center"
             {...(link.href.startsWith("http")
               ? { rel: "noopener noreferrer", target: "_blank" }
               : {})}

@@ -26,29 +26,28 @@ export default function AboutPage() {
       <PageHeader
         title="About me"
         description={description}
-        eyebrow="About"
         command="cat about.md"
       />
-      <div className="about classic:grid classic:gap-8 classic:sm:grid-cols-[180px_1fr] classic:sm:gap-10">
+      <div className="about">
         <div className="about__aside">
           <Image
             src="/images/portrait.webp"
             alt="Marco Machado"
             width={720}
             height={960}
-            className="about__portrait classic:mx-auto classic:aspect-3/4 classic:w-32 classic:rounded-lg classic:border classic:object-cover classic:sm:mx-0 classic:sm:w-full"
+            className="about__portrait"
           />
-          <dl className="about__facts classic:mt-5 classic:space-y-1 classic:font-mono classic:text-xs classic:text-muted-foreground">
+          <dl className="about__facts">
             {facts.map((fact) => (
-              <div key={fact.label} className="about__fact classic:flex classic:gap-2">
-                <dt className="classic:uppercase">{fact.label}</dt>
+              <div key={fact.label} className="about__fact">
+                <dt>{fact.label}</dt>
                 <dd>{fact.value}</dd>
               </div>
             ))}
           </dl>
-          <ContactLinks muted className="about__contact classic:mt-4" />
+          <ContactLinks className="about__contact" />
         </div>
-        <div className="about__body prose-body classic:space-y-5 classic:leading-relaxed">
+        <div className="about__body">
           <p>
             I’m a software engineer. I work remote from Brazil and have been
             shipping web apps since 2014.

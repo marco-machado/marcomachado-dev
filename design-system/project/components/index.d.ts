@@ -52,8 +52,6 @@ export declare function MainNav(): React.JSX.Element;
 
 export interface ContactLinksProps {
   className?: string;
-  /** Quieter mono style for footer / About facts. */
-  muted?: boolean;
 }
 export declare function ContactLinks(props: ContactLinksProps): React.JSX.Element;
 

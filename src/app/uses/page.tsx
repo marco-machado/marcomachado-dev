@@ -19,16 +19,11 @@ export default function UsesPage() {
       <PageHeader
         title="Uses"
         description={description}
-        eyebrow="Toolkit"
         command="cat uses.md"
       />
-      <div className="page-sections classic:space-y-12">
-        {uses.map((section, index) => (
-          <KvSection
-            key={section.id}
-            section={section}
-            index={String(index + 1).padStart(2, "0")}
-          />
+      <div className="page-sections">
+        {uses.map((section) => (
+          <KvSection key={section.id} section={section} />
         ))}
       </div>
     </div>

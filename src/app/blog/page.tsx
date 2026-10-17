@@ -21,15 +21,12 @@ export default function BlogPage() {
       <PageHeader
         title="Articles"
         description={description}
-        eyebrow="Writing"
         command="ls ~/writing"
       />
       {articles.length === 0 ? (
-        <p className="classic:text-muted-foreground">
-          No articles yet. Check back soon.
-        </p>
+        <p>No articles yet. Check back soon.</p>
       ) : (
-        <div className="article-list classic:divide-y">
+        <div className="article-list">
           {articles.map((article, index) => (
             <ArticleRow key={article.slug} article={article} seed={index} />
           ))}

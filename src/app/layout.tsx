@@ -53,7 +53,7 @@ export default function RootLayout({
           <SiteHeader />
           <main
             id="main"
-            className="site-main mx-auto w-full flex-1 classic:max-w-2xl classic:px-6 classic:py-12"
+            className="site-main mx-auto w-full flex-1"
           >
             <ViewTransition default="page">{children}</ViewTransition>
           </main>

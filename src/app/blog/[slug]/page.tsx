@@ -13,7 +13,6 @@ import {
 } from "@/lib/site";
 import { Art } from "@/components/art";
 import { ContactLinks } from "@/components/contact-links";
-import { ThemeOnly } from "@/components/theme-only";
 
 type Params = { slug: string };
 
@@ -62,22 +61,18 @@ export default async function ArticlePage({
 
   return (
     <article className="article">
-      <header className="article__header classic:mb-10">
-        <p className="article__back classic:mb-6">
+      <header className="article__header">
+        <p className="article__back">
           <Link
             href="/blog/"
-            className="arrow-link arrow-link--back inline-flex min-h-11 items-center classic:font-mono classic:text-xs classic:tracking-widest classic:text-muted-foreground classic:uppercase classic:transition-colors classic:hover:text-foreground"
+            className="arrow-link arrow-link--back inline-flex min-h-11 items-center"
           >
             All articles
           </Link>
         </p>
-        <h1 className="article__title classic:font-serif classic:text-4xl classic:font-semibold classic:tracking-tight classic:text-balance">
-          {article.title}
-        </h1>
-        <p className="article__desc classic:mt-3 classic:text-lg classic:text-muted-foreground">
-          {article.description}
-        </p>
-        <p className="article__meta classic:mt-4 classic:font-mono classic:text-xs classic:text-muted-foreground">
+        <h1 className="article__title">{article.title}</h1>
+        <p className="article__desc">{article.description}</p>
+        <p className="article__meta">
           <time dateTime={article.pubDate.toISOString().slice(0, 10)}>
             {formatDate(article.pubDate)}
           </time>
@@ -90,10 +85,8 @@ export default async function ArticlePage({
               </time>
             </>
           ) : null}
-          <ThemeOnly as="span" except={["classic"]}>
-            {" · "}
-            {readingMinutes(article)} min read
-          </ThemeOnly>
+          {" · "}
+          {readingMinutes(article)} min read
           {article.tags.length > 0 ? (
             <> · {article.tags.map(formatTag).join(", ")}</>
           ) : null}
@@ -104,32 +97,30 @@ export default async function ArticlePage({
             alt={article.coverImageAlt ?? ""}
             width={1440}
             height={810}
-            className="article__cover classic:mt-8 classic:w-full classic:rounded-lg classic:border"
+            className="article__cover"
             priority
           />
         ) : (
-          <ThemeOnly except={["classic"]}>
-            <Art seed={2} className="article__cover article__cover--art" />
-          </ThemeOnly>
+          <Art seed={2} className="article__cover article__cover--art" />
         )}
       </header>
       <div
         className="article-content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
-      <footer className="article__footer classic:mt-12 classic:space-y-4 classic:border-t classic:pt-8">
+      <footer className="article__footer">
         <p>
           <Link
             href="/blog/"
-            className="arrow-link arrow-link--back inline-flex min-h-11 items-center classic:font-mono classic:text-xs classic:tracking-widest classic:text-muted-foreground classic:uppercase classic:transition-colors classic:hover:text-foreground"
+            className="arrow-link arrow-link--back inline-flex min-h-11 items-center"
           >
             All articles
           </Link>
         </p>
-        <p className="article__byline classic:text-sm classic:text-muted-foreground">
+        <p className="article__byline">
           Written by {site.author}.
         </p>
-        <ContactLinks muted />
+        <ContactLinks />
       </footer>
     </article>
   );
