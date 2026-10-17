@@ -20,7 +20,6 @@ export const heroLead =
 export const heroMeta = [
   { label: "Location", value: "Remote, Brazil" },
   { label: "Focus", value: "Web apps · Dev tools · AI" },
-  { label: "Since", value: "2014" },
 ];
 
 /** A short pick from Uses and AI Tools. */

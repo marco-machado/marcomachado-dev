@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const facts = [
   { label: "Name", value: "Marco Machado" },
   { label: "Role", value: "Software Engineer" },
-  { label: "Base", value: "Brazil, remote" },
+  { label: "Location", value: "Remote, Brazil" },
   { label: "Since", value: "2014" },
 ];
 
