@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { aiTools } from "@/lib/data";
-import { pageAlternates } from "@/lib/site";
+import { pageAlternates, slugify } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
+import { SectionHead } from "@/components/section-head";
+import { ExternalLink } from "@/components/external-link";
 
 const description = "AI tools and coding agents I use regularly.";
 
@@ -13,31 +15,31 @@ export const metadata: Metadata = {
 
 export default function AiToolsPage() {
   return (
-    <div>
-      <PageHeader title="AI Tools" description={description} />
-      <div className="space-y-12">
+    <div className="page page--ai-tools">
+      <PageHeader
+        title="AI Tools"
+        description={description}
+        command="ls ~/ai-tools"
+      />
+      <div className="page-sections">
         {aiTools.map((section) => (
-          <section key={section.id} aria-labelledby={`ai-${section.id}`}>
-            <h2
-              id={`ai-${section.id}`}
-              className="mb-4 border-b pb-3 font-mono text-xs tracking-widest text-muted-foreground uppercase"
-            >
-              {section.title}
-            </h2>
-            <ul className="space-y-4">
+          <section
+            key={section.id}
+            className="tool-section"
+            aria-labelledby={`ai-${section.id}`}
+          >
+            <SectionHead id={`ai-${section.id}`} title={section.title} />
+            <ul className="tool-list">
               {section.tools.map((tool) => (
-                <li key={tool.name}>
-                  <a
+                <li key={tool.name} className="tool-item card">
+                  <ExternalLink
+                    id={slugify(tool.name)}
                     href={tool.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`${tool.name} (opens in a new tab)`}
-                    className="font-serif text-lg font-semibold tracking-tight transition-colors hover:text-primary"
+                    className="tool-item__name card__link"
                   >
                     {tool.name}
-                    <span className="sr-only"> (opens in a new tab)</span>
-                  </a>
-                  <p className="text-sm text-muted-foreground">{tool.note}</p>
+                  </ExternalLink>
+                  <p className="tool-item__note">{tool.note}</p>
                 </li>
               ))}
             </ul>

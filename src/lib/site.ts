@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { Article } from "@/lib/posts";
 
 export const site = {
   url: "https://marcomachado.dev",
@@ -30,6 +31,14 @@ export const contactLinks = [
   { label: "Instagram", href: site.instagram },
 ] as const;
 
+/** Fragment id for a tool or product name: "VS Code" -> "vs-code". */
+export function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 /** Turn kebab-case tag slugs into human words for display. */
 export function formatTag(tag: string): string {
   return tag
@@ -60,4 +69,10 @@ export function formatDate(date: Date): string {
     day: "numeric",
     timeZone: "UTC",
   });
+}
+
+/** Estimated reading time in minutes, at 220 words per minute. */
+export function readingMinutes(article: Article): number {
+  const words = article.body.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 220));
 }

@@ -1,0 +1,139 @@
+/*
+ * Motion, CSS only: the hero types itself in, sections slide in on scroll,
+ * and pages animate between routes. Uses opacity and the individual
+ * translate property so it composes with the transforms in site.css.
+ * Reduced motion skips all of it.
+ */
+@layer site {
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Hero entrance: the headline types itself out, then the rest rises in */
+    .hero__title {
+      animation:
+        motion-type 1.1s steps(18, end) 0.15s both,
+        motion-fade 0.01s both;
+    }
+
+    .hero__lead,
+    .hero__prompts,
+    .hero-meta,
+    .page-header {
+      animation: motion-rise 0.9s var(--motion-ease) both;
+    }
+
+    .hero__lead {
+      animation-delay: 0.2s;
+    }
+
+    .hero__prompts {
+      animation-delay: 0.32s;
+    }
+
+    .hero-meta {
+      animation-delay: 0.44s;
+    }
+
+    .hero__prompts li {
+      animation: motion-rise 0.5s var(--motion-ease) both;
+    }
+
+    .hero__prompts li:nth-child(1) {
+      animation-delay: 1.3s;
+    }
+
+    .hero__prompts li:nth-child(2) {
+      animation-delay: 1.4s;
+    }
+
+    .hero__prompts li:nth-child(3) {
+      animation-delay: 1.5s;
+    }
+
+    /* Where the headline wraps, typing would reveal both lines at once: rise in instead */
+    @media (max-width: 24rem) {
+      .hero__title {
+        animation: motion-rise 0.9s var(--motion-ease) 0.08s both;
+      }
+    }
+
+    /* Scroll reveals, where the browser supports scroll-driven animation.
+       Slide only: a fade would leave text below contrast while it enters. */
+    @supports (animation-timeline: view()) {
+      .section-head,
+      .project-card,
+      .article-row,
+      .tool-strip li,
+      .contact-block__title,
+      .contact-block__text,
+      .contact-block__actions,
+      .kv-section,
+      .tool-item {
+        animation: motion-slide linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 70%;
+      }
+    }
+
+    .btn,
+    .card {
+      transition-timing-function: var(--motion-ease);
+    }
+  }
+}
+
+@keyframes motion-rise {
+  from {
+    opacity: 0;
+    translate: 0 1rem;
+  }
+}
+
+@keyframes motion-slide {
+  from {
+    translate: 0 2rem;
+  }
+}
+
+@keyframes motion-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes motion-type {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Page transitions (React <ViewTransition default="page"> in the root layout) */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(.page) {
+    animation: page-out 0.18s ease-in both;
+  }
+
+  ::view-transition-new(.page) {
+    animation: page-in 0.38s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
+  }
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+    translate: 0 -0.5rem;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    translate: 0 0.75rem;
+  }
+}

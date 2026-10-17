@@ -15,7 +15,13 @@ export declare function Button(props: ButtonProps): React.JSX.Element;
 
 export interface PageHeaderProps {
   title: string;
-  description?: string;
+  description?: React.ReactNode;
+  /** Shell command printed above the title. */
+  command?: string;
+  /** What the command printed, shown under it. */
+  output?: string;
+  /** Extra header content after the description. */
+  children?: React.ReactNode;
 }
 export declare function PageHeader(props: PageHeaderProps): React.JSX.Element;
 
@@ -35,13 +41,14 @@ export interface ArticleRowProps {
 }
 export declare function ArticleRow(props: ArticleRowProps): React.JSX.Element;
 
-export interface KvRow { key: string; val: string; note?: string }
+export interface KvItem { name: string; href: string }
+export interface KvRow { key: string; items: KvItem[]; note?: string }
 export interface KvSectionData { id: string; title: string; rows: KvRow[] }
 export interface KvSectionProps { section: KvSectionData }
 export declare function KvSection(props: KvSectionProps): React.JSX.Element;
 
 export interface ArticleContentProps {
-  /** HTML from renderMarkdown() (unified + remark-gfm + Shiki dual themes). */
+  /** HTML from renderMarkdown() (unified + remark-gfm + Shiki, github-dark). */
   html: string;
   className?: string;
 }
@@ -52,13 +59,8 @@ export declare function MainNav(): React.JSX.Element;
 
 export interface ContactLinksProps {
   className?: string;
-  /** Quieter mono style for footer / About facts. */
-  muted?: boolean;
 }
 export declare function ContactLinks(props: ContactLinksProps): React.JSX.Element;
-
-/** No props: toggles light/dark through next-themes. */
-export declare function ThemeToggle(): React.JSX.Element;
 
 /** No props. */
 export declare function SiteHeader(): React.JSX.Element;
