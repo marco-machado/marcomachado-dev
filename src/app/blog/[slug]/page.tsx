@@ -12,6 +12,7 @@ import {
   site,
 } from "@/lib/site";
 import { ContactLinks } from "@/components/contact-links";
+import { PageHeader } from "@/components/page-header";
 
 type Params = { slug: string };
 
@@ -60,17 +61,19 @@ export default async function ArticlePage({
 
   return (
     <article className="article">
-      <header className="article__header">
-        <p className="article__back">
-          <Link
-            href="/blog/"
-            className="arrow-link arrow-link--back inline-flex min-h-11 items-center"
-          >
-            All articles
-          </Link>
-        </p>
-        <h1 className="article__title">{article.title}</h1>
-        <p className="article__desc">{article.description}</p>
+      <p className="article__back">
+        <Link
+          href="/blog/"
+          className="arrow-link arrow-link--back inline-flex min-h-11 items-center"
+        >
+          All articles
+        </Link>
+      </p>
+      <PageHeader
+        title={article.title}
+        description={article.description}
+        command={`cat ${article.slug}.md`}
+      >
         <p className="article__meta">
           <time dateTime={article.pubDate.toISOString().slice(0, 10)}>
             {formatDate(article.pubDate)}
@@ -100,7 +103,7 @@ export default async function ArticlePage({
             priority
           />
         ) : null}
-      </header>
+      </PageHeader>
       <div
         className="article-content"
         dangerouslySetInnerHTML={{ __html: html }}

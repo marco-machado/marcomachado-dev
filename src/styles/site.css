@@ -216,24 +216,28 @@
   }
 
   .hero__prompts {
-    display: grid;
     margin-top: 2rem;
   }
 
-  .hero__prompts a {
+  /* Links listed as shell prompts (hero, 404) */
+  .prompt-list {
+    display: grid;
+  }
+
+  .prompt-list a {
     display: inline-flex;
     align-items: center;
     min-height: 2.25rem;
     font-size: var(--text-base);
   }
 
-  .hero__prompts a::before {
+  .prompt-list a::before {
     content: ">";
     margin-right: 0.85rem;
     color: var(--primary);
   }
 
-  .hero__prompts a:hover {
+  .prompt-list a:hover {
     color: var(--primary);
   }
 
@@ -523,12 +527,19 @@
 
   .page-header__cmd {
     margin-bottom: 1.25rem;
+    overflow-wrap: anywhere;
     font-size: var(--text-sm);
     color: var(--muted-foreground);
   }
 
   .page-header__prompt {
     color: var(--primary);
+  }
+
+  .page-header__output {
+    margin: -0.75rem 0 1.25rem;
+    font-size: var(--text-sm);
+    color: var(--muted-foreground);
   }
 
   .page-header__title {
@@ -538,8 +549,7 @@
     text-wrap: balance;
   }
 
-  .page-header__title::before,
-  .not-found__title::before {
+  .page-header__title::before {
     content: "> ";
     color: var(--muted-foreground);
   }
@@ -731,26 +741,16 @@
     margin: 0 auto;
   }
 
-  .article__header {
+  .article__back {
+    margin-bottom: 1rem;
+  }
+
+  .article .page-header {
     margin-bottom: 3rem;
   }
 
-  .article__back {
-    margin-bottom: 2rem;
-  }
-
-  .article__title {
-    font-size: var(--text-display);
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-    text-wrap: balance;
-  }
-
-  .article__desc {
-    margin-top: 1.25rem;
-    font-size: var(--text-md);
-    line-height: 1.55;
-    color: var(--muted-foreground);
+  .page--not-found .page-header {
+    margin-bottom: 1.5rem;
   }
 
   .article__meta {
@@ -782,30 +782,6 @@
 
   .article__byline {
     font-size: var(--text-base);
-    color: var(--muted-foreground);
-  }
-
-  .not-found {
-    display: grid;
-    justify-items: center;
-    gap: 1rem;
-    padding: 6rem 0;
-    text-align: center;
-  }
-
-  .not-found__code {
-    font-size: var(--text-sm);
-    letter-spacing: 0.02em;
-    color: var(--muted-foreground);
-  }
-
-  .not-found__title {
-    font-size: var(--text-display);
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-  }
-
-  .not-found__text {
     color: var(--muted-foreground);
   }
 

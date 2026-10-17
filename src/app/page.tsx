@@ -31,7 +31,7 @@ function Hero() {
 
         <p className="hero__lead">{heroLead}</p>
 
-        <ul className="hero__prompts">
+        <ul className="hero__prompts prompt-list">
           {projects.length > 0 ? (
             <li>
               <a href="#work">view work</a>
