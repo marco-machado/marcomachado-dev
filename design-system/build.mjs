@@ -68,6 +68,7 @@ async function buildBundle() {
     "react-dom": shim("react-dom.cjs"),
     "react/jsx-runtime": shim("jsx-runtime.cjs"),
     "react/jsx-dev-runtime": shim("jsx-runtime.cjs"),
+    "next/image": shim("next-image.js"),
     "next/link": shim("next-link.js"),
     "next/navigation": shim("next-navigation.js"),
   };
