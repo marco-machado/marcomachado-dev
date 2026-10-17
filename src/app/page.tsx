@@ -38,7 +38,7 @@ function Hero() {
             </li>
           ) : null}
           <li>
-            <Link href="/blog/">read writing</Link>
+            <Link href="/blog/">read the blog</Link>
           </li>
           <li>
             <a href={`mailto:${site.email}`}>get in touch</a>
@@ -80,16 +80,16 @@ export default function HomePage() {
         </section>
       ) : null}
 
-      <section className="home-section writing" aria-labelledby="recent-writing">
+      <section className="home-section latest" aria-labelledby="latest-articles">
         <SectionHead
-          id="recent-writing"
-          title="Latest writing"
+          id="latest-articles"
+          title="Latest articles"
           more={{ label: "View all", href: "/blog/" }}
         />
         {articles.length === 0 ? (
           <p>No articles yet. Check back soon.</p>
         ) : (
-          <div className="writing-list">
+          <div className="article-list">
             {articles.map((article) => (
               <ArticleRow key={article.slug} article={article} headingLevel="h3" />
             ))}

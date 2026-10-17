@@ -308,8 +308,7 @@
   }
 
   /* Article rows (home, blog) */
-  .article-list,
-  .writing-list {
+  .article-list {
     display: grid;
     gap: 1.5rem;
   }

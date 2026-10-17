@@ -19,9 +19,9 @@ export default function BlogPage() {
   return (
     <div className="page page--blog">
       <PageHeader
-        title="Articles"
+        title="Blog"
         description={description}
-        command="ls ~/writing"
+        command="ls ~/blog"
       />
       {articles.length === 0 ? (
         <p>No articles yet. Check back soon.</p>
