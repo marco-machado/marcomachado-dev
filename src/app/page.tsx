@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { ArrowRightIcon } from "lucide-react";
 import { getPublishedArticles } from "@/lib/posts";
 import { pageAlternates, site } from "@/lib/site";
-import { heroLead, heroMeta, projects, quote, toolPicks } from "@/lib/showcase";
+import { heroLead, heroMeta, projects, toolPicks } from "@/lib/showcase";
 import { ArticleRow } from "@/components/article-row";
 import { ContactLinks } from "@/components/contact-links";
 import { ProjectCard } from "@/components/project-card";
@@ -32,9 +32,11 @@ function Hero() {
         <p className="hero__lead">{heroLead}</p>
 
         <ul className="hero__prompts">
-          <li>
-            <a href="#work">view work</a>
-          </li>
+          {projects.length > 0 ? (
+            <li>
+              <a href="#work">view work</a>
+            </li>
+          ) : null}
           <li>
             <Link href="/blog/">read writing</Link>
           </li>
@@ -48,12 +50,7 @@ function Hero() {
         {heroMeta.map((row) => (
           <div key={row.label} className="hero-meta__row">
             <dt>{row.label}</dt>
-            <dd>
-              {row.live ? (
-                <span className="status-dot" aria-hidden="true" />
-              ) : null}
-              {row.value}
-            </dd>
+            <dd>{row.value}</dd>
           </div>
         ))}
       </dl>
@@ -68,18 +65,20 @@ export default function HomePage() {
     <div className="home">
       <Hero />
 
-      <section id="work" className="home-section work" aria-labelledby="work-title">
-        <SectionHead
-          id="work-title"
-          title="Selected work"
-          more={{ label: "View all", href: site.github }}
-        />
-        <div className="work-list">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
-          ))}
-        </div>
-      </section>
+      {projects.length > 0 ? (
+        <section id="work" className="home-section work" aria-labelledby="work-title">
+          <SectionHead
+            id="work-title"
+            title="Selected work"
+            more={{ label: "View all", href: site.github }}
+          />
+          <div className="work-list">
+            {projects.map((project, index) => (
+              <ProjectCard key={project.title} project={project} index={index} />
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="home-section writing" aria-labelledby="recent-writing">
         <SectionHead
@@ -119,12 +118,6 @@ export default function HomePage() {
           ))}
         </ul>
       </section>
-
-      <figure className="quote-band">
-        <blockquote>
-          <p>{quote}</p>
-        </blockquote>
-      </figure>
 
       <section className="home-section contact-block" aria-labelledby="contact-title">
         <SectionHead id="contact-title" title="Let's connect" />

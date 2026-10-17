@@ -27,6 +27,6 @@ It started as one of ten themes behind a header picker. The picker, the Classic 
 
 All of it is off under `prefers-reduced-motion`.
 
-## Sample data
+## Selected work
 
-The site has no projects yet, so `src/lib/showcase.ts` holds two sample projects and the quote.
+The site has no projects to show yet. `projects` in `src/lib/showcase.ts` is empty; the home page's Selected work section and the hero's "view work" prompt appear once it has entries.

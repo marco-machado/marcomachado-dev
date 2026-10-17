@@ -73,16 +73,6 @@
     animation: cursor-blink 1.1s steps(1) infinite;
   }
 
-  .status-dot {
-    display: inline-block;
-    width: 0.5rem;
-    height: 0.5rem;
-    margin-right: 0.5rem;
-    border-radius: 999px;
-    background: oklch(0.78 0.17 150);
-    box-shadow: 0 0 0.6rem oklch(0.78 0.17 150 / 0.7);
-  }
-
   .btn {
     display: inline-flex;
     align-items: center;
@@ -405,25 +395,7 @@
     color: var(--primary);
   }
 
-  /* Quote and contact */
-  .quote-band {
-    max-width: 44rem;
-    margin: 0 auto;
-    padding-top: 3rem;
-    text-align: center;
-    font-size: 0.875rem;
-    line-height: 1.35;
-    color: var(--muted-foreground);
-  }
-
-  .quote-band p::before {
-    content: "\201C";
-  }
-
-  .quote-band p::after {
-    content: "\201D";
-  }
-
+  /* Contact */
   .contact-block {
     border-bottom: 0;
   }
