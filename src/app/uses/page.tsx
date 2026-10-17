@@ -3,6 +3,7 @@ import { uses } from "@/lib/data";
 import { pageAlternates } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
 import { KvSection } from "@/components/kv-section";
+import { ExternalLink } from "@/components/external-link";
 
 const description =
   "Tools, hardware, and software that I use daily. Inspired by uses.tech.";
@@ -18,7 +19,12 @@ export default function UsesPage() {
     <div className="page page--uses">
       <PageHeader
         title="Uses"
-        description={description}
+        description={
+          <>
+            Tools, hardware, and software that I use daily. Inspired by{" "}
+            <ExternalLink href="https://uses.tech/">uses.tech</ExternalLink>.
+          </>
+        }
         command="cat uses.md"
       />
       <div className="page-sections">

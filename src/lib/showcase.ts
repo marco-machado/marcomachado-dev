@@ -22,12 +22,12 @@ export const heroMeta = [
   { label: "Focus", value: "Web apps · Dev tools · AI" },
 ];
 
-/** A short pick from Uses and AI Tools. */
+/** A short pick from Uses and AI Tools; each links to its entry on that page. */
 export const toolPicks = [
-  { name: "Claude Code", href: "/ai-tools/" },
-  { name: "Codex", href: "/ai-tools/" },
-  { name: "PhpStorm", href: "/uses/" },
-  { name: "Warp", href: "/uses/" },
-  { name: "Notion", href: "/uses/" },
-  { name: "Raycast", href: "/uses/" },
+  { name: "Claude Code", page: "/ai-tools/" },
+  { name: "Codex", page: "/ai-tools/" },
+  { name: "PhpStorm", page: "/uses/" },
+  { name: "Warp", page: "/uses/" },
+  { name: "Notion", page: "/uses/" },
+  { name: "Raycast", page: "/uses/" },
 ];

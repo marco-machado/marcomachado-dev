@@ -1,6 +1,6 @@
 interface PageHeaderProps {
   title: string;
-  description?: string;
+  description?: React.ReactNode;
   /** Shell command printed above the title. */
   command?: string;
 }

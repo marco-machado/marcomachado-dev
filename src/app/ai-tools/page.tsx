@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { aiTools } from "@/lib/data";
-import { pageAlternates } from "@/lib/site";
+import { pageAlternates, slugify } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
 import { SectionHead } from "@/components/section-head";
 import { ExternalLink } from "@/components/external-link";
@@ -31,8 +31,12 @@ export default function AiToolsPage() {
             <SectionHead id={`ai-${section.id}`} title={section.title} />
             <ul className="tool-list">
               {section.tools.map((tool) => (
-                <li key={tool.name} className="tool-item">
-                  <ExternalLink href={tool.href} className="tool-item__name">
+                <li key={tool.name} className="tool-item card">
+                  <ExternalLink
+                    id={slugify(tool.name)}
+                    href={tool.href}
+                    className="tool-item__name card__link"
+                  >
                     {tool.name}
                   </ExternalLink>
                   <p className="tool-item__note">{tool.note}</p>

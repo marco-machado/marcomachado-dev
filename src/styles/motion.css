@@ -71,8 +71,7 @@
     }
 
     .btn,
-    .project-card,
-    .article-row__link {
+    .card {
       transition-timing-function: var(--motion-ease);
     }
   }

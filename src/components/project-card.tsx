@@ -10,12 +10,16 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const number = String(index + 1).padStart(2, "0");
 
   return (
-    <article className="project-card">
+    <article className="project-card card">
       <div className="project-card__body">
         <span className="project-card__index" aria-hidden="true">
           {number}
         </span>
-        <h3 className="project-card__title">{project.title}</h3>
+        <h3 className="project-card__title">
+          <ExternalLink href={project.href} className="card__link">
+            {project.title}
+          </ExternalLink>
+        </h3>
         <p className="project-card__desc">{project.description}</p>
         <ul className="project-card__tags" aria-label="Stack">
           {project.tags.map((tag) => (
@@ -24,10 +28,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </li>
           ))}
         </ul>
-        <ExternalLink href={project.href} className="project-card__link arrow-link">
-          View project
-          <span className="sr-only">: {project.title}</span>
-        </ExternalLink>
       </div>
     </article>
   );

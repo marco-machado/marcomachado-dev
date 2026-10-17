@@ -9,42 +9,41 @@ interface ArticleRowProps {
   headingLevel?: "h2" | "h3";
 }
 
-export function ArticleRow({
-  article,
-  headingLevel = "h2",
-}: ArticleRowProps) {
+export function ArticleRow({ article, headingLevel = "h2" }: ArticleRowProps) {
   const Heading = headingLevel;
 
   return (
-    <article className="article-row">
-      <Link href={`/blog/${article.slug}/`} className="article-row__link">
-        {article.coverImage ? (
-          <Image
-            src={article.coverImage}
-            alt=""
-            width={480}
-            height={360}
-            className="article-row__media"
-          />
-        ) : null}
-        <div className="article-row__body">
-          <p className="article-row__meta">
-            <time dateTime={article.pubDate.toISOString().slice(0, 10)}>
-              {formatDate(article.pubDate)}
-            </time>
-            <span className="article-row__sep" aria-hidden="true">
-              {" · "}
-            </span>
-            <span>{readingMinutes(article)} min read</span>
-          </p>
-          <Heading className="article-row__title">{article.title}</Heading>
-          <p className="article-row__desc">{article.description}</p>
-          <span className="article-row__cta arrow-link">
-            Read the article
-            <ArrowRightIcon className="arrow" aria-hidden="true" />
+    <article className="article-row card">
+      <div className="article-row__body">
+        <p className="article-row__meta">
+          <time dateTime={article.pubDate.toISOString().slice(0, 10)}>
+            {formatDate(article.pubDate)}
+          </time>
+          <span className="article-row__sep" aria-hidden="true">
+            {" · "}
           </span>
-        </div>
-      </Link>
+          <span>{readingMinutes(article)} min read</span>
+        </p>
+        <Heading className="article-row__title">
+          <Link href={`/blog/${article.slug}/`} className="card__link">
+            {article.title}
+          </Link>
+        </Heading>
+        <p className="article-row__desc">{article.description}</p>
+        <span className="article-row__cta arrow-link" aria-hidden="true">
+          Read the article
+          <ArrowRightIcon className="arrow" />
+        </span>
+      </div>
+      {article.coverImage ? (
+        <Image
+          src={article.coverImage}
+          alt=""
+          width={480}
+          height={360}
+          className="article-row__media"
+        />
+      ) : null}
     </article>
   );
 }

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRightIcon } from "lucide-react";
 import { getPublishedArticles } from "@/lib/posts";
-import { pageAlternates, site } from "@/lib/site";
+import { pageAlternates, site, slugify } from "@/lib/site";
 import { heroLead, heroMeta, projects, toolPicks } from "@/lib/showcase";
 import { ArticleRow } from "@/components/article-row";
 import { ContactLinks } from "@/components/contact-links";
@@ -106,7 +106,7 @@ export default function HomePage() {
         <ul className="tool-strip">
           {toolPicks.map((tool) => (
             <li key={tool.name}>
-              <Link href={tool.href} className="tool-strip__item">
+              <Link href={`${tool.page}#${slugify(tool.name)}`} className="tool-strip__item">
                 {tool.name}
               </Link>
             </li>

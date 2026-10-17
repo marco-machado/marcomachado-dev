@@ -21,6 +21,8 @@ It started as one of ten themes behind a header picker. The picker, the Classic 
 
 - Components carry semantic classes (`.site-header`, `.section-head`, `.project-card`, ...). `src/styles/site.css` styles them.
 - `site.css` sits in the `site` cascade layer, above Tailwind's utilities, so its rules win over utility classes on the same element. Utilities in the markup are layout glue and accessibility helpers (`sr-only`, the skip link).
+- Cards (article rows, project cards, AI tool cards) share one pattern: the title is the link and stretches over the whole card (`.card`, `.card__link`), so the card is clickable anywhere, the link is named by the title, and hover and focus mark the whole card.
+- Every Uses item and AI tool has an id from its name (`slugify`), so the home page's tool picks link straight to the entry, which is highlighted on arrival.
 - Links to other sites go through `<ExternalLink>`: they open in a new tab, carry a muted ↗ and tell screen readers so.
 - Link casing: nav and meta links (section "view all", hero prompts, "← all articles") are lowercase; calls to action ("Read the article", "Get in touch") are sentence case. Nothing is uppercase except small labels.
 - The shell flourishes are CSS pseudo-content: `/` before nav links, `//` before section titles, `>` before prompts and page titles, `$` before tools and commands, `##` before article subheadings.

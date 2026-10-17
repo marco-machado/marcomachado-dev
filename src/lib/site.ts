@@ -31,6 +31,14 @@ export const contactLinks = [
   { label: "Instagram", href: site.instagram },
 ] as const;
 
+/** Fragment id for a tool or product name: "VS Code" -> "vs-code". */
+export function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 /** Turn kebab-case tag slugs into human words for display. */
 export function formatTag(tag: string): string {
   return tag
