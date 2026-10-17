@@ -4,8 +4,8 @@
 const { KvSection } = window.MarcoMachado;
 const h = React.createElement;
 ReactDOM.createRoot(document.getElementById("root")).render(h(KvSection, { section: { id: "hardware", title: "Hardware", rows: [
-  { key: "Laptop", val: "MacBook Pro 16\u2033" },
-  { key: "Display", val: "LG 27US500-W" },
-  { key: "Keyboard", val: "Logitech MX Mechanical Mini", note: "Tactile" },
-  { key: "Mouse", val: "Logitech MX Master 3S" } ] } }));
+  { key: "Laptop", items: [{ name: "MacBook Pro 16\u2033", href: "https://www.apple.com/macbook-pro/" }] },
+  { key: "Display", items: [{ name: "LG 27US500-W", href: "https://www.lg.com/us/monitors/lg-27us500-w-4k-uhd-monitor" }] },
+  { key: "Keyboard", items: [{ name: "Logitech MX Mechanical Mini", href: "https://www.logitech.com/en-us/shop/p/mx-mechanical-mini" }], note: "Tactile" },
+  { key: "Mouse", items: [{ name: "Logitech MX Master 3S", href: "https://www.logitech.com/en-us/shop/p/mx-master-3s" }] } ] } }));
 </script>

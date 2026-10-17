@@ -25,14 +25,15 @@ It started as one of ten themes behind a header picker. The picker, the Classic 
 - Every Uses item and AI tool has an id from its name (`slugify`), so the home page's tool picks link straight to the entry, which is highlighted on arrival.
 - Links to other sites go through `<ExternalLink>`: they open in a new tab, carry a muted ↗ and tell screen readers so.
 - Link casing: nav and meta links (section "view all", hero prompts, "← all articles") are lowercase; calls to action ("Read the article", "Get in touch") are sentence case. Nothing is uppercase except small labels.
-- The shell flourishes are CSS pseudo-content: `/` before nav links, `//` before section titles, `>` before prompts and page titles, `$` before tools and commands, `##` before article subheadings.
+- The shell flourishes are CSS pseudo-content or prompt spans: `/` before nav links, `//` before section titles, `>` before prompts and page titles (wrapped title lines hang under the text), `$` before tools, commands and the RSS line, `-` before Uses keys, `##` before article subheadings.
 - Images are real or absent: article rows and the article page show an Article's Cover Image when it has one, and nothing otherwise. There is no placeholder art.
 
 ## Motion
 
 `src/styles/motion.css`, CSS only:
 
-- The hero rises in, the headline types itself out, and the prompts follow one by one.
+- The hero rises in, the headline types itself out (or rises in where it wraps, below 24rem), and the prompts follow one by one.
+- The hero cursor blinks four times, then stays lit (WCAG 2.2.2).
 - Sections, cards and rows slide in on scroll (scroll-driven animation, no fade, so text keeps its contrast).
 - Page-to-page navigation animates through React's `<ViewTransition default="page">` in the root layout (`experimental.viewTransition`).
 

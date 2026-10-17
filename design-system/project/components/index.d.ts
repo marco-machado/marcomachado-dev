@@ -15,7 +15,13 @@ export declare function Button(props: ButtonProps): React.JSX.Element;
 
 export interface PageHeaderProps {
   title: string;
-  description?: string;
+  description?: React.ReactNode;
+  /** Shell command printed above the title. */
+  command?: string;
+  /** What the command printed, shown under it. */
+  output?: string;
+  /** Extra header content after the description. */
+  children?: React.ReactNode;
 }
 export declare function PageHeader(props: PageHeaderProps): React.JSX.Element;
 
@@ -35,7 +41,8 @@ export interface ArticleRowProps {
 }
 export declare function ArticleRow(props: ArticleRowProps): React.JSX.Element;
 
-export interface KvRow { key: string; val: string; note?: string }
+export interface KvItem { name: string; href: string }
+export interface KvRow { key: string; items: KvItem[]; note?: string }
 export interface KvSectionData { id: string; title: string; rows: KvRow[] }
 export interface KvSectionProps { section: KvSectionData }
 export declare function KvSection(props: KvSectionProps): React.JSX.Element;
