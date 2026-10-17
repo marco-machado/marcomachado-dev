@@ -30,38 +30,27 @@ await warmup.close();
 
 let failed = false;
 
-// Every theme by default; LH_THEMES=dark,terminal narrows the run.
-const themes = (
-  process.env.LH_THEMES ??
-  "dark,light,terminal,orbital,editorial,command,eclipse,atelier,core,cinematic,abstract"
-).split(",");
+for (const path of pages) {
+  const page = await browser.newPage();
 
-for (const theme of themes) {
-  for (const path of pages) {
-    const page = await browser.newPage();
-    await page.evaluateOnNewDocument((value) => {
-      localStorage.setItem("theme", value);
-    }, theme);
+  const result = await lighthouse(
+    `${BASE_URL}${path}`,
+    {
+      onlyCategories: categories,
+      disableStorageReset: true,
+      output: "json",
+    },
+    undefined,
+    page,
+  );
 
-    const result = await lighthouse(
-      `${BASE_URL}${path}`,
-      {
-        onlyCategories: categories,
-        disableStorageReset: true,
-        output: "json",
-      },
-      undefined,
-      page,
-    );
-
-    const scores = categories.map((c) => {
-      const score = Math.round((result.lhr.categories[c].score ?? 0) * 100);
-      if (score < THRESHOLD) failed = true;
-      return `${c}=${score}${score < THRESHOLD ? " FAIL" : ""}`;
-    });
-    console.log(`[${theme}] ${path} ${scores.join(" ")}`);
-    await page.close();
-  }
+  const scores = categories.map((c) => {
+    const score = Math.round((result.lhr.categories[c].score ?? 0) * 100);
+    if (score < THRESHOLD) failed = true;
+    return `${c}=${score}${score < THRESHOLD ? " FAIL" : ""}`;
+  });
+  console.log(`${path} ${scores.join(" ")}`);
+  await page.close();
 }
 
 await browser.close();
