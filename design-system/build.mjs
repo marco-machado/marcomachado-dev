@@ -38,7 +38,7 @@ const SAMPLE_HEADING = "## Context as Infrastructure";
 const SAMPLE_PARAGRAPHS = 2;
 
 const ASSETS = {
-  "assets/Logos/mm-mark.svg": "public/favicon.svg",
+  "assets/Logos/prompt-mark.svg": "public/favicon.svg",
   "assets/Images/og-default.png": "public/images/og-default.png",
 };
 
