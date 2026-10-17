@@ -11,7 +11,7 @@ import {
   readingMinutes,
   site,
 } from "@/lib/site";
-import { ContactLinks } from "@/components/contact-links";
+import { Subscribe } from "@/components/subscribe";
 import { PageHeader } from "@/components/page-header";
 
 type Params = { slug: string };
@@ -58,6 +58,12 @@ export default async function ArticlePage({
   const article = getPublishedArticle(slug);
   if (!article) notFound();
   const html = await renderMarkdown(article.body);
+
+  // Published articles are sorted newest first.
+  const articles = getPublishedArticles();
+  const position = articles.findIndex((item) => item.slug === article.slug);
+  const newer = articles[position - 1];
+  const older = articles[position + 1];
 
   return (
     <article className="article">
@@ -109,6 +115,30 @@ export default async function ArticlePage({
         dangerouslySetInnerHTML={{ __html: html }}
       />
       <footer className="article__footer">
+        {older || newer ? (
+          <nav aria-label="More articles" className="article-nav">
+            {older ? (
+              <Link
+                href={`/blog/${older.slug}/`}
+                className="article-nav__link article-nav__link--older"
+              >
+                <span className="article-nav__label">← older</span>
+                <span className="article-nav__title">{older.title}</span>
+              </Link>
+            ) : null}
+            {newer ? (
+              <Link
+                href={`/blog/${newer.slug}/`}
+                className="article-nav__link article-nav__link--newer"
+              >
+                <span className="article-nav__label">newer →</span>
+                <span className="article-nav__title">{newer.title}</span>
+              </Link>
+            ) : null}
+          </nav>
+        ) : null}
+        <p className="article__byline">Written by {site.author}.</p>
+        <Subscribe />
         <p>
           <Link
             href="/blog/"
@@ -117,10 +147,6 @@ export default async function ArticlePage({
             All articles
           </Link>
         </p>
-        <p className="article__byline">
-          Written by {site.author}.
-        </p>
-        <ContactLinks />
       </footer>
     </article>
   );
