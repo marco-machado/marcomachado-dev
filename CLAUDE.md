@@ -10,6 +10,7 @@ Personal blog and portfolio built with Next.js (App Router, static export), Reac
 - `npm run typecheck` — Run TypeScript checks (blocking quality check)
 - `npm run lighthouse` — Lighthouse across pages (`CHROME_PATH` picks the browser)
 - `node scripts/screenshots.mjs <outDir> [paths] [widths]` — Full-page screenshots against a running server
+- `node scripts/brand-assets.mjs` — Render `public/favicon.ico` and the site-wide Social Image (`public/images/og-default.png`) from `public/favicon.svg` and the template in the script
 - `npm run design-system` — Build the design system artifact files to `design-system/dist/project` (see `design-system/README.md`)
 
 ## Hosting / Deployment

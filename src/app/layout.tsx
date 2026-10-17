@@ -1,6 +1,6 @@
 /// <reference types="react/canary" />
 import { ViewTransition } from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { mono } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
@@ -30,6 +30,17 @@ export const metadata: Metadata = {
       "application/rss+xml": "/rss.xml",
     },
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#080c0b",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({

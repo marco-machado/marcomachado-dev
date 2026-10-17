@@ -10,6 +10,12 @@ It started as one of ten themes behind a header picker. The picker, the Classic 
 - One typeface: IBM Plex Mono (400 and 600), self-hosted, for every piece of text.
 - The root font size is 15px, so rem values run a little smaller than the browser default.
 
+## Brand assets
+
+- `public/favicon.svg` is the mark: a green `>_` prompt on the background colour.
+- `node scripts/brand-assets.mjs` renders `public/favicon.ico` from it and draws the site-wide Social Image, `public/images/og-default.png`, from a template in the script. Re-run it after changing either.
+- The layout links both icons and sets `theme-color` to the background colour.
+
 ## How it is styled
 
 - Components carry semantic classes (`.site-header`, `.section-head`, `.project-card`, ...). `src/styles/site.css` styles them.
