@@ -9,6 +9,7 @@ It started as one of ten themes behind a header picker. The picker, the Classic 
 - Colours live in `src/app/globals.css` on `:root` (oklch, shadcn names) and map to Tailwind through `@theme inline`. All text pairs meet WCAG 4.5:1.
 - One typeface: IBM Plex Mono (400 and 600), self-hosted, for every piece of text.
 - The root font size is 15px, so rem values run a little smaller than the browser default.
+- Six text sizes, as `--text-*` tokens in `globals.css`: `xs` 12px (dates, tags, labels), `sm` 13.5px (nav, links, secondary text), `base` 15px (all running text, articles included), `md` ~17px (card and section titles, ledes), `lg` 22.5px (subheadings) and `display` 30–41px (page titles). Use a token, never a literal size.
 
 ## Brand assets
 
