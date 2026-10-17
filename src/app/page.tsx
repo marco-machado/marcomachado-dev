@@ -5,7 +5,6 @@ import { getPublishedArticles } from "@/lib/posts";
 import { pageAlternates, site, slugify } from "@/lib/site";
 import { heroLead, heroMeta, projects, toolPicks } from "@/lib/showcase";
 import { ArticleRow } from "@/components/article-row";
-import { ContactLinks } from "@/components/contact-links";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHead } from "@/components/section-head";
 
@@ -128,7 +127,6 @@ export default function HomePage() {
               <ArrowRightIcon />
             </span>
           </a>
-          <ContactLinks className="contact-block__social" />
         </div>
       </section>
     </div>
