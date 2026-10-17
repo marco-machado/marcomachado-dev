@@ -1,5 +1,5 @@
-import { ArrowRightIcon } from "lucide-react";
 import type { Project } from "@/lib/showcase";
+import { ExternalLink } from "@/components/external-link";
 
 interface ProjectCardProps {
   project: Project;
@@ -24,18 +24,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </li>
           ))}
         </ul>
-        <a
-          href={project.href}
-          className="project-card__link arrow-link"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
+        <ExternalLink href={project.href} className="project-card__link arrow-link">
           View project
-          <span className="sr-only">
-            : {project.title} (opens in a new tab)
-          </span>
-          <ArrowRightIcon className="arrow" aria-hidden="true" />
-        </a>
+          <span className="sr-only">: {project.title}</span>
+        </ExternalLink>
       </div>
     </article>
   );

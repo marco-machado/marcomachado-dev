@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ExternalLink } from "@/components/external-link";
 
 interface SectionHeadProps {
   id: string;
@@ -15,7 +16,14 @@ export function SectionHead({ id, title, more, className }: SectionHeadProps) {
       <h2 id={id} className="section-head__title">
         {title}
       </h2>
-      {more ? (
+      {more?.href.startsWith("http") ? (
+        <ExternalLink
+          href={more.href}
+          className="section-head__more inline-flex min-h-11 items-center"
+        >
+          {more.label}
+        </ExternalLink>
+      ) : more ? (
         <Link
           href={more.href}
           className="section-head__more inline-flex min-h-11 items-center"
