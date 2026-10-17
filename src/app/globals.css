@@ -7,20 +7,10 @@
 
 @import "../styles/themes/base.css";
 @import "../styles/themes/terminal.css";
-@import "../styles/themes/orbital.css";
-@import "../styles/themes/editorial.css";
-@import "../styles/themes/command.css";
-@import "../styles/themes/eclipse.css";
-@import "../styles/themes/atelier.css";
-@import "../styles/themes/core.css";
-@import "../styles/themes/cinematic.css";
-@import "../styles/themes/abstract.css";
 @import "../styles/themes/motion.css";
 
 /* Every theme but Classic light is dark. */
 @custom-variant dark (&:where([data-theme]:not([data-theme="light"]) *));
-/* Classic is the original design, in its dark and light values. */
-@custom-variant classic (&:where([data-theme="dark"] *, [data-theme="light"] *));
 
 /* Classic tokens. Layered so the design themes (higher layers) can override them. */
 @layer base {
@@ -278,23 +268,4 @@
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
-}
-
-/* <ThemeOnly>: markup for some themes only. */
-[data-only] {
-  display: none;
-}
-
-[data-theme="dark"] [data-only~="classic"],
-[data-theme="light"] [data-only~="classic"],
-[data-theme="terminal"] [data-only~="terminal"],
-[data-theme="orbital"] [data-only~="orbital"],
-[data-theme="editorial"] [data-only~="editorial"],
-[data-theme="command"] [data-only~="command"],
-[data-theme="eclipse"] [data-only~="eclipse"],
-[data-theme="atelier"] [data-only~="atelier"],
-[data-theme="core"] [data-only~="core"],
-[data-theme="cinematic"] [data-only~="cinematic"],
-[data-theme="abstract"] [data-only~="abstract"] {
-  display: contents;
 }

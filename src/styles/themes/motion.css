@@ -11,16 +11,10 @@
       --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
       /* Hero entrance */
-      .hero__eyebrow,
-      .hero__prompt,
       .hero__title,
       .hero__lead,
       .hero__prompts,
-      .hero__menu-wrap,
-      .hero__actions,
       .hero-meta,
-      .hero-side,
-      .hero-cue,
       .page-header {
         animation: motion-rise 0.9s var(--motion-ease) both;
       }
@@ -33,23 +27,12 @@
         animation-delay: 0.2s;
       }
 
-      .hero__prompts,
-      .hero__menu-wrap,
-      .hero__actions {
+      .hero__prompts {
         animation-delay: 0.32s;
       }
 
-      .hero-meta,
-      .hero-side {
+      .hero-meta {
         animation-delay: 0.44s;
-      }
-
-      .hero-cue {
-        animation-delay: 0.7s;
-      }
-
-      .hero-art > * {
-        animation: motion-fade 1.6s ease-out both;
       }
 
       /* Scroll reveals, where the browser supports scroll-driven animation.
@@ -78,130 +61,27 @@
       }
     }
 
-    /* Terminal and Command: the headline types itself out */
-    [data-theme="terminal"] .hero__title,
-    [data-theme="command"] .hero__title {
+    /* Terminal: the headline types itself out */
+    [data-theme="terminal"] .hero__title {
       animation:
         motion-type 1.1s steps(18, end) 0.15s both,
         motion-fade 0.01s both;
     }
 
-    [data-theme="terminal"] .hero__prompts li,
-    [data-theme="command"] .hero__menu li {
+    [data-theme="terminal"] .hero__prompts li {
       animation: motion-rise 0.5s var(--motion-ease) both;
     }
 
-    [data-theme="terminal"] .hero__prompts li:nth-child(1),
-    [data-theme="command"] .hero__menu li:nth-child(1) {
+    [data-theme="terminal"] .hero__prompts li:nth-child(1) {
       animation-delay: 1.3s;
     }
 
-    [data-theme="terminal"] .hero__prompts li:nth-child(2),
-    [data-theme="command"] .hero__menu li:nth-child(2) {
+    [data-theme="terminal"] .hero__prompts li:nth-child(2) {
       animation-delay: 1.4s;
     }
 
-    [data-theme="terminal"] .hero__prompts li:nth-child(3),
-    [data-theme="command"] .hero__menu li:nth-child(3) {
+    [data-theme="terminal"] .hero__prompts li:nth-child(3) {
       animation-delay: 1.5s;
-    }
-
-    [data-theme="command"] .hero__menu li:nth-child(4) {
-      animation-delay: 1.6s;
-    }
-
-    [data-theme="command"] .hero__menu li:nth-child(5) {
-      animation-delay: 1.7s;
-    }
-
-    [data-theme="command"] .hero__menu li:nth-child(6) {
-      animation-delay: 1.8s;
-    }
-
-    [data-theme="command"] .hero__comments {
-      animation: motion-fade 0.6s ease-out 1.9s both;
-    }
-
-    /* Orbital and Eclipse: the planet rises, the halo breathes, stars twinkle */
-    [data-theme="orbital"] .hero-art__a,
-    [data-theme="eclipse"] .hero-art__a {
-      animation: motion-planet 2.4s var(--motion-ease) both;
-    }
-
-    [data-theme="eclipse"] .hero-art__a {
-      animation:
-        motion-planet 2.4s var(--motion-ease) both,
-        eclipse-drift 40s ease-in-out 2.4s infinite alternate;
-    }
-
-    [data-theme="orbital"] .hero-art__b,
-    [data-theme="eclipse"] .hero-art__b {
-      animation: motion-breathe 7s ease-in-out infinite alternate;
-    }
-
-    [data-theme="orbital"] .hero-art__c,
-    [data-theme="eclipse"] .hero-art__c {
-      animation: motion-twinkle 5s ease-in-out infinite alternate;
-    }
-
-    /* Editorial: the word stack lands one word at a time */
-    [data-theme="editorial"] .hero__title,
-    [data-theme="abstract"] .hero__title {
-      animation: none;
-    }
-
-    [data-theme="editorial"] .hero__word,
-    [data-theme="abstract"] .hero__word {
-      animation: motion-rise 1s var(--motion-ease) both;
-    }
-
-    [data-theme="editorial"] .hero__word:nth-child(2),
-    [data-theme="abstract"] .hero__word:nth-child(2) {
-      animation-delay: 0.14s;
-    }
-
-    [data-theme="editorial"] .hero__word:nth-child(3),
-    [data-theme="abstract"] .hero__word:nth-child(3) {
-      animation-delay: 0.28s;
-    }
-
-    /* Editorial and Cinematic: the portrait settles in */
-    [data-theme="editorial"] .hero-art__portrait,
-    [data-theme="cinematic"] .hero-art__portrait {
-      animation: motion-settle 2.8s var(--motion-ease) both;
-    }
-
-    /* Atelier: the stones drift */
-    [data-theme="atelier"] .hero-art__a {
-      animation:
-        motion-fade 1.6s ease-out both,
-        motion-float 11s ease-in-out infinite alternate;
-    }
-
-    [data-theme="atelier"] .hero-art__b {
-      animation:
-        motion-fade 1.6s ease-out 0.2s both,
-        motion-float 13s ease-in-out -4s infinite alternate-reverse;
-    }
-
-    /* Core: the globe fades in before it starts floating */
-    [data-theme="core"] .dot-globe {
-      animation:
-        motion-settle 1.8s var(--motion-ease) both,
-        core-float 9s ease-in-out 1.8s infinite alternate;
-    }
-
-    /* Abstract: the arcs turn slowly */
-    [data-theme="abstract"] .hero-art__a {
-      animation:
-        motion-fade 1.6s ease-out both,
-        motion-spin 120s linear infinite;
-    }
-
-    [data-theme="abstract"] .hero-art__b {
-      animation:
-        motion-fade 1.6s ease-out 0.3s both,
-        motion-spin 90s linear infinite reverse;
     }
   }
 }
@@ -232,44 +112,6 @@
 
   to {
     clip-path: inset(0 0 0 0);
-  }
-}
-
-@keyframes motion-planet {
-  from {
-    opacity: 0;
-    translate: 0 4rem;
-  }
-}
-
-@keyframes motion-breathe {
-  to {
-    opacity: 0.55;
-  }
-}
-
-@keyframes motion-twinkle {
-  to {
-    opacity: 0.3;
-  }
-}
-
-@keyframes motion-settle {
-  from {
-    opacity: 0;
-    scale: 1.06;
-  }
-}
-
-@keyframes motion-float {
-  to {
-    translate: 0 -0.9rem;
-  }
-}
-
-@keyframes motion-spin {
-  to {
-    rotate: 1turn;
   }
 }
 
