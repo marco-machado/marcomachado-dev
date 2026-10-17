@@ -40,14 +40,6 @@ const ASSETS = {
   "assets/Images/og-default.png": "public/images/og-default.png",
 };
 
-const COLOR_TOKENS = [
-  "background", "foreground", "card", "card-foreground", "popover",
-  "popover-foreground", "primary", "primary-foreground", "secondary",
-  "secondary-foreground", "muted", "muted-foreground", "accent",
-  "accent-foreground", "destructive", "destructive-foreground", "border",
-  "input", "ring",
-];
-
 const git = (...args) =>
   execFileSync("git", args, { cwd: ROOT, encoding: "utf8" }).trim();
 
@@ -118,29 +110,25 @@ async function buildBundle() {
 
 async function buildStyles() {
   const globals = fs.readFileSync(path.join(ROOT, "src/app/globals.css"), "utf8");
-  // Base, .article-content and Shiki rules, re-keyed from .dark to the frame's data-theme.
+  // globals.css from its dark variant on: the type scale, the @theme mapping, and the base,
+  // .article-content and Shiki rules. Colour values are left to the system's tokens.css, and
+  // the font stack names the family tokens.css loads instead of next/font's variable.
   const rules = globals
-    .slice(globals.indexOf("@layer base"))
-    .replaceAll(".dark .shiki", '[data-theme="dark"] .shiki');
+    .slice(globals.indexOf("@custom-variant"))
+    .replace(/^ *--[\w-]+: oklch\(.*\n/gm, "")
+    .replace("var(--font-mono-var)", '"IBM Plex Mono"');
+  if (rules.includes("--font-mono-var")) throw new Error("globals.css font stack not replaced");
 
-  // Colours come from the system's tokens.css; radii and fonts are inlined as literals
-  // so Tailwind's theme variables never shadow the tokens.
-  const input = `@import "tailwindcss" source(none);
+  // Same layers and imports as globals.css; the shadcn primitives in ui/ aren't bundled.
+  const input = `@layer theme, base, components, utilities, site;
+@import "tailwindcss" source(none);
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "${path.join(ROOT, "src/styles/site.css")}";
+@import "${path.join(ROOT, "src/styles/motion.css")}";
 @source "${path.join(ROOT, "src/components")}";
+@source not "${path.join(ROOT, "src/components/ui")}";
 @source "${path.join(HERE, "project/components")}";
-@custom-variant dark (&:is([data-theme="dark"] *, .dark *));
-@theme inline {
-${COLOR_TOKENS.map((name) => `  --color-${name}: var(--${name});`).join("\n")}
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 6px;
-  --radius-xl: 10px;
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
-}
 ${rules}`;
 
   const result = await postcss([tailwind({ base: ROOT, optimize: { minify: true } })])
@@ -148,7 +136,7 @@ ${rules}`;
   if (/<\/style/i.test(result.css)) throw new Error("bundle.css contains </style");
   fs.writeFileSync(
     path.join(OUT, "components/bundle.css"),
-    "/* Compiled by Tailwind v4 from src/components/*.tsx and the base + .article-content rules in src/app/globals.css. */\n" +
+    "/* Compiled by Tailwind v4 from src/components/*.tsx, src/styles/site.css and motion.css, and the type scale, base and .article-content rules in src/app/globals.css. */\n" +
       result.css,
   );
 }
@@ -180,7 +168,7 @@ async function buildArticlePreview() {
   fs.writeFileSync(
     path.join(OUT, "components/ArticleContent/preview.html"),
     `<!-- @dsCard group="Content" height=440 subtitle="Real renderMarkdown() output in .article-content" -->
-<div id="root" class="bg-background text-foreground font-sans p-6"></div>
+<div id="root" class="p-6"></div>
 <script>
 const { ArticleContent } = window.${NAMESPACE};
 const h = React.createElement;
