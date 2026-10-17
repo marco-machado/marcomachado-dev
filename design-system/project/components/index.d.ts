@@ -57,9 +57,6 @@ export interface ContactLinksProps {
 }
 export declare function ContactLinks(props: ContactLinksProps): React.JSX.Element;
 
-/** No props: toggles light/dark through next-themes. */
-export declare function ThemeToggle(): React.JSX.Element;
-
 /** No props. */
 export declare function SiteHeader(): React.JSX.Element;
 

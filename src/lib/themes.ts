@@ -18,7 +18,4 @@ export type ThemeKey = "classic" | DesignThemeId;
 
 export const designThemeIds: DesignThemeId[] = designThemes.map((t) => t.id);
 
-/** Every value next-themes may write to <html data-theme>. */
-export const themeValues = ["dark", "light", ...designThemeIds];
-
 export const terminalThemes: DesignThemeId[] = ["terminal", "command", "core"];

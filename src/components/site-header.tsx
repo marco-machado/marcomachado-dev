@@ -2,8 +2,6 @@ import { site } from "@/lib/site";
 import { Brand } from "@/components/brand";
 import { MainNav } from "@/components/main-nav";
 import { ThemeOnly } from "@/components/theme-only";
-import { ThemePicker } from "@/components/theme-picker";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 export function SiteHeader() {
   return (
@@ -21,12 +19,6 @@ export function SiteHeader() {
             </ThemeOnly>
           </a>
         </ThemeOnly>
-        <div className="site-header__tools flex items-center">
-          <ThemeOnly themes={["classic"]}>
-            <ThemeToggle />
-          </ThemeOnly>
-          <ThemePicker />
-        </div>
       </div>
     </header>
   );

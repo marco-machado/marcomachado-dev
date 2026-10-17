@@ -26,7 +26,6 @@ const COMPONENTS = [
   "ArticleContent",
   "MainNav",
   "ContactLinks",
-  "ThemeToggle",
   "SiteHeader",
   "SiteFooter",
 ];
@@ -79,7 +78,6 @@ async function buildBundle() {
     "react/jsx-dev-runtime": shim("jsx-runtime.cjs"),
     "next/link": shim("next-link.js"),
     "next/navigation": shim("next-navigation.js"),
-    "next-themes": shim("next-themes.js"),
   };
   const filter = new RegExp(
     `^(${Object.keys(aliases).map((name) => name.replace("/", "\\/")).join("|")})$`,
