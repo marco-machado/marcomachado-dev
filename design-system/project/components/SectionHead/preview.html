@@ -1,0 +1,10 @@
+<!-- @dsCard group="Content" height=250 subtitle="src/components/section-head.tsx: internal link, external link, no link" -->
+<div id="root" class="px-6 pt-6"></div>
+<script>
+const { SectionHead } = window.MarcoMachado;
+const h = React.createElement;
+ReactDOM.createRoot(document.getElementById("root")).render(h("div", null,
+  h(SectionHead, { id: "latest-articles", title: "Latest articles", more: { label: "View all", href: "/blog/" } }),
+  h(SectionHead, { id: "work-title", title: "Selected work", more: { label: "View all", href: "https://github.com/marco-machado" } }),
+  h(SectionHead, { id: "contact-title", title: "Let's connect" })));
+</script>

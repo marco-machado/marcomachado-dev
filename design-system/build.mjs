@@ -19,11 +19,13 @@ const NAMESPACE = "MarcoMachado";
 
 // Bundle order = the order of the design system's component table.
 const COMPONENTS = [
-  "Button",
   "PageHeader",
+  "SectionHead",
   "ArticleRow",
   "KvSection",
   "ArticleContent",
+  "ExternalLink",
+  "Subscribe",
   "MainNav",
   "ContactLinks",
   "SiteHeader",

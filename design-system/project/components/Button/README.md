@@ -1,20 +1,16 @@
 # Button
 
-A compact action control, used on the site today only as the ghost icon-button theme toggle.
+The site's one button-styled action: an outlined `primary` link that fills on hover, used for "Get in touch" at the end of the home page.
 
-It is the shadcn/ui Button (`src/components/ui/button.tsx`, cva variants), live from the bundle as `MarcoMachado.Button`.
+It isn't a component. It is the `.btn` class from `src/styles/site.css` on an `<a>` in `src/app/page.tsx`, with a Lucide `ArrowRight` in a `.btn__icon` span:
 
-**Use for** actions that change state (toggle the theme, submit). For navigation, use a TextLink: the site's calls to action ("Read the blog", "More about me") are links, not buttons.
+```html
+<a href="mailto:…" class="btn">Get in touch<span class="btn__icon" aria-hidden="true"><svg>…</svg></span></a>
+```
 
-**Consumer provides:** the label (or a 16px Lucide icon plus an `aria-label`), `variant`, `size`, and `asChild` to render a link with button styling.
+**Consumer provides:** the `href`, a sentence-case label and the arrow.
 
-| Prop | Values |
-| --- | --- |
-| `variant` | `default` (filled `primary`), `outline`, `secondary`, `ghost`, `destructive` (tinted `destructive`), `link` |
-| `size` | `default` 32px, `xs` 24px, `sm` 28px, `lg` 36px, `icon` / `icon-xs` / `icon-sm` / `icon-lg` square |
-| `asChild` | render the child element (Radix Slot) |
-
-- Corners are `radius-lg`; `xs` and `sm` use `radius-md`. Labels use the `button` text style.
-- Focus shows a `ring` border with a 3px ring at 50% opacity. Pressing nudges the button down 1px. Disabled is 50% opacity.
-- The theme toggle overrides the size to 40px square (`size-10`) and uses Lucide `MoonIcon` / `SunIcon`.
-- Don't put more than one `default` (filled) Button in a view. The design leans on links.
+- `text-sm` in `primary` inside a 1px `primary` border with `card-radius` corners, padded 1.35rem left and right and at least `touch-target` tall. The label and the 1rem arrow are `space-3` apart.
+- Hover fills it with `primary` and turns the label `primary-foreground` (11.1:1); the preview's second button shows that state. Focus is the standard `ring` outline.
+- Use one per view, for the main call to action. Everything else is a text link (TextLink).
+- The shadcn Button in `src/components/ui/button.tsx` isn't used by any page and isn't part of this system.
