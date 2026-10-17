@@ -193,7 +193,7 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 17rem);
     align-items: center;
     gap: 3rem;
-    padding: 4rem 0 3.5rem;
+    padding: 1rem 0 3.5rem;
     border-bottom: 1px solid var(--border);
   }
 
@@ -433,6 +433,7 @@
 
   /* Contact */
   .contact-block {
+    padding-bottom: 0;
     border-bottom: 0;
   }
 
