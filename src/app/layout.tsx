@@ -38,7 +38,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="terminal"
       className={`${serif.variable} ${sans.variable} ${mono.variable}`}
     >
       <body>
