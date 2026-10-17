@@ -474,6 +474,12 @@
     gap: 0 1.25rem;
   }
 
+  .contact-links__link,
+  .footer-rss {
+    min-width: 24px;
+    justify-content: center;
+  }
+
   .contact-links__link {
     color: var(--muted-foreground);
     transition: color 150ms;
