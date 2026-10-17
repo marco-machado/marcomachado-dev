@@ -11,8 +11,6 @@
     --card-bg: oklch(0.165 0.008 170);
     --card-radius: 4px;
     --card-pad: 1.5rem;
-    --art-bg: oklch(0.12 0.006 170);
-    --art-ink: oklch(0.82 0.02 165);
   }
 
   /* Header */
@@ -262,19 +260,10 @@
   .project-card {
     /* Contains the sr-only link text. */
     position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 11rem);
     overflow: hidden;
     border: 1px solid var(--border);
     border-radius: var(--card-radius);
     background: var(--card-bg);
-  }
-
-  .project-card__media {
-    order: 2;
-    min-height: 9rem;
-    margin: 1.25rem 1.25rem 1.25rem 0;
-    border-radius: 3px;
   }
 
   .project-card__body {
@@ -328,7 +317,7 @@
 
   .article-row__link {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 11rem);
+    grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
     align-items: center;
     padding: var(--card-pad);
@@ -342,9 +331,16 @@
     border-color: var(--muted-foreground);
   }
 
+  .article-row__link:has(.article-row__media) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 11rem);
+  }
+
   .article-row__media {
     order: 2;
+    width: 100%;
+    height: auto;
     aspect-ratio: 4 / 3;
+    object-fit: cover;
     border-radius: calc(var(--card-radius) * 0.6);
   }
 
@@ -691,10 +687,6 @@
     border-radius: var(--card-radius);
   }
 
-  .article__cover--art {
-    aspect-ratio: 21 / 9;
-  }
-
   .article-content h2::before {
     content: "## ";
     color: var(--primary);
@@ -737,115 +729,6 @@
     color: var(--muted-foreground);
   }
 
-  /* Placeholder art (<Art>): two layers, motif chosen by data-seed. */
-  .art {
-    position: relative;
-    overflow: hidden;
-    background: var(--art-bg);
-    isolation: isolate;
-  }
-
-  .art > span {
-    position: absolute;
-    inset: 0;
-  }
-
-  /* 0: concentric arcs */
-  .art[data-seed="0"] .art__a {
-    background: radial-gradient(
-      circle at 115% 120%,
-      transparent 54%,
-      color-mix(in oklch, var(--art-ink) 70%, transparent) 54.4%,
-      transparent 55.4%,
-      transparent 61%,
-      color-mix(in oklch, var(--art-ink) 35%, transparent) 61.3%,
-      transparent 62.4%,
-      transparent 68%,
-      color-mix(in oklch, var(--art-ink) 18%, transparent) 68.3%,
-      transparent 69.5%
-    );
-  }
-
-  .art[data-seed="0"] .art__b {
-    background: radial-gradient(
-      ellipse at 90% 100%,
-      color-mix(in oklch, var(--art-ink) 16%, transparent),
-      transparent 60%
-    );
-  }
-
-  /* 1: light beams */
-  .art[data-seed="1"] .art__a {
-    background:
-      linear-gradient(
-        115deg,
-        transparent 40%,
-        color-mix(in oklch, var(--art-ink) 45%, transparent) 40.5%,
-        transparent 44%
-      ),
-      linear-gradient(
-        115deg,
-        transparent 56%,
-        color-mix(in oklch, var(--art-ink) 18%, transparent) 56.4%,
-        transparent 66%
-      );
-  }
-
-  .art[data-seed="1"] .art__b {
-    background: repeating-linear-gradient(
-      90deg,
-      transparent 0 22px,
-      color-mix(in oklch, var(--art-ink) 7%, transparent) 22px 23px
-    );
-  }
-
-  /* 2: mountain ridge */
-  .art[data-seed="2"] .art__a {
-    background: linear-gradient(
-      to bottom,
-      color-mix(in oklch, var(--art-ink) 38%, transparent),
-      color-mix(in oklch, var(--art-ink) 4%, transparent) 70%
-    );
-    clip-path: polygon(
-      0 100%,
-      0 72%,
-      14% 58%,
-      24% 64%,
-      38% 34%,
-      47% 46%,
-      58% 22%,
-      70% 48%,
-      80% 40%,
-      100% 66%,
-      100% 100%
-    );
-  }
-
-  .art[data-seed="2"] .art__b {
-    background: radial-gradient(
-      ellipse at 58% 18%,
-      color-mix(in oklch, var(--art-ink) 18%, transparent),
-      transparent 45%
-    );
-  }
-
-  /* 3: waves */
-  .art[data-seed="3"] .art__a {
-    background: repeating-radial-gradient(
-      ellipse at 30% 140%,
-      transparent 0 14px,
-      color-mix(in oklch, var(--art-ink) 22%, transparent) 14px 15px
-    );
-  }
-
-  .art[data-seed="3"] .art__b {
-    background: linear-gradient(
-      to bottom,
-      var(--art-bg),
-      transparent 55%
-    );
-  }
-
   @media (max-width: 52rem) {
     .hero {
       grid-template-columns: minmax(0, 1fr);
@@ -876,20 +759,13 @@
       gap: 0 1.25rem;
     }
 
-    .project-card,
-    .article-row__link {
+    .article-row__link:has(.article-row__media) {
       grid-template-columns: minmax(0, 1fr);
     }
 
-    .project-card__media,
     .article-row__media {
       order: 0;
       aspect-ratio: 16 / 9;
-    }
-
-    .project-card__media {
-      min-height: 0;
-      margin: 0;
     }
 
     .article-row__link {

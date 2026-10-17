@@ -11,7 +11,6 @@ import {
   readingMinutes,
   site,
 } from "@/lib/site";
-import { Art } from "@/components/art";
 import { ContactLinks } from "@/components/contact-links";
 
 type Params = { slug: string };
@@ -100,9 +99,7 @@ export default async function ArticlePage({
             className="article__cover"
             priority
           />
-        ) : (
-          <Art seed={2} className="article__cover article__cover--art" />
-        )}
+        ) : null}
       </header>
       <div
         className="article-content"

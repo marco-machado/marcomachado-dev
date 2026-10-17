@@ -1,6 +1,5 @@
 import { ArrowRightIcon } from "lucide-react";
 import type { Project } from "@/lib/showcase";
-import { Art } from "@/components/art";
 
 interface ProjectCardProps {
   project: Project;
@@ -12,7 +11,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <article className="project-card">
-      <Art seed={index} className="project-card__media" />
       <div className="project-card__body">
         <span className="project-card__index" aria-hidden="true">
           {number}

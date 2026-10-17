@@ -27,8 +27,8 @@ export default function BlogPage() {
         <p>No articles yet. Check back soon.</p>
       ) : (
         <div className="article-list">
-          {articles.map((article, index) => (
-            <ArticleRow key={article.slug} article={article} seed={index} />
+          {articles.map((article) => (
+            <ArticleRow key={article.slug} article={article} />
           ))}
         </div>
       )}

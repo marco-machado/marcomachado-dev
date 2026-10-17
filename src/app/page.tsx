@@ -90,13 +90,8 @@ export default function HomePage() {
           <p>No articles yet. Check back soon.</p>
         ) : (
           <div className="writing-list">
-            {articles.map((article, index) => (
-              <ArticleRow
-                key={article.slug}
-                article={article}
-                headingLevel="h3"
-                seed={index}
-              />
+            {articles.map((article) => (
+              <ArticleRow key={article.slug} article={article} headingLevel="h3" />
             ))}
           </div>
         )}
