@@ -619,26 +619,64 @@
     color: var(--muted-foreground);
   }
 
-  .about__contact {
-    margin-top: 1rem;
-  }
-
   .about__body {
     display: grid;
-    gap: 1.4rem;
+    gap: 3rem;
     max-width: 40rem;
     font-size: var(--text-base);
     line-height: 1.75;
   }
 
-  .about__body p:first-child {
+  .about__intro {
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .about__lead {
     font-size: var(--text-md);
-    line-height: 1.4;
+    line-height: 1.5;
     color: var(--primary);
   }
 
-  .about__body p::before {
-    content: "> ";
+  .about__body p a {
+    color: var(--primary);
+    text-decoration: underline dashed;
+    text-decoration-color: color-mix(in oklch, var(--primary) 55%, transparent);
+    text-underline-offset: 4px;
+  }
+
+  .about__section .section-head {
+    margin-bottom: 1rem;
+  }
+
+  /* A plain list of links with a date (About's latest articles) */
+  .link-list__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .link-list__item:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .link-list__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.75rem;
+    transition: color 150ms;
+  }
+
+  .link-list__link:hover {
+    color: var(--primary);
+  }
+
+  .link-list__meta {
+    font-size: var(--text-xs);
     color: var(--muted-foreground);
   }
 
@@ -737,13 +775,25 @@
     }
 
     .about__aside {
-      max-width: 18rem;
+      display: grid;
+      grid-template-columns: minmax(0, 11rem) minmax(0, 20rem);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .about__facts {
+      margin-top: 0;
     }
   }
 
   @media (max-width: 40rem) {
     :root {
       --gutter: 1.25rem;
+    }
+
+    .about__aside {
+      grid-template-columns: minmax(0, 6.5rem) minmax(0, 1fr);
+      gap: 1.25rem;
     }
 
     .site-nav {
