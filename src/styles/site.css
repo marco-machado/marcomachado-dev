@@ -121,8 +121,7 @@
   }
 
   .arrow-link--back {
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    text-transform: lowercase;
   }
 
   .arrow-link--back::before {
