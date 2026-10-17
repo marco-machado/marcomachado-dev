@@ -41,7 +41,7 @@ export interface KvSectionProps { section: KvSectionData }
 export declare function KvSection(props: KvSectionProps): React.JSX.Element;
 
 export interface ArticleContentProps {
-  /** HTML from renderMarkdown() (unified + remark-gfm + Shiki dual themes). */
+  /** HTML from renderMarkdown() (unified + remark-gfm + Shiki, github-dark). */
   html: string;
   className?: string;
 }
