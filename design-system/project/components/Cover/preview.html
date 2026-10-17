@@ -3,37 +3,36 @@
   html, body { margin: 0; background: var(--background); }
   .cv { position: relative; width: 960px; height: 288px; overflow: hidden; background: var(--background); }
   .cv svg { position: absolute; left: 0; top: 0; }
-  .k-primary { fill: var(--primary); }
-  .k-accent { fill: var(--accent); }
-  .k-ink { fill: var(--foreground); }
-  .k-muted { fill: var(--muted-foreground); }
-  .blk { rx: var(--radius-lg); }
-  .rule { stroke: var(--background); stroke-width: 1px; }
-  .quote { stroke: var(--primary); stroke-width: 3px; }
-  .name { position: absolute; left: 40px; bottom: 34px; max-width: 880px; }
-  .name h1 { margin: 0; font: 600 64px/.95 var(--font-serif); letter-spacing: -0.025em; color: var(--foreground); }
-  .name p { margin: 10px 0 0; font: 400 14px/20px var(--font-sans); color: var(--muted-foreground); }
+  .cv-primary { fill: var(--primary); }
+  .cv-accent { fill: var(--accent); }
+  .cv-muted { fill: var(--muted-foreground); }
+  .cv-ink { fill: var(--foreground); }
+  .cv-blk { rx: var(--card-radius); }
+  .cv-cut { fill: none; stroke: var(--background); stroke-width: 3px; stroke-linecap: square; }
+  .cv-cut-fill { fill: var(--background); }
+  .cv-name { position: absolute; left: 40px; bottom: 34px; max-width: 880px; }
+  .cv-name h1 { margin: 0; font: 400 64px/.95 var(--font-mono); letter-spacing: -0.01em; color: var(--foreground); }
+  .cv-name p { margin: 14px 0 0; max-width: 440px; font: 400 13.5px/20px var(--font-mono); color: var(--muted-foreground); }
 </style>
 <div class="cv">
-  <svg width="960" height="112" viewBox="0 0 960 112" aria-hidden="true">
+  <svg width="960" height="113" viewBox="0 0 960 113" aria-hidden="true">
     <!--
-      blocks: primary 520w (identity teal, the big slab), accent 200w (teal wash), foreground 120w (ink), muted-foreground 96w, all 112px tall = 2 x space-14
-      arrangement: top-band skeleton (name too wide for the 440px zone); a strip of unequal bands bleeding off the top, bottom corners radius-lg, gaps space-2
-      pattern: editorial row, "Rules, not boxes" + "type over decoration": four 1px hairlines cut from the ground across the bands at a space-6 pitch, plus the 3px primary blockquote rule under the strip
-      scales: space-2 (8) gaps, space-6 (24) rule pitch, space-14 (56) band unit, radius-lg (6) corners
+      blocks: primary 495w (the green, the big slab), accent 202.5w (the selection wash), muted-foreground 135w, foreground 112.5w bleeding off the right; 112.5 visible (5 x space-6), bleeding off the top
+      arrangement: top-band skeleton (the name is too wide for the 440px zone); a strip of unequal bands, space-2 gaps, card-radius corners
+      pattern: one oversized glyph, the brand's >_ prompt cut from the primary slab in `background`; "shell flourishes" and "one accent" make the prompt the most specific motif
+      scales: space-2 (7.5) gaps, space-6 (22.5) block widths and band height, card-radius (4) corners, the mark's 32-unit geometry at 3.5x
     -->
-    <rect class="k-primary blk" x="0" y="-8" width="520" height="112"/>
-    <rect class="k-accent blk" x="528" y="-8" width="200" height="112"/>
-    <rect class="k-ink blk" x="736" y="-8" width="120" height="112"/>
-    <rect class="k-muted blk" x="864" y="-8" width="96" height="112"/>
-    <line class="rule" x1="0" y1="24" x2="960" y2="24"/>
-    <line class="rule" x1="0" y1="48" x2="960" y2="48"/>
-    <line class="rule" x1="0" y1="72" x2="960" y2="72"/>
-    <line class="rule" x1="0" y1="96" x2="960" y2="96"/>
-    <line class="quote" x1="40" y1="110" x2="184" y2="110"/>
+    <rect class="cv-primary cv-blk" x="0" y="-8" width="495" height="120.5"/>
+    <rect class="cv-accent cv-blk" x="502.5" y="-8" width="202.5" height="120.5"/>
+    <rect class="cv-muted cv-blk" x="712.5" y="-8" width="135" height="120.5"/>
+    <rect class="cv-ink cv-blk" x="855" y="-8" width="112.5" height="120.5"/>
+    <g transform="translate(12 0) scale(3.5)">
+      <path class="cv-cut" d="M8 10l6 6-6 6"/>
+      <rect class="cv-cut-fill" x="16.5" y="19.5" width="8" height="3"/>
+    </g>
   </svg>
-  <div class="name">
+  <div class="cv-name">
     <h1>marcomachado.dev</h1>
-    <p>Engineer. Operator. Builder. A quiet, editorial system for one reading column.</p>
+    <p>A coder's workspace: mono type, a muted green accent, boxed panels and shell flourishes.</p>
   </div>
 </div>
