@@ -52,6 +52,13 @@
       animation-delay: 1.5s;
     }
 
+    /* Where the headline wraps, typing would reveal both lines at once: rise in instead */
+    @media (max-width: 24rem) {
+      .hero__title {
+        animation: motion-rise 0.9s var(--motion-ease) 0.08s both;
+      }
+    }
+
     /* Scroll reveals, where the browser supports scroll-driven animation.
        Slide only: a fade would leave text below contrast while it enters. */
     @supports (animation-timeline: view()) {

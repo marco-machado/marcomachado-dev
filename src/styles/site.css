@@ -197,6 +197,13 @@
     border-bottom: 1px solid var(--border);
   }
 
+  /* Titles open with a two-character "> " prompt; wrapped lines hang under the text */
+  .hero__title,
+  .page-header__title {
+    padding-left: 2ch;
+    text-indent: -2ch;
+  }
+
   .hero__title {
     font-size: var(--text-display);
     letter-spacing: -0.01em;
