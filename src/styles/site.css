@@ -440,11 +440,14 @@
   }
 
   /* Footer */
+  .site-footer {
+    border-top: 1px solid var(--border);
+  }
+
   .site-footer__inner {
     max-width: var(--container);
     gap: 1rem 2rem;
     padding: 2rem var(--gutter) 2.5rem;
-    border-top: 1px solid var(--border);
     font-size: var(--text-sm);
     color: var(--muted-foreground);
   }
@@ -474,11 +477,6 @@
     order: 9;
     width: 100%;
     font-size: var(--text-xs);
-  }
-
-  .footer-copy::before {
-    content: "● ";
-    color: var(--primary);
   }
 
   .footer-links {
