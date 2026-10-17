@@ -67,7 +67,8 @@
     margin-left: 0.12em;
     vertical-align: -0.1em;
     background: var(--primary);
-    animation: cursor-blink 1.1s steps(1) infinite;
+    /* Four blinks, then it stays lit (WCAG 2.2.2: blinking stops within 5s) */
+    animation: cursor-blink 1.1s steps(1) 4;
   }
 
   .btn {
