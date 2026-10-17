@@ -1,9 +1,10 @@
 # SiteHeader
 
-The top bar: the wordmark on the left, then MainNav and the theme toggle, inside the `content-width` column with a `border` rule underneath.
+The top bar: the Brand on the left and MainNav on the right, with a full-width `border` rule under it.
 
-**Consumer provides:** nothing. It reads `site.title`.
+**Consumer provides:** nothing.
 
-- The wordmark is the site name in the `wordmark` text style (Newsreader 600, 18px), linking home. The `mm` monogram is not used here.
-- `space-3` vertical padding and `space-6` gutters. The items wrap on narrow screens.
-- The theme toggle is a 40px ghost icon Button. It shows the Sun in dark mode and the Moon in light mode, and renders a same-size placeholder until mounted so nothing shifts.
+- The Brand is the domain, "marcomachado.dev", in `text-sm` and `primary`, linking home. It is text, not the `>_` mark.
+- Inside the `content-width` column, with `space-5` above and below, `space-6` gutters, and 1.75rem between the Brand and the nav.
+- Below `breakpoint-sm` the nav moves to its own full-width row under the Brand.
+- Nothing else goes in the header.

@@ -1,7 +1,18 @@
-<!-- @dsCard group="Content" height=150 subtitle="src/components/page-header.tsx" -->
-<div id="root" class="bg-background text-foreground font-sans px-6 pt-6"></div>
+<!-- @dsCard group="Content" height=540 subtitle="src/components/page-header.tsx: Uses, and the 404 with its output" -->
+<div id="root" class="px-6 pt-6"></div>
 <script>
-const { PageHeader } = window.MarcoMachado;
+const { PageHeader, ExternalLink } = window.MarcoMachado;
 const h = React.createElement;
-ReactDOM.createRoot(document.getElementById("root")).render(h(PageHeader, { title: "Uses", description: "Tools, hardware, and software that I use daily. Inspired by uses.tech." }));
+ReactDOM.createRoot(document.getElementById("root")).render(h("div", null,
+  h(PageHeader, {
+    title: "Uses",
+    command: "cat uses.md",
+    description: h(React.Fragment, null, "Tools, hardware, and software that I use daily. Inspired by ", h(ExternalLink, { href: "https://uses.tech/" }, "uses.tech"), "."),
+  }),
+  h(PageHeader, {
+    title: "Page not found",
+    command: "cd ./missing-page",
+    output: "cd: no such file or directory: ./missing-page",
+    description: "The page you are looking for does not exist or has moved. Try one of these:",
+  })));
 </script>
