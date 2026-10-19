@@ -13,7 +13,7 @@ https://claude.ai/artifact/TWpfNZUrQxpsimMf5wUr7j
   - `components/Cover/preview.html` — the cover
   - `components/index.d.ts` — component props
 - `entry.js` — bundle entry: the site's components exposed as `window.MarcoMachado`
-- `shims/` — browser stand-ins for React globals, `next/link`, `next/navigation` and `next-themes`
+- `shims/` — browser stand-ins for React globals, `next/link` and `next/navigation`
 - `build.mjs` — builds `dist/project/` (gitignored)
 
 ## Build

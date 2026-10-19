@@ -6,7 +6,6 @@ import { ArticleRow } from "../src/components/article-row";
 import { KvSection } from "../src/components/kv-section";
 import { ContactLinks } from "../src/components/contact-links";
 import { MainNav } from "../src/components/main-nav";
-import { ThemeToggle } from "../src/components/theme-toggle";
 import { SiteHeader } from "../src/components/site-header";
 import { SiteFooter } from "../src/components/site-footer";
 
@@ -27,7 +26,6 @@ window.MarcoMachado = {
   ArticleContent,
   MainNav,
   ContactLinks,
-  ThemeToggle,
   SiteHeader,
   SiteFooter,
 };

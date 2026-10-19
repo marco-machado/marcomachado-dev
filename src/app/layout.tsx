@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
-import { serif, sans, mono } from "@/lib/fonts";
+/// <reference types="react/canary" />
+import { ViewTransition } from "react";
+import type { Metadata, Viewport } from "next";
+import { mono } from "@/lib/fonts";
 import { site } from "@/lib/site";
-import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { UmamiAnalytics } from "@/components/umami-analytics";
@@ -29,37 +30,42 @@ export const metadata: Metadata = {
       "application/rss+xml": "/rss.xml",
     },
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#080c0b",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`dark ${serif.variable} ${sans.variable} ${mono.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={mono.variable}>
       <body>
         <UmamiAnalytics />
-        <ThemeProvider>
-          <div className="flex min-h-dvh flex-col">
-            <a
-              href="#main"
-              className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:border focus:bg-background focus:px-4 focus:py-3 focus:text-sm focus:text-foreground focus:shadow-sm"
-            >
-              Skip to content
-            </a>
-            <SiteHeader />
-            <main
-              id="main"
-              className="mx-auto w-full max-w-2xl flex-1 px-6 py-12"
-            >
-              {children}
-            </main>
-            <SiteFooter />
-          </div>
-        </ThemeProvider>
+        <div className="site flex min-h-dvh flex-col">
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:border focus:bg-background focus:px-4 focus:py-3 focus:text-sm focus:text-foreground focus:shadow-sm"
+          >
+            Skip to content
+          </a>
+          <SiteHeader />
+          <main
+            id="main"
+            className="site-main mx-auto w-full flex-1"
+          >
+            <ViewTransition default="page">{children}</ViewTransition>
+          </main>
+          <SiteFooter />
+        </div>
       </body>
     </html>
   );

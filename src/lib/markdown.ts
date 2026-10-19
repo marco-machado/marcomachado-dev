@@ -11,12 +11,7 @@ const processor = unified()
   .use(remarkGfm)
   .use(remarkRehype)
   .use(rehypeSlug)
-  .use(rehypeShiki, {
-    themes: {
-      light: "github-light",
-      dark: "github-dark",
-    },
-  })
+  .use(rehypeShiki, { theme: "github-dark" })
   .use(rehypeStringify);
 
 export async function renderMarkdown(markdown: string): Promise<string> {

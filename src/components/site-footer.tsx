@@ -1,19 +1,31 @@
-import { site } from "@/lib/site";
+import Link from "next/link";
+import { navItems, site } from "@/lib/site";
 import { ContactLinks } from "@/components/contact-links";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t">
-      <div className="mx-auto flex w-full max-w-2xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-6 py-6 text-sm text-muted-foreground">
-        <p>
-          {new Date().getFullYear()}&nbsp;{site.author}
+    <footer className="site-footer">
+      <div className="site-footer__inner mx-auto flex w-full flex-wrap items-center justify-between">
+        <nav aria-label="Footer" className="footer-nav">
+          <ul>
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="footer-nav__link inline-flex min-h-11 items-center"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <p className="footer-copy">
+          ©&nbsp;{new Date().getFullYear()}&nbsp;{site.author}
         </p>
-        <div className="flex flex-wrap items-center gap-x-5">
-          <ContactLinks muted />
-          <a
-            href="/rss.xml"
-            className="inline-flex min-h-11 items-center font-mono text-xs transition-colors hover:text-foreground"
-          >
+        <div className="footer-links flex flex-wrap items-center">
+          <ContactLinks className="footer-social" />
+          <a href="/rss.xml" className="footer-rss inline-flex min-h-11 items-center">
             RSS
           </a>
         </div>

@@ -4,8 +4,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublishedArticle, getPublishedArticles } from "@/lib/posts";
 import { renderMarkdown } from "@/lib/markdown";
-import { formatDate, formatTag, pageAlternates, site } from "@/lib/site";
-import { ContactLinks } from "@/components/contact-links";
+import {
+  formatDate,
+  formatTag,
+  pageAlternates,
+  readingMinutes,
+  site,
+} from "@/lib/site";
+import { Subscribe } from "@/components/subscribe";
+import { PageHeader } from "@/components/page-header";
 
 type Params = { slug: string };
 
@@ -52,24 +59,28 @@ export default async function ArticlePage({
   if (!article) notFound();
   const html = await renderMarkdown(article.body);
 
+  // Published articles are sorted newest first.
+  const articles = getPublishedArticles();
+  const position = articles.findIndex((item) => item.slug === article.slug);
+  const newer = articles[position - 1];
+  const older = articles[position + 1];
+
   return (
-    <article>
-      <header className="mb-10">
-        <p className="mb-6">
-          <Link
-            href="/blog/"
-            className="inline-flex min-h-11 items-center font-mono text-xs tracking-widest text-muted-foreground uppercase transition-colors hover:text-foreground"
-          >
-            All articles
-          </Link>
-        </p>
-        <h1 className="font-serif text-4xl font-semibold tracking-tight text-balance">
-          {article.title}
-        </h1>
-        <p className="mt-3 text-lg text-muted-foreground">
-          {article.description}
-        </p>
-        <p className="mt-4 font-mono text-xs text-muted-foreground">
+    <article className="article">
+      <p className="article__back">
+        <Link
+          href="/blog/"
+          className="arrow-link arrow-link--back inline-flex min-h-11 items-center"
+        >
+          All articles
+        </Link>
+      </p>
+      <PageHeader
+        title={article.title}
+        description={article.description}
+        command={`cat ${article.slug}.md`}
+      >
+        <p className="article__meta">
           <time dateTime={article.pubDate.toISOString().slice(0, 10)}>
             {formatDate(article.pubDate)}
           </time>
@@ -82,6 +93,8 @@ export default async function ArticlePage({
               </time>
             </>
           ) : null}
+          {" · "}
+          {readingMinutes(article)} min read
           {article.tags.length > 0 ? (
             <> · {article.tags.map(formatTag).join(", ")}</>
           ) : null}
@@ -92,28 +105,48 @@ export default async function ArticlePage({
             alt={article.coverImageAlt ?? ""}
             width={1440}
             height={810}
-            className="mt-8 w-full rounded-lg border"
+            className="article__cover"
             priority
           />
         ) : null}
-      </header>
+      </PageHeader>
       <div
         className="article-content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
-      <footer className="mt-12 space-y-4 border-t pt-8">
+      <footer className="article__footer">
+        {older || newer ? (
+          <nav aria-label="More articles" className="article-nav">
+            {older ? (
+              <Link
+                href={`/blog/${older.slug}/`}
+                className="article-nav__link article-nav__link--older"
+              >
+                <span className="article-nav__label">← older</span>
+                <span className="article-nav__title">{older.title}</span>
+              </Link>
+            ) : null}
+            {newer ? (
+              <Link
+                href={`/blog/${newer.slug}/`}
+                className="article-nav__link article-nav__link--newer"
+              >
+                <span className="article-nav__label">newer →</span>
+                <span className="article-nav__title">{newer.title}</span>
+              </Link>
+            ) : null}
+          </nav>
+        ) : null}
+        <p className="article__byline">Written by {site.author}.</p>
+        <Subscribe />
         <p>
           <Link
             href="/blog/"
-            className="inline-flex min-h-11 items-center font-mono text-xs tracking-widest text-muted-foreground uppercase transition-colors hover:text-foreground"
+            className="arrow-link arrow-link--back inline-flex min-h-11 items-center"
           >
             All articles
           </Link>
         </p>
-        <p className="text-sm text-muted-foreground">
-          Written by {site.author}.
-        </p>
-        <ContactLinks muted />
       </footer>
     </article>
   );
