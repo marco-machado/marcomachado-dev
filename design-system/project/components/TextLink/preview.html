@@ -1,8 +1,14 @@
-<!-- @dsCard group="Actions" height=130 subtitle="Pattern from src/app/page.tsx (markup, no component)" -->
-<div class="bg-background text-foreground font-sans p-6">
-  <p class="max-w-prose text-sm leading-relaxed text-muted-foreground">Recently: shipping this site on Cloudflare Workers, and <a href="#" class="text-primary underline decoration-1 underline-offset-4 hover:decoration-2">The Prompt Isn&apos;t the Bottleneck</a> — treating AI context as infrastructure, not a longer prompt.</p>
-  <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-1">
-    <a href="#" class="inline-flex min-h-11 items-center text-primary underline decoration-1 underline-offset-4 hover:decoration-2">Read the blog</a>
-    <a href="#" class="inline-flex min-h-11 items-center text-primary underline decoration-1 underline-offset-4 hover:decoration-2">More about me</a>
+<!-- @dsCard group="Actions" height=260 subtitle="Patterns from src/app/ (markup, no component): prose link, arrow links, prompt list" -->
+<div class="grid gap-4 p-6">
+  <div class="about__body">
+    <p>My everyday setup is on <a href="#">Uses</a>, and the agents and plugins I rely on are on <a href="#">AI Tools</a>.</p>
   </div>
+  <div class="flex flex-wrap items-center gap-x-8">
+    <a href="#" class="arrow-link arrow-link--back">All articles</a>
+    <a href="#" class="arrow-link">Read the article<svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  </div>
+  <ul class="prompt-list">
+    <li><a href="#">read the blog</a></li>
+    <li><a href="#">get in touch</a></li>
+  </ul>
 </div>

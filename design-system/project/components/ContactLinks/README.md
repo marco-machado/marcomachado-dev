@@ -1,9 +1,9 @@
 # ContactLinks
 
-The outbound contact paths as a row of plain words. No icons ("no icon soup").
+The outbound contact paths as a row of plain words: Email, GitHub, X, LinkedIn, Instagram.
 
-**Consumer provides:** an optional `muted` (boolean) and `className`. The links come from `contactLinks` in `src/lib/site.ts`: Email, GitHub, X, LinkedIn, Instagram.
+**Consumer provides:** an optional `className`. The links come from `contactLinks` in `src/lib/site.ts`. It has one look everywhere it appears: the footer and the About page's Contact section.
 
-- **Default** (home hero): 14px TextLinks in `primary`, underlined, 20px apart.
-- **Muted** (footer, About facts): `meta` mono 12px in `muted-foreground`, no underline, `foreground` on hover.
-- Every link is at least `touch-target` tall. External links open in a new tab with `rel="noopener noreferrer"` and a screen-reader-only "(opens in a new tab)".
+- Words, not logos. Email is a plain `mailto:` link; the others go through ExternalLink, so they open in a new tab with the ↗ marker and a screen-reader note.
+- `muted-foreground`, turning `foreground` on hover. The size comes from the context: `text-sm` in the footer, `text-base` on About.
+- 1.25rem (18.75px) apart. Each link is at least `touch-target` tall and `min-target` wide, so "X" is still easy to hit.
