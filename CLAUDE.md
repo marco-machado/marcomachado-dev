@@ -32,7 +32,7 @@ Personal blog and portfolio built with Next.js (App Router, static export), Reac
 - **Routes** — `/`, `/about`, `/uses`, `/ai-tools`, `/blog`, `/blog/[slug]`, plus generated `/rss.xml`, `/sitemap.xml`, `/robots.txt`. All pages in `src/app/`
 - **Articles** — Markdown files in `content/blog/`, loaded by `src/lib/posts.ts` with a strict Zod schema validated during the build. Slug = filename minus `.md`. Drafts are excluded from pages, lists, RSS, and sitemap
 - **Markdown** — Rendered at build time by `src/lib/markdown.ts` (unified + remark-gfm + Shiki, `github-dark`). No client-side highlighting runtime
-- **Components** — Server Components by default. The only Client Component is `main-nav.tsx`. shadcn/ui primitives live in `src/components/ui/` (source-owned; add via `npx shadcn add <name>`)
+- **Components** — Server Components by default. The only Client Component is `main-nav.tsx`. shadcn/ui primitives go in `src/components/ui/` when needed (source-owned; add via `npx shadcn add <name>`); none are in use
 - **Design** — One dark design, Terminal: mono type, muted green accent, boxed panels, shell flourishes. No theme switcher. See `docs/design.md`
 - **Design tokens** — In `src/app/globals.css` on `:root` (oklch values, green accent), mapped to Tailwind via `@theme inline`. Component styles in `src/styles/site.css`, motion in `src/styles/motion.css`. All token pairs meet WCAG 4.5:1 contrast
 - **Fonts** — Self-hosted in `src/fonts/` (SIL OFL) via `next/font/local`: IBM Plex Mono for all text
