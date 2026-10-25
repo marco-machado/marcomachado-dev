@@ -172,6 +172,7 @@
   }
 
   .external-link__icon {
+    display: inline-block;
     flex: none;
     width: 0.8em;
     height: 0.8em;
