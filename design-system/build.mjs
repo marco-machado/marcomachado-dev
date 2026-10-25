@@ -125,7 +125,6 @@ async function buildStyles() {
   // Same layers and imports as globals.css; the shadcn primitives in ui/ aren't bundled.
   const input = `@layer theme, base, components, utilities, site;
 @import "tailwindcss" source(none);
-@import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "${path.join(ROOT, "src/styles/site.css")}";
 @import "${path.join(ROOT, "src/styles/motion.css")}";

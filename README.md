@@ -7,7 +7,7 @@ Personal blog and portfolio built with [Next.js](https://nextjs.org) (App Router
 - **Next.js 16** — App Router, static export to `./out/`
 - **React 19** — Server Components by default, Client Components only for interactivity
 - **Tailwind CSS v4** — Utility-first styling with CSS variable design tokens
-- **shadcn/ui + Radix** — Source-owned UI primitives
+- **shadcn/ui** — Design tokens and source-owned primitives (added as needed)
 - **Shiki** — Build-time syntax highlighting
 - **TypeScript** — Strict type checking
 
@@ -28,7 +28,7 @@ content/blog/         # Articles (Markdown with strict frontmatter)
 public/               # Static assets (favicons, images)
 src/
 ├── app/              # App Router pages, RSS, sitemap, robots
-├── components/       # React components (ui/ holds shadcn primitives)
+├── components/       # React components
 ├── fonts/            # Self-hosted woff2 files (SIL OFL)
 └── lib/              # Content loading, markdown pipeline, site config
 ```
