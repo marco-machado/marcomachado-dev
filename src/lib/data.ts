@@ -78,6 +78,7 @@ export const aiTools: AiSectionData[] = [
     title: "Skills & plugins",
     tools: [
       { name: "Context7", href: "https://github.com/upstash/context7", note: "Current docs in agent workflows" },
+      { name: "The Elements of Style", href: "https://github.com/obra/the-elements-of-style", note: "Strunk's writing rules for agent prose" },
       { name: "Skills", href: "https://github.com/mattpocock/skills", note: "Reusable instructions for AI agents" },
       { name: "RTK", href: "https://github.com/rtk-ai/rtk", note: "Agent tooling and workflows" },
     ],

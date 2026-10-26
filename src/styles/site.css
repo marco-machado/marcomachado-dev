@@ -861,11 +861,6 @@
     text-underline-offset: 4px;
   }
 
-  .article__byline {
-    font-size: var(--text-base);
-    color: var(--muted-foreground);
-  }
-
   @media (max-width: 52rem) {
     .hero {
       grid-template-columns: minmax(0, 1fr);
