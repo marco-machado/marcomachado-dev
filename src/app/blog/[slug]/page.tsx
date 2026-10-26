@@ -137,7 +137,6 @@ export default async function ArticlePage({
             ) : null}
           </nav>
         ) : null}
-        <p className="article__byline">Written by {site.author}.</p>
         <Subscribe />
         <p>
           <Link
