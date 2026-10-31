@@ -30,15 +30,21 @@ function Hero() {
 
         <p className="hero__lead">{heroLead}</p>
 
+        <div className="hero__actions">
+          <Link href="/blog/" className="btn btn--primary">
+            Read the blog
+            <span className="btn__icon" aria-hidden="true">
+              <ArrowRightIcon />
+            </span>
+          </Link>
+        </div>
+
         <ul className="hero__prompts prompt-list">
           {projects.length > 0 ? (
             <li>
               <a href="#work">view work</a>
             </li>
           ) : null}
-          <li>
-            <Link href="/blog/">read the blog</Link>
-          </li>
           <li>
             <a href={`mailto:${site.email}`}>get in touch</a>
           </li>

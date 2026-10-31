@@ -18,6 +18,7 @@
     }
 
     .hero__lead,
+    .hero__actions,
     .hero__prompts,
     .hero-meta,
     .page-header {
@@ -28,6 +29,7 @@
       animation-delay: 0.2s;
     }
 
+    .hero__actions,
     .hero__prompts {
       animation-delay: 0.32s;
     }
