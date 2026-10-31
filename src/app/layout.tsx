@@ -1,7 +1,7 @@
 /// <reference types="react/canary" />
 import { ViewTransition } from "react";
 import type { Metadata, Viewport } from "next";
-import { mono } from "@/lib/fonts";
+import { mono, sans } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -47,7 +47,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={mono.variable}>
+    <html lang="en" className={`${mono.variable} ${sans.variable}`}>
       <body>
         <UmamiAnalytics />
         <div className="site flex min-h-dvh flex-col">

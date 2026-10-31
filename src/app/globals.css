@@ -41,6 +41,7 @@
     --text-md: 1.125rem; /* 16.9px: card and section titles, ledes */
     --text-lg: 1.5rem; /* 22.5px: subheadings */
     --text-display: clamp(2rem, 4.5vw, 2.75rem); /* 30-41px: page titles */
+    --text-reading: clamp(1.125rem, 1rem + 0.4vw, 1.2rem); /* 17-18px: Article body */
   }
 }
 
@@ -69,6 +70,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --font-mono: var(--font-mono-var), ui-monospace, "SF Mono", monospace;
+  --font-sans: var(--font-sans-var), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -111,13 +113,16 @@
   }
 }
 
+/* Article body: a proportional reading face; headings and code stay mono */
 .article-content {
-  font-size: var(--text-base);
-  line-height: 1.8;
+  font-family: var(--font-sans);
+  font-size: var(--text-reading);
+  line-height: 1.7;
 
   h2,
   h3,
   h4 {
+    font-family: var(--font-mono);
     line-height: 1.25;
     letter-spacing: -0.01em;
     text-wrap: balance;
@@ -131,6 +136,7 @@
 
   h3 {
     font-size: var(--text-md);
+    font-weight: 600;
     margin: 2rem 0 0.75rem;
   }
 
