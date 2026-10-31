@@ -15,7 +15,7 @@ export type Project = {
 export const projects: Project[] = [];
 
 export const heroLead =
-  "Software engineer shipping web apps since 2014. I write for AI builders and operators: small demos, agents in real shipping, and takes while the work is still in progress.";
+  "Software engineer shipping web apps since 2014. I write about using AI agents to build and ship real software: small demos you can run, the tools I rely on, and lessons from work still in progress.";
 
 export const heroMeta = [
   { label: "Location", value: "Remote, Brazil" },

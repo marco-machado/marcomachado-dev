@@ -7,9 +7,9 @@ It started as one of ten themes behind a header picker. The picker, the Classic 
 ## Tokens
 
 - Colours live in `src/app/globals.css` on `:root` (oklch, shadcn names) and map to Tailwind through `@theme inline`. All text pairs meet WCAG 4.5:1.
-- One typeface: IBM Plex Mono (400 and 600), self-hosted, for every piece of text.
+- Two typefaces, self-hosted: IBM Plex Mono (400 and 600) for everything except Article body text, which is set in IBM Plex Sans (400, 400 italic, 600) for long-form reading comfort. Article headings, code and the rest of the page stay mono.
 - The root font size is 15px, so rem values run a little smaller than the browser default.
-- Six text sizes, as `--text-*` tokens in `globals.css`: `xs` 12px (dates, tags, labels), `sm` 13.5px (nav, links, secondary text), `base` 15px (all running text, articles included), `md` ~17px (card and section titles, ledes), `lg` 22.5px (subheadings) and `display` 30–41px (page titles). Use a token, never a literal size.
+- Seven text sizes, as `--text-*` tokens in `globals.css`: `xs` 12px (dates, tags, labels), `sm` 13.5px (nav, links, secondary text), `base` 15px (running text), `reading` 17–18px (Article body), `md` ~17px (card and section titles, ledes), `lg` 22.5px (subheadings) and `display` 30–41px (page titles). Use a token, never a literal size.
 
 ## Brand assets
 
@@ -24,9 +24,14 @@ It started as one of ten themes behind a header picker. The picker, the Classic 
 - Cards (article rows, project cards, AI tool cards) share one pattern: the title is the link and stretches over the whole card (`.card`, `.card__link`), so the card is clickable anywhere, the link is named by the title, and hover and focus mark the whole card.
 - Every Uses item and AI tool has an id from its name (`slugify`), so the home page's tool picks link straight to the entry, which is highlighted on arrival.
 - Links to other sites go through `<ExternalLink>`: they open in a new tab, carry a muted ↗ and tell screen readers so.
-- Link casing: nav and meta links (section "view all", hero prompts, "← all articles") are lowercase; calls to action ("Read the article", "Get in touch") are sentence case. Nothing is uppercase except small labels.
+- The hero's one primary call to action, "Read the blog", is a filled `.btn--primary`; the other hero links are shell prompts under it.
+- Link casing: nav and meta links (section "view all", hero prompts, "← all articles") are lowercase; calls to action ("Read the blog", "Read the article", "Get in touch") are sentence case. Nothing is uppercase except small labels.
 - The shell flourishes are CSS pseudo-content or prompt spans: `/` before nav links, `//` before section titles, `>` before prompts and page titles (wrapped title lines hang under the text), `$` before tools, commands and the RSS line, `-` before Uses keys, `##` before article subheadings.
 - Images are real or absent: article rows and the article page show an Article's Cover Image when it has one, and nothing otherwise. There is no placeholder art.
+
+## Focus
+
+After client-side navigation, `src/components/route-focus.tsx` moves keyboard focus to the new page's `<h1>` (given `tabindex="-1"`), so focus doesn't stay on the link used, often in the footer. It skips the first load and links to an in-page anchor. Keyboard users see the focus ring; pointer users don't.
 
 ## Motion
 

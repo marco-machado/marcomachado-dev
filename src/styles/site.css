@@ -92,6 +92,19 @@
     color: var(--primary-foreground);
   }
 
+  /* The one call to action that leads a section (the hero's "Read the blog") */
+  .btn--primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    font-size: var(--text-base);
+    font-weight: 600;
+  }
+
+  .btn--primary:hover {
+    background-color: color-mix(in oklch, var(--primary) 85%, var(--foreground));
+    border-color: color-mix(in oklch, var(--primary) 85%, var(--foreground));
+  }
+
   .btn__icon {
     display: inline-flex;
   }
@@ -224,8 +237,12 @@
     line-height: 1.75;
   }
 
-  .hero__prompts {
+  .hero__actions {
     margin-top: 2rem;
+  }
+
+  .hero__prompts {
+    margin-top: 1.25rem;
   }
 
   /* Links listed as shell prompts (hero, 404) */
