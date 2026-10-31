@@ -6,6 +6,7 @@ import { site } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { UmamiAnalytics } from "@/components/umami-analytics";
+import { RouteFocus } from "@/components/route-focus";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -66,6 +67,7 @@ export default function RootLayout({
           </main>
           <SiteFooter />
         </div>
+        <RouteFocus />
       </body>
     </html>
   );

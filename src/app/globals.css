@@ -96,6 +96,11 @@
     outline-offset: 2px;
   }
 
+  /* Page headings take focus after navigation (RouteFocus); no ring for pointer users */
+  h1[tabindex="-1"]:focus:not(:focus-visible) {
+    outline: none;
+  }
+
   ::selection {
     background-color: var(--color-accent);
     color: var(--color-accent-foreground);
